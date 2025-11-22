@@ -6,6 +6,7 @@ import { Gallery } from './components/Gallery';
 import { ShareModal } from './components/ShareModal';
 import { musicEngine } from './utils/musicEngine';
 import { renderWeavingToCanvas, downloadCanvasAsJPG, getCanvasDataURL } from './utils/exportWeaving';
+import { saveDesign } from './utils/api';
 
 export type WeavingStyle = 'plain' | 'twill' | 'herringbone';
 
@@ -84,38 +85,38 @@ function WeaveApp() {
     setSelectedDrafts([]);
   };
 
-  const handleSaveToCommunity = () => {
-    // Render the weaving to a canvas at the CURRENT thread size
-    // Use a fixed preview size that will clip the design on the right if needed
-    const previewSize = 1200;
-    const canvas = renderWeavingToCanvas({
-      warpColor,
-      weftColor,
-      threadSize, // Use the current thread size to preserve the "pixel" look
-      warpRows,
-      width: previewSize,
-      height: previewSize
-    });
-    const imageData = getCanvasDataURL(canvas);
-    
-    const newDesign = {
-      id: Date.now().toString(),
-      imageData,
-      warpRows,
-      warpColor,
-      weftColor,
-      pattern: weavingStyle,
-      gridSize: threadSize,
-      timestamp: Date.now()
-    };
-    
-    // Load existing designs
-    const stored = localStorage.getItem('communityDesigns');
-    const existing = stored ? JSON.parse(stored) : [];
-    
-    // Add new design
-    const updated = [newDesign, ...existing];
-    localStorage.setItem('communityDesigns', JSON.stringify(updated));
+  const handleSaveToCommunity = async () => {
+    try {
+      // Render the weaving to a canvas at the CURRENT thread size
+      // Use a fixed preview size that will clip the design on the right if needed
+      const previewSize = 1200;
+      const canvas = renderWeavingToCanvas({
+        warpColor,
+        weftColor,
+        threadSize, // Use the current thread size to preserve the "pixel" look
+        warpRows,
+        width: previewSize,
+        height: previewSize
+      });
+      const imageData = getCanvasDataURL(canvas);
+      
+      const newDesign = {
+        imageData,
+        warpRows,
+        warpColor,
+        weftColor,
+        pattern: weavingStyle,
+        gridSize: threadSize,
+        timestamp: Date.now()
+      };
+      
+      // Save to backend API
+      await saveDesign(newDesign);
+      console.log('Design saved to community successfully!');
+    } catch (error) {
+      console.error('Failed to save design to community:', error);
+      alert('Failed to save design. Please try again.');
+    }
   };
 
   const handleDownloadJPG = () => {

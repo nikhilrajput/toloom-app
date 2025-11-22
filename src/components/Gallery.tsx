@@ -2,34 +2,31 @@ import React, { useState, useEffect } from 'react';
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { Link } from 'wouter';
 import ToloomLogo from "../imports/Group60";
-
-interface SavedDesign {
-  id: string;
-  imageData: string;
-  warpRows: any[];
-  warpColor: string;
-  weftColor: string;
-  pattern: string;
-  gridSize: number;
-  timestamp: number;
-}
+import { getDesigns, SavedDesign } from "../utils/api";
 
 export function Gallery() {
   const [communityDesigns, setCommunityDesigns] = useState<SavedDesign[]>([]);
   const [showLearnModal, setShowLearnModal] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Load community designs from localStorage
-    const stored = localStorage.getItem('communityDesigns');
-    if (stored) {
-      try {
-        const designs = JSON.parse(stored);
-        setCommunityDesigns(designs);
-      } catch (e) {
-        console.error('Failed to load community designs', e);
-      }
-    }
+    loadDesigns();
   }, []);
+
+  const loadDesigns = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const designs = await getDesigns();
+      setCommunityDesigns(designs);
+    } catch (e) {
+      console.error('Failed to load community designs', e);
+      setError('Failed to load community designs. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Calculate dynamic height based on number of warp rows
   const getTileHeight = (design: SavedDesign) => {
@@ -66,7 +63,21 @@ export function Gallery() {
 
         {/* Gallery Grid - Centered with padding */}
         <div className="px-[5%] pb-[10px]">
-          {communityDesigns.length > 0 ? (
+          {loading ? (
+            <div className="flex items-center justify-center min-h-[400px]">
+              <p className="text-[#8B7355] text-lg">Loading community designs...</p>
+            </div>
+          ) : error ? (
+            <div className="flex flex-col items-center justify-center min-h-[400px] gap-4">
+              <p className="text-red-600">{error}</p>
+              <button
+                onClick={loadDesigns}
+                className="px-4 py-2 bg-[#8B7355] text-white rounded hover:bg-[#6B5335] transition-colors"
+              >
+                Retry
+              </button>
+            </div>
+          ) : communityDesigns.length > 0 ? (
             <ResponsiveMasonry
               columnsCountBreakPoints={{ 350: 2, 750: 3, 900: 4, 1200: 6 }}
             >
@@ -91,7 +102,11 @@ export function Gallery() {
                 ))}
               </Masonry>
             </ResponsiveMasonry>
-          ) : null}
+          ) : (
+            <div className="flex items-center justify-center min-h-[400px]">
+              <p className="text-[#8B7355] text-lg">No community designs yet. Be the first to share!</p>
+            </div>
+          )}
         </div>
       </div>
 
