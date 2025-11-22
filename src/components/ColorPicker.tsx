@@ -1,4 +1,3 @@
-import imgHue from "../imports/ColorPicker-90-1275.tsx";
 import { useState, useRef, useEffect } from 'react';
 import { X } from 'lucide-react';
 
@@ -6,7 +5,6 @@ interface ColorPickerProps {
   color: string;
   onChange: (color: string) => void;
   onClose: () => void;
-  title?: string;
   warpColor: string;
   weftColor: string;
 }
@@ -58,7 +56,7 @@ function hsvToHex(h: number, s: number, v: number): string {
   return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 }
 
-export function ColorPicker({ color, onChange, onClose, title = "Color Picker", warpColor, weftColor }: ColorPickerProps) {
+export function ColorPicker({ color, onChange, onClose, warpColor, weftColor }: ColorPickerProps) {
   const [hsv, setHsv] = useState(hexToHSV(color));
   const [hexInput, setHexInput] = useState(color.replace('#', '').toUpperCase());
   
@@ -214,10 +212,10 @@ export function ColorPicker({ color, onChange, onClose, title = "Color Picker", 
   }, [isDraggingColorspace, isDraggingHue, hsv.h]);
 
   return (
-    <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-[100]">
+    <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-[100] p-4">
       <div 
         ref={pickerRef}
-        className="bg-white relative rounded-[8px] shadow-[0px_10px_15px_0px_rgba(31,41,55,0.1),0px_4px_6px_0px_rgba(31,41,55,0.05)] w-[280px]"
+        className="bg-white relative rounded-[8px] shadow-[0px_10px_15px_0px_rgba(31,41,55,0.1),0px_4px_6px_0px_rgba(31,41,55,0.05)] w-[280px] max-w-full max-h-[calc(100vh-32px)] overflow-y-auto"
       >
         {/* Close button */}
         <button 
