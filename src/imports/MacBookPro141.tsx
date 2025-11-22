@@ -1,0 +1,686 @@
+import svgPaths from "./svg-lpmg6eb2dp";
+
+function Warp() {
+  return (
+    <div className="absolute contents left-0 top-0" data-name="Warp">
+      <div className="absolute bg-[#f3aad5] h-[982px] left-0 top-0 w-[60px]" />
+      <div className="absolute bg-[#f3aad5] h-[982px] left-[120px] top-0 w-[60px]" />
+      <div className="absolute bg-[#f3aad5] h-[982px] left-[240px] top-0 w-[60px]" />
+      <div className="absolute bg-[#f3aad5] h-[982px] left-[360px] top-0 w-[60px]" />
+      <div className="absolute bg-[#f3aad5] h-[982px] left-[480px] top-0 w-[60px]" />
+      <div className="absolute bg-[#f3aad5] h-[982px] left-[600px] top-0 w-[60px]" />
+      <div className="absolute bg-[#f3aad5] h-[982px] left-[720px] top-0 w-[60px]" />
+      <div className="absolute bg-[#f3aad5] h-[982px] left-[840px] top-0 w-[60px]" />
+      <div className="absolute bg-[#f3aad5] h-[982px] left-[960px] top-0 w-[60px]" />
+      <div className="absolute bg-[#f3aad5] h-[982px] left-[1080px] top-0 w-[60px]" />
+      <div className="absolute bg-[#f3aad5] h-[982px] left-[1200px] top-0 w-[60px]" />
+    </div>
+  );
+}
+
+function Warp1() {
+  return (
+    <div className="absolute contents left-[60px] top-0" data-name="Warp">
+      <div className="absolute bg-[#ffd8ef] h-[982px] left-[60px] top-0 w-[60px]" />
+      <div className="absolute bg-[#ffd8ef] h-[982px] left-[180px] top-0 w-[60px]" />
+      <div className="absolute bg-[#ffd8ef] h-[982px] left-[300px] top-0 w-[60px]" />
+      <div className="absolute bg-[#ffd8ef] h-[982px] left-[420px] top-0 w-[60px]" />
+      <div className="absolute bg-[#ffd8ef] h-[982px] left-[540px] top-0 w-[60px]" />
+      <div className="absolute bg-[#ffd8ef] h-[982px] left-[660px] top-0 w-[60px]" />
+      <div className="absolute bg-[#ffd8ef] h-[982px] left-[780px] top-0 w-[60px]" />
+      <div className="absolute bg-[#ffd8ef] h-[982px] left-[900px] top-0 w-[60px]" />
+      <div className="absolute bg-[#ffd8ef] h-[982px] left-[1020px] top-0 w-[60px]" />
+      <div className="absolute bg-[#ffd8ef] h-[982px] left-[1140px] top-0 w-[60px]" />
+      <div className="absolute bg-[#ffd8ef] h-[982px] left-[1260px] top-0 w-[60px]" />
+    </div>
+  );
+}
+
+function Group6() {
+  return (
+    <div className="absolute contents left-0 top-0">
+      <Warp />
+      <Warp1 />
+    </div>
+  );
+}
+
+function Warp2() {
+  return (
+    <div className="absolute contents left-[1320px] top-0" data-name="Warp">
+      <div className="absolute bg-[#f3aad5] h-[982px] left-[1320px] top-0 w-[60px]" />
+      <div className="absolute bg-[#f3aad5] h-[982px] left-[1440px] top-0 w-[60px]" />
+      <div className="absolute bg-[#f3aad5] h-[982px] left-[1560px] top-0 w-[60px]" />
+      <div className="absolute bg-[#f3aad5] h-[982px] left-[1680px] top-0 w-[60px]" />
+      <div className="absolute bg-[#f3aad5] h-[982px] left-[1800px] top-0 w-[60px]" />
+    </div>
+  );
+}
+
+function Warp3() {
+  return (
+    <div className="absolute contents left-[1380px] top-0" data-name="Warp">
+      <div className="absolute bg-[#ffd8ef] h-[982px] left-[1380px] top-0 w-[60px]" />
+      <div className="absolute bg-[#ffd8ef] h-[982px] left-[1500px] top-0 w-[60px]" />
+      <div className="absolute bg-[#ffd8ef] h-[982px] left-[1620px] top-0 w-[60px]" />
+      <div className="absolute bg-[#ffd8ef] h-[982px] left-[1740px] top-0 w-[60px]" />
+    </div>
+  );
+}
+
+function Group7() {
+  return (
+    <div className="absolute contents left-[1320px] top-0">
+      <Warp2 />
+      <Warp3 />
+    </div>
+  );
+}
+
+function Group8() {
+  return (
+    <div className="absolute contents left-0 top-0">
+      <Group6 />
+      <Group7 />
+    </div>
+  );
+}
+
+function Auto() {
+  return (
+    <div className="absolute left-0 size-[45px] top-0" data-name="Auto">
+      <div className="absolute inset-[-42.22%_-55.56%_-68.89%_-55.56%]">
+        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 95 95">
+          <g id="Auto">
+            <g filter="url(#filter0_d_43_567)" id="Ellipse 4">
+              <circle cx="47.5" cy="41.5" fill="var(--fill-0, white)" fillOpacity="0.7" r="22.5" shapeRendering="crispEdges" />
+            </g>
+            <g id="Group 6">
+              <path d={svgPaths.p22b79280} fill="var(--fill-0, #FFC106)" id="Vector 4" />
+              <path d={svgPaths.pd0cbf00} fill="var(--fill-0, #FFC106)" id="Vector 5" />
+            </g>
+          </g>
+          <defs>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="95" id="filter0_d_43_567" width="95" x="0" y="0">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+              <feOffset dy="6" />
+              <feGaussianBlur stdDeviation="12.5" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+              <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_43_567" />
+              <feBlend in="SourceGraphic" in2="effect1_dropShadow_43_567" mode="normal" result="shape" />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function Auto1() {
+  return (
+    <div className="absolute left-[921px] size-[45px] top-[835px]" data-name="Auto">
+      <Auto />
+    </div>
+  );
+}
+
+function Reed() {
+  return (
+    <div className="absolute left-px size-[45px] top-px" data-name="Reed">
+      <div className="absolute inset-[-42.22%_-55.56%_-68.89%_-55.56%]">
+        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 95 95">
+          <g id="Reed">
+            <g filter="url(#filter0_d_43_555)" id="Ellipse 4">
+              <circle cx="47.5" cy="41.5" fill="var(--fill-0, white)" fillOpacity="0.7" r="22.5" shapeRendering="crispEdges" />
+            </g>
+            <g id="keyboard_arrow_down">
+              <path d={svgPaths.p3fb70f00} fill="var(--fill-0, #72686F)" id="icon" />
+            </g>
+          </g>
+          <defs>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="95" id="filter0_d_43_555" width="95" x="0" y="0">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+              <feOffset dy="6" />
+              <feGaussianBlur stdDeviation="12.5" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+              <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_43_555" />
+              <feBlend in="SourceGraphic" in2="effect1_dropShadow_43_555" mode="normal" result="shape" />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function Reed1() {
+  return (
+    <div className="absolute left-[857px] size-[48px] top-[834px]" data-name="Reed">
+      <Reed />
+    </div>
+  );
+}
+
+function Group() {
+  return (
+    <div className="absolute contents left-[593px] top-[834px]">
+      <div className="absolute left-[593px] size-[48px] top-[834px]">
+        <div className="absolute inset-[-39.58%_-52.08%_-64.58%_-52.08%]">
+          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 98 98">
+            <g filter="url(#filter0_d_43_129)" id="Ellipse 4">
+              <circle cx="49" cy="43" fill="var(--fill-0, white)" fillOpacity="0.7" r="24" shapeRendering="crispEdges" />
+            </g>
+            <defs>
+              <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="98" id="filter0_d_43_129" width="98" x="0" y="0">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                <feOffset dy="6" />
+                <feGaussianBlur stdDeviation="12.5" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+                <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_43_129" />
+                <feBlend in="SourceGraphic" in2="effect1_dropShadow_43_129" mode="normal" result="shape" />
+              </filter>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      <p className="absolute font-['Roboto:SemiBold',sans-serif] font-semibold h-[17.143px] leading-[17px] left-[616.86px] text-[#72686f] text-[24px] text-center top-[849px] translate-x-[-50%] w-[21.714px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+        1
+      </p>
+    </div>
+  );
+}
+
+function Group1() {
+  return (
+    <div className="absolute contents left-[659px] top-[834px]">
+      <div className="absolute left-[659px] size-[48px] top-[834px]">
+        <div className="absolute inset-[-39.58%_-52.08%_-64.58%_-52.08%]">
+          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 98 98">
+            <g filter="url(#filter0_d_43_129)" id="Ellipse 4">
+              <circle cx="49" cy="43" fill="var(--fill-0, white)" fillOpacity="0.7" r="24" shapeRendering="crispEdges" />
+            </g>
+            <defs>
+              <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="98" id="filter0_d_43_129" width="98" x="0" y="0">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                <feOffset dy="6" />
+                <feGaussianBlur stdDeviation="12.5" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+                <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_43_129" />
+                <feBlend in="SourceGraphic" in2="effect1_dropShadow_43_129" mode="normal" result="shape" />
+              </filter>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      <p className="absolute font-['Roboto:SemiBold',sans-serif] font-semibold h-[17.143px] leading-[17px] left-[682.43px] text-[#72686f] text-[24px] text-center top-[848.86px] translate-x-[-50%] w-[21.714px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+        2
+      </p>
+    </div>
+  );
+}
+
+function Group11() {
+  return (
+    <div className="absolute contents left-[725px] top-[834px]">
+      <div className="absolute left-[725px] size-[48px] top-[834px]">
+        <div className="absolute inset-[-39.58%_-52.08%_-64.58%_-52.08%]">
+          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 98 98">
+            <g filter="url(#filter0_d_43_129)" id="Ellipse 4">
+              <circle cx="49" cy="43" fill="var(--fill-0, white)" fillOpacity="0.7" r="24" shapeRendering="crispEdges" />
+            </g>
+            <defs>
+              <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="98" id="filter0_d_43_129" width="98" x="0" y="0">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                <feOffset dy="6" />
+                <feGaussianBlur stdDeviation="12.5" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+                <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_43_129" />
+                <feBlend in="SourceGraphic" in2="effect1_dropShadow_43_129" mode="normal" result="shape" />
+              </filter>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      <p className="absolute font-['Roboto:SemiBold',sans-serif] font-semibold h-[17.143px] leading-[17px] left-[748.43px] text-[#72686f] text-[24px] text-center top-[848.86px] translate-x-[-50%] w-[21.714px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+        3
+      </p>
+    </div>
+  );
+}
+
+function Group12() {
+  return (
+    <div className="absolute contents left-[791px] top-[834px]">
+      <div className="absolute left-[791px] size-[48px] top-[834px]">
+        <div className="absolute inset-[-39.58%_-52.08%_-64.58%_-52.08%]">
+          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 98 98">
+            <g filter="url(#filter0_d_43_129)" id="Ellipse 4">
+              <circle cx="49" cy="43" fill="var(--fill-0, white)" fillOpacity="0.7" r="24" shapeRendering="crispEdges" />
+            </g>
+            <defs>
+              <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="98" id="filter0_d_43_129" width="98" x="0" y="0">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                <feOffset dy="6" />
+                <feGaussianBlur stdDeviation="12.5" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+                <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_43_129" />
+                <feBlend in="SourceGraphic" in2="effect1_dropShadow_43_129" mode="normal" result="shape" />
+              </filter>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      <p className="absolute font-['Roboto:SemiBold',sans-serif] font-semibold h-[17.143px] leading-[17px] left-[814.86px] text-[#72686f] text-[24px] text-center top-[849px] translate-x-[-50%] w-[21.714px]" style={{ fontVariationSettings: "'wdth' 100" }}>
+        4
+      </p>
+    </div>
+  );
+}
+
+function WarpColor() {
+  return (
+    <div className="absolute left-[485px] size-[32.869px] top-[843px]" data-name="Warp Color">
+      <div className="absolute inset-[-57.8%_-76.06%_-94.31%_-76.06%]">
+        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 83 83">
+          <g filter="url(#filter0_d_43_552)" id="Warp Color">
+            <g filter="url(#filter1_d_43_552)" id="Ellipse 4">
+              <circle cx="41.4347" cy="35.4347" fill="var(--fill-0, #F3AAD5)" r="16.4347" />
+            </g>
+          </g>
+          <defs>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="82.8693" id="filter0_d_43_552" width="82.8693" x="0" y="0">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+              <feOffset dy="6" />
+              <feGaussianBlur stdDeviation="12.5" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+              <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_43_552" />
+              <feBlend in="SourceGraphic" in2="effect1_dropShadow_43_552" mode="normal" result="shape" />
+            </filter>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="82.8693" id="filter1_d_43_552" width="82.8693" x="0" y="0">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+              <feOffset dy="6" />
+              <feGaussianBlur stdDeviation="12.5" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+              <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_43_552" />
+              <feBlend in="SourceGraphic" in2="effect1_dropShadow_43_552" mode="normal" result="shape" />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function WeftColor() {
+  return (
+    <div className="absolute left-[526.63px] size-[32.869px] top-[843px]" data-name="Weft Color">
+      <div className="absolute inset-[-57.8%_-76.06%_-94.31%_-76.06%]">
+        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 83 83">
+          <g filter="url(#filter0_d_43_549)" id="Weft Color">
+            <g filter="url(#filter1_d_43_549)" id="Ellipse 4">
+              <circle cx="41.4347" cy="35.4347" fill="var(--fill-0, #B0F3AA)" r="16.4347" />
+            </g>
+          </g>
+          <defs>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="82.8693" id="filter0_d_43_549" width="82.8693" x="0" y="0">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+              <feOffset dy="6" />
+              <feGaussianBlur stdDeviation="12.5" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+              <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_43_549" />
+              <feBlend in="SourceGraphic" in2="effect1_dropShadow_43_549" mode="normal" result="shape" />
+            </filter>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="82.8693" id="filter1_d_43_549" width="82.8693" x="0" y="0">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+              <feOffset dy="6" />
+              <feGaussianBlur stdDeviation="12.5" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+              <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_43_549" />
+              <feBlend in="SourceGraphic" in2="effect1_dropShadow_43_549" mode="normal" result="shape" />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function Group14() {
+  return (
+    <div className="absolute contents left-[485px] top-[843px]">
+      <WarpColor />
+      <WeftColor />
+    </div>
+  );
+}
+
+function Group13() {
+  return (
+    <div className="absolute contents left-[448px] top-[822px]">
+      <div className="absolute bg-[rgba(255,255,255,0.5)] h-[72px] left-[448px] rounded-[35px] shadow-[0px_6px_25px_0px_rgba(0,0,0,0.1)] top-[822px] w-[543px]" />
+      <Auto1 />
+      <Reed1 />
+      <Group />
+      <Group1 />
+      <Group11 />
+      <Group12 />
+      <Group14 />
+    </div>
+  );
+}
+
+function Group9() {
+  return (
+    <div className="absolute contents left-0 top-[2px]">
+      <div className="absolute bg-[#fefefe] h-[6.667px] left-0 rounded-[3px] top-[6.67px] w-[164.444px]" />
+      <div className="absolute bg-[#9a8494] left-[9px] size-[15px] top-[2px]" />
+    </div>
+  );
+}
+
+function ThreadSize() {
+  return (
+    <div className="absolute h-[20px] left-0 shadow-[0px_6px_25px_0px_rgba(0,0,0,0.1)] top-0 w-[165px]" data-name="thread size">
+      <Group9 />
+    </div>
+  );
+}
+
+function ThreadSize1() {
+  return (
+    <div className="absolute h-[20px] left-[95px] top-[106px] w-[165px]" data-name="Thread Size">
+      <ThreadSize />
+    </div>
+  );
+}
+
+function Group10() {
+  return (
+    <div className="absolute contents left-[76px] top-[94px]">
+      <div className="absolute bg-[rgba(255,255,255,0.5)] h-[44px] left-[76px] rounded-[35px] shadow-[0px_6px_25px_0px_rgba(0,0,0,0.1)] top-[94px] w-[208px]" />
+      <ThreadSize1 />
+    </div>
+  );
+}
+
+function Undo() {
+  return (
+    <div className="absolute left-[2px] size-[19px] top-[2px]" data-name="undo">
+      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 19 19">
+        <g id="undo">
+          <path d={svgPaths.p1c146d00} fill="var(--fill-0, #72686F)" id="icon" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function Undo1() {
+  return (
+    <div className="absolute contents left-[2px] top-[2px]" data-name="Undo">
+      <Undo />
+    </div>
+  );
+}
+
+function Undo2() {
+  return (
+    <div className="absolute left-[5px] size-[23.926px] top-[5px]" data-name="Undo">
+      <Undo1 />
+    </div>
+  );
+}
+
+function Group2() {
+  return (
+    <div className="absolute contents left-0 top-0">
+      <div className="absolute left-0 size-[34px] top-0">
+        <div className="absolute inset-[-55.88%_-73.53%_-91.18%_-73.53%]">
+          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 84 84">
+            <g filter="url(#filter0_d_43_140)" id="Ellipse 4">
+              <circle cx="42" cy="36" fill="var(--fill-0, white)" fillOpacity="0.7" r="17" shapeRendering="crispEdges" />
+            </g>
+            <defs>
+              <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="84" id="filter0_d_43_140" width="84" x="0" y="0">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                <feOffset dy="6" />
+                <feGaussianBlur stdDeviation="12.5" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+                <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_43_140" />
+                <feBlend in="SourceGraphic" in2="effect1_dropShadow_43_140" mode="normal" result="shape" />
+              </filter>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      <Undo2 />
+    </div>
+  );
+}
+
+function Undo3() {
+  return (
+    <div className="absolute left-[1245px] size-[34px] top-[99px]" data-name="Undo">
+      <Group2 />
+    </div>
+  );
+}
+
+function Undo4() {
+  return (
+    <div className="absolute left-[2px] size-[19px] top-[2px]" data-name="undo">
+      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 19 19">
+        <g id="undo">
+          <path d={svgPaths.p1c146d00} fill="var(--fill-0, #72686F)" id="icon" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function Undo5() {
+  return (
+    <div className="absolute contents left-[2px] top-[2px]" data-name="Undo">
+      <Undo4 />
+    </div>
+  );
+}
+
+function Undo6() {
+  return (
+    <div className="absolute left-[5px] size-[23.926px] top-[5px]" data-name="Undo">
+      <Undo5 />
+    </div>
+  );
+}
+
+function Group3() {
+  return (
+    <div className="absolute contents left-0 top-0">
+      <div className="absolute left-0 size-[34px] top-0">
+        <div className="absolute inset-[-55.88%_-73.53%_-91.18%_-73.53%]">
+          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 84 84">
+            <g filter="url(#filter0_d_43_140)" id="Ellipse 4">
+              <circle cx="42" cy="36" fill="var(--fill-0, white)" fillOpacity="0.7" r="17" shapeRendering="crispEdges" />
+            </g>
+            <defs>
+              <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="84" id="filter0_d_43_140" width="84" x="0" y="0">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                <feOffset dy="6" />
+                <feGaussianBlur stdDeviation="12.5" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+                <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_43_140" />
+                <feBlend in="SourceGraphic" in2="effect1_dropShadow_43_140" mode="normal" result="shape" />
+              </filter>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      <Undo6 />
+    </div>
+  );
+}
+
+function Undo7() {
+  return (
+    <div className="relative size-[34px]" data-name="Undo">
+      <Group3 />
+    </div>
+  );
+}
+
+function Group4() {
+  return (
+    <div className="absolute left-0 size-[34px] top-0">
+      <div className="absolute inset-[-55.88%_-73.53%_-91.18%_-73.53%]">
+        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 84 84">
+          <g id="Group 12">
+            <g filter="url(#filter0_d_43_120)" id="Ellipse 4">
+              <circle cx="42" cy="36" fill="var(--fill-0, white)" fillOpacity="0.7" r="17" shapeRendering="crispEdges" />
+            </g>
+          </g>
+          <defs>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="84" id="filter0_d_43_120" width="84" x="0" y="0">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+              <feOffset dy="6" />
+              <feGaussianBlur stdDeviation="12.5" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+              <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_43_120" />
+              <feBlend in="SourceGraphic" in2="effect1_dropShadow_43_120" mode="normal" result="shape" />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function Delete() {
+  return (
+    <div className="absolute left-0 size-[19px] top-0" data-name="delete">
+      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 19 19">
+        <g id="delete">
+          <path d={svgPaths.p2894b280} fill="var(--fill-0, #72686F)" id="icon" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function Delete1() {
+  return (
+    <div className="absolute left-0 size-[19px] top-0" data-name="Delete">
+      <Delete />
+    </div>
+  );
+}
+
+function Delete2() {
+  return (
+    <div className="absolute left-[7px] size-[19px] top-[7px]" data-name="Delete">
+      <Delete1 />
+    </div>
+  );
+}
+
+function Delete3() {
+  return (
+    <div className="absolute left-[1332px] size-[34px] top-[99px]" data-name="Delete">
+      <Group4 />
+      <Delete2 />
+    </div>
+  );
+}
+
+function Group5() {
+  return (
+    <div className="absolute left-0 size-[34px] top-0">
+      <div className="absolute inset-[-55.88%_-73.53%_-91.18%_-73.53%]">
+        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 84 84">
+          <g id="Group 12">
+            <g filter="url(#filter0_d_43_120)" id="Ellipse 4">
+              <circle cx="42" cy="36" fill="var(--fill-0, white)" fillOpacity="0.7" r="17" shapeRendering="crispEdges" />
+            </g>
+          </g>
+          <defs>
+            <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="84" id="filter0_d_43_120" width="84" x="0" y="0">
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+              <feOffset dy="6" />
+              <feGaussianBlur stdDeviation="12.5" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+              <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_43_120" />
+              <feBlend in="SourceGraphic" in2="effect1_dropShadow_43_120" mode="normal" result="shape" />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function Close() {
+  return (
+    <div className="absolute left-[7px] size-[19px] top-[7px]" data-name="close">
+      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 19 19">
+        <g id="close">
+          <path d={svgPaths.pce455c0} fill="var(--fill-0, #72686F)" id="icon" />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function Delete4() {
+  return (
+    <div className="absolute left-[1376px] size-[34px] top-[99px]" data-name="Delete">
+      <Group5 />
+      <Close />
+    </div>
+  );
+}
+
+export default function MacBookPro() {
+  return (
+    <div className="bg-white relative size-full" data-name="MacBook Pro 14' - 1">
+      <Group8 />
+      <Group13 />
+      <Group10 />
+      <Undo3 />
+      <div className="absolute flex items-center justify-center left-[1288px] size-[34px] top-[99px]">
+        <div className="flex-none rotate-[180deg] scale-y-[-100%]">
+          <Undo7 />
+        </div>
+      </div>
+      <Delete3 />
+      <Delete4 />
+    </div>
+  );
+}
