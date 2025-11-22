@@ -60,10 +60,13 @@
       host: '0.0.0.0',
       port: 5000,
       strictPort: true,
+      allowedHosts: [
+        '.repl.co',
+        '.replit.dev',
+      ],
       hmr: {
         protocol: 'wss',
         clientPort: 443,
-        host: process.env.REPL_SLUG ? `${process.env.REPL_SLUG}.${process.env.REPL_OWNER}.repl.co` : 'localhost',
       },
     },
   });

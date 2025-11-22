@@ -34,10 +34,23 @@ Configured for static deployment on Replit:
 - Build command: `npm run build`
 - Public directory: `build/`
 
+## Replit Configuration
+- **Server Host**: 0.0.0.0 (required for Replit proxy)
+- **Port**: 5000 (required for webview)
+- **Allowed Hosts**: Configured for .repl.co and .replit.dev domains
+- **HMR**: WebSocket configured for WSS on port 443
+- **Workflow**: Automated dev server restart on project load
+
 ## Recent Changes (November 22, 2025)
+### Initial Replit Setup
 - Added TypeScript configuration files (tsconfig.json, tsconfig.node.json)
-- Updated Vite config for Replit environment (port 5000, host 0.0.0.0, HMR configuration)
+- Updated Vite config for Replit environment:
+  - Changed port from 3000 to 5000
+  - Set host to 0.0.0.0
+  - Added allowedHosts for Replit domains
+  - Configured HMR for WebSocket connections
 - Added missing dev dependencies (@types/react, @types/react-dom, typescript)
 - Created .gitignore for Node.js project
-- Configured workflow for automatic development server
-- Set up deployment configuration for static hosting
+- Configured workflow "Weaving App" for automatic development server
+- Set up deployment configuration for static hosting (build → build/)
+- All dependencies installed and verified working
