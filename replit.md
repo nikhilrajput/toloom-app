@@ -40,9 +40,11 @@ This is a weaving application built with React, TypeScript, and Vite. It provide
 - Database Push: `npm run db:push` (syncs schema to database)
 
 ## Deployment
-Configured for static deployment on Replit:
+Configured for autoscale deployment on Replit:
 - Build command: `npm run build`
-- Public directory: `build/`
+- Run command: `node server/index.js`
+- Server runs on port 5000 in production
+- Backend serves both API endpoints and static frontend files
 
 ## Replit Configuration
 - **Frontend Server Host**: 0.0.0.0 (required for Replit proxy)
@@ -80,6 +82,18 @@ Configured for static deployment on Replit:
 - Added API client utility (src/utils/api.ts) for frontend-backend communication
 - Configured dual workflows for frontend and backend servers
 - Verified end-to-end functionality: designs saved by any user appear in community gallery for all users
+
+### Production Deployment Fixes (November 22, 2025)
+- **Changed deployment from static to autoscale** - Backend now runs in production to serve API endpoints
+- **Backend serves frontend** - Server.js now serves built static files and handles SPA routing
+- **Fixed /weave 404 error** - Added SPA fallback middleware to serve index.html for all routes
+- **Fixed API connectivity** - Updated API base URL to use window.location.origin in production
+- **Fixed color picker viewport overflow** - Made ColorPicker responsive with mobile support:
+  - Reduced padding on mobile (8px vs 16px)
+  - Made width 100% on mobile with 280px max-width
+  - Reduced colorspace height on mobile (140px vs 176px)
+  - Limited max-height to 90vh on mobile to prevent overflow
+- **Server port configuration** - Server uses port 5000 in production (Replit's exposed port)
 
 ## API Endpoints
 ### GET /api/designs
