@@ -1,10 +1,15 @@
 import express from 'express';
 import cors from 'cors';
 import pg from 'pg';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const { Pool } = pg;
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || (process.env.NODE_ENV === 'production' ? 5000 : 3001);
 
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
@@ -66,6 +71,16 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
+// Serve static files from the build directory
+const buildPath = path.join(__dirname, '..', 'build');
+app.use(express.static(buildPath));
+
+// SPA fallback - serve index.html for all remaining routes
+app.use((req, res) => {
+  res.sendFile(path.join(buildPath, 'index.html'));
+});
+
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`API server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
+  console.log(`Serving static files from: ${buildPath}`);
 });

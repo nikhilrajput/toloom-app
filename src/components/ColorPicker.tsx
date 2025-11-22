@@ -212,10 +212,10 @@ export function ColorPicker({ color, onChange, onClose, warpColor, weftColor }: 
   }, [isDraggingColorspace, isDraggingHue, hsv.h]);
 
   return (
-    <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-[100] p-4">
+    <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-[100] p-2 sm:p-4">
       <div 
         ref={pickerRef}
-        className="bg-white relative rounded-[8px] shadow-[0px_10px_15px_0px_rgba(31,41,55,0.1),0px_4px_6px_0px_rgba(31,41,55,0.05)] w-[280px] max-w-full max-h-[calc(100vh-32px)] overflow-y-auto"
+        className="bg-white relative rounded-[8px] shadow-[0px_10px_15px_0px_rgba(31,41,55,0.1),0px_4px_6px_0px_rgba(31,41,55,0.05)] w-full sm:w-[280px] max-w-[280px] max-h-[90vh] sm:max-h-[calc(100vh-32px)] overflow-y-auto"
       >
         {/* Close button */}
         <button 
@@ -229,7 +229,7 @@ export function ColorPicker({ color, onChange, onClose, warpColor, weftColor }: 
           {/* Colorspace */}
           <div 
             ref={colorspaceRef}
-            className="relative w-full h-[176px] rounded-[4px] cursor-crosshair"
+            className="relative w-full h-[140px] sm:h-[176px] rounded-[4px] cursor-crosshair"
             style={{ 
               backgroundImage: `linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, ${pureHueColor} 100%), linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%)`,
               backgroundBlendMode: 'multiply, normal'
