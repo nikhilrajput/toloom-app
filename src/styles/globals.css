@@ -197,6 +197,11 @@ body {
   padding: 0;
 }
 
+/* Fix button opacity to allow Tailwind utilities to control it */
+button {
+  opacity: inherit !important;
+}
+
 /* Weaving animations */
 @keyframes weaveLTR {
   from {
