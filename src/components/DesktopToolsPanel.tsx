@@ -76,7 +76,7 @@ export function DesktopToolsPanel({
         title={toolbarsVisible ? "Hide toolbars" : "Show toolbars"}
       >
         <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
-          <circle cx="17" cy="17" fill="white" r="17" className="opacity-40 group-hover:opacity-70 transition-opacity" />
+          <circle cx="17" cy="17" fill="white" r="17" className="opacity-60 group-hover:opacity-100 transition-opacity" />
         </svg>
         <p className="absolute font-['Roboto:SemiBold',sans-serif] font-semibold h-[25px] leading-[17px] left-[17px] text-[18px] text-black text-center top-[9px] translate-x-[-50%] w-[26px] pointer-events-none" style={{ fontVariationSettings: "'wdth' 100" }}>
           🌤️
@@ -178,7 +178,7 @@ export function DesktopToolsPanel({
                 title="Share to gallery"
               >
                 <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
-                  <circle cx="17" cy="17" fill="white" r="17" className="opacity-40 group-hover:opacity-70 transition-opacity" />
+                  <circle cx="17" cy="17" fill="white" r="17" className="opacity-60 group-hover:opacity-100 transition-opacity" />
                   <path d={svgPaths.p32939c00} fill="#72686F" />
                 </svg>
               </button>
@@ -191,7 +191,7 @@ export function DesktopToolsPanel({
               >
                 <div className="absolute bottom-[-0.24%] left-[-0.24%] right-0 top-0">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 35 35">
-                    <circle cx="17" cy="17.0806" fill="white" r="17" className="opacity-40 group-hover:opacity-70 transition-opacity" />
+                    <circle cx="17" cy="17.0806" fill="white" r="17" className="opacity-60 group-hover:opacity-100 transition-opacity" />
                     <path d={svgPaths.p32a69400} fill="#72686F" />
                   </svg>
                 </div>
@@ -283,7 +283,7 @@ export function DesktopToolsPanel({
                         cy="22" 
                         fill="white"
                         r="22"
-                        className={isSelected ? "opacity-70" : "opacity-40 group-hover:opacity-70 transition-opacity"}
+                        className={isSelected ? "opacity-70" : "opacity-60 group-hover:opacity-100 transition-opacity"}
                       />
                     </svg>
                     <p 
@@ -304,7 +304,7 @@ export function DesktopToolsPanel({
                 title="Weave row (or press Enter/Space)"
               >
                 <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 45 45">
-                  <circle cx="22.5" cy="22.5" fill="white" r="22.5" className="opacity-40 group-hover:opacity-70 transition-opacity" />
+                  <circle cx="22.5" cy="22.5" fill="white" r="22.5" className="opacity-60 group-hover:opacity-100 transition-opacity" />
                   <path d={svgPaths.p13269a00} fill="#72686F" />
                 </svg>
               </button>
@@ -332,7 +332,7 @@ export function DesktopToolsPanel({
                 title="Auto weave"
               >
                 <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
-                  <circle cx="17" cy="17" fill="white" r="17" className="opacity-40 group-hover:opacity-70 transition-opacity" />
+                  <circle cx="17" cy="17" fill="white" r="17" className="opacity-60 group-hover:opacity-100 transition-opacity" />
                 </svg>
                 <p className="absolute font-['Roboto:SemiBold',sans-serif] font-semibold h-[15px] leading-[11px] left-[17px] text-[18px] text-black text-center top-[12px] translate-x-[-50%] w-[26px] pointer-events-none" style={{ fontVariationSettings: "'wdth' 100" }}>
                   🧵️
