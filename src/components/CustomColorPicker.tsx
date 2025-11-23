@@ -90,12 +90,30 @@ export function CustomColorPicker({
   const pickerRef = useRef<HTMLDivElement>(null);
   const [actualPosition, setActualPosition] = useState<'top' | 'bottom'>(position);
   const [pickerCoords, setPickerCoords] = useState<{ top: number; left: number } | null>(null);
+  const cleanupFunctionsRef = useRef<Array<() => void>>([]);
 
   useEffect(() => {
     const newColor = hsvToHex(hue, saturation, value);
     setHexInput(newColor.toUpperCase());
     onChange(newColor);
   }, [hue, saturation, value]);
+
+  // Sync internal state when parent changes color prop
+  useEffect(() => {
+    const { h, s, v } = hexToHSV(color);
+    setHue(h);
+    setSaturation(s);
+    setValue(v);
+    setHexInput(color.toUpperCase());
+  }, [color]);
+
+  // Cleanup document listeners on unmount to prevent memory leaks
+  useEffect(() => {
+    return () => {
+      cleanupFunctionsRef.current.forEach(cleanup => cleanup());
+      cleanupFunctionsRef.current = [];
+    };
+  }, []);
 
   // Calculate picker position from buttonRef
   useEffect(() => {
