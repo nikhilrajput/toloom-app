@@ -86,7 +86,6 @@ export function CustomColorPicker({
   
   const colorspaceRef = useRef<HTMLDivElement>(null);
   const hueRef = useRef<HTMLDivElement>(null);
-  const saturationRef = useRef<HTMLDivElement>(null);
   const pickerRef = useRef<HTMLDivElement>(null);
   const [actualPosition, setActualPosition] = useState<'top' | 'bottom'>(position);
   const [pickerCoords, setPickerCoords] = useState<{ top: number; left: number } | null>(null);
@@ -186,13 +185,6 @@ export function CustomColorPicker({
     const rect = hueRef.current.getBoundingClientRect();
     const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
     setHue(x * 360);
-  };
-
-  const handleSaturationSlider = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!saturationRef.current) return;
-    const rect = saturationRef.current.getBoundingClientRect();
-    const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-    setSaturation(x);
   };
 
   const handleHexInput = (e: React.ChangeEvent<HTMLInputElement>) => {
