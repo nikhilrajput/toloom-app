@@ -61,7 +61,7 @@ export function MobileToolsPanel({
         title={toolbarsVisible ? "Hide toolbars" : "Show toolbars"}
       >
         <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
-          <circle cx="17" cy="17" fill="white" className="group-hover:opacity-100 transition-opacity" style={{opacity: 0.6}} r="17" />
+          <circle cx="17" cy="17" fill="white" className="opacity-[0.6] group-hover:opacity-100 transition-opacity" r="17" />
         </svg>
         <p className="absolute font-['Roboto:SemiBold',sans-serif] font-semibold h-[25px] leading-[17px] left-[17px] text-[18px] text-black text-center top-[9px] translate-x-[-50%] w-[26px] pointer-events-none" style={{ fontVariationSettings: "'wdth' 100" }}>
           🌤️
@@ -163,7 +163,7 @@ export function MobileToolsPanel({
                 title="Share to gallery"
               >
                 <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
-                  <circle cx="17" cy="17" fill="white" className="group-hover:opacity-100 transition-opacity" style={{opacity: 0.6}} r="17" />
+                  <circle cx="17" cy="17" fill="white" className="opacity-[0.6] group-hover:opacity-100 transition-opacity" r="17" />
                   <path d={svgPaths.p32939c00} fill="#72686F" />
                 </svg>
               </button>
@@ -176,7 +176,7 @@ export function MobileToolsPanel({
               >
                 <div className="absolute bottom-[-0.24%] left-[-0.24%] right-0 top-0">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 35 35">
-                    <circle cx="17" cy="17.0806" fill="white" className="group-hover:opacity-100 transition-opacity" style={{opacity: 0.6}} r="17" />
+                    <circle cx="17" cy="17.0806" fill="white" className="opacity-[0.6] group-hover:opacity-100 transition-opacity" r="17" />
                     <path d={svgPaths.p32a69400} fill="#72686F" />
                   </svg>
                 </div>
@@ -208,8 +208,7 @@ export function MobileToolsPanel({
                           cx="22" 
                           cy="22" 
                           fill={isSelected ? "rgba(255, 193, 6, 1)" : "white"}
-                          className="group-hover:opacity-100 transition-opacity"
-                          style={{opacity: isSelected ? 1 : 0.6}}
+                          className={isSelected ? "opacity-100 transition-opacity" : "opacity-[0.6] group-hover:opacity-100 transition-opacity"}
                           r="22" 
                         />
                       </svg>
@@ -236,7 +235,7 @@ export function MobileToolsPanel({
                   title="Weave row (or press Enter/Space)"
                 >
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 45 45">
-                    <circle cx="22.5" cy="22.5" fill="white" className="group-hover:opacity-100 transition-opacity" style={{opacity: 0.6}} r="22.5" />
+                    <circle cx="22.5" cy="22.5" fill="white" className="opacity-[0.6] group-hover:opacity-100 transition-opacity" r="22.5" />
                     <path d={svgPaths.p13269a00} fill="#72686F" />
                   </svg>
                 </button>
@@ -289,7 +288,7 @@ export function MobileToolsPanel({
               >
                 <div className="flex h-full items-center justify-center rotate-[270deg]">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
-                    <circle cx="17" cy="17" fill="white" className="group-hover:opacity-100 transition-opacity" style={{opacity: 0.6}} r="17" transform="rotate(90 17 17)" />
+                    <circle cx="17" cy="17" fill="white" className="opacity-[0.6] group-hover:opacity-100 transition-opacity" r="17" transform="rotate(90 17 17)" />
                     <path d={svgPaths.pe258200} fill="#9A8494" />
                     <path d={svgPaths.p180e2800} fill="#9A8494" />
                     <circle cx="17" cy="17" fill="#9A8494" r="4" transform="rotate(90 17 17)" />
@@ -306,7 +305,7 @@ export function MobileToolsPanel({
               >
                 <div className="flex h-full items-center justify-center rotate-[270deg]">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
-                    <circle cx="17" cy="17" fill="white" className="group-hover:opacity-100 transition-opacity" style={{opacity: 0.6}} r="17" transform="rotate(90 17 17)" />
+                    <circle cx="17" cy="17" fill="white" className="opacity-[0.6] group-hover:opacity-100 transition-opacity" r="17" transform="rotate(90 17 17)" />
                     <path d={svgPaths.p10d35800} fill="#72686F" />
                   </svg>
                 </div>
@@ -320,7 +319,7 @@ export function MobileToolsPanel({
                 title="Auto weave"
               >
                 <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
-                  <circle cx="17" cy="17" fill="white" className="group-hover:opacity-100 transition-opacity" style={{opacity: 0.6}} r="17" />
+                  <circle cx="17" cy="17" fill="white" className="opacity-[0.6] group-hover:opacity-100 transition-opacity" r="17" />
                 </svg>
                 <p className="absolute font-['Roboto:SemiBold',sans-serif] font-semibold h-[15px] leading-[11px] left-[17px] text-[18px] text-black text-center top-[12px] translate-x-[-50%] w-[26px] pointer-events-none" style={{ fontVariationSettings: "'wdth' 100" }}>
                   🧵️
