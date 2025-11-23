@@ -95,6 +95,23 @@ Configured for autoscale deployment on Replit:
   - Limited max-height to 90vh on mobile to prevent overflow
 - **Server port configuration** - Server uses port 5000 in production (Replit's exposed port)
 
+### Figma Design Implementation (November 23, 2025)
+- **Updated Navigation Styling** - Implemented exact Figma Nav frame specifications:
+  - Font: SF Pro Text Regular (font-weight: 400)
+  - Font size: 18px
+  - Text transform: uppercase
+  - Letter spacing: 3px
+  - Color: #72686F
+- **Redesigned Learn Modal** - Complete redesign based on Figma Learn Modal reference:
+  - Two-column layout with instructions and pattern examples
+  - Left column: Step-by-step weaving instructions with visual examples (number buttons, icons)
+  - Right column: Pattern library showing Plain, Twill, Basket, and Herringbone patterns with sequences
+  - Light lavender background (#F5F3F5) for better visual hierarchy
+  - X close button in top right corner
+  - Dotted vertical divider between columns (hidden on mobile)
+  - Fully responsive design with mobile-first approach
+- **Improved Error Handling** - Removed user-facing error messages for failed design loads (errors logged to console only)
+
 ## API Endpoints
 ### GET /api/designs
 Returns all community designs from the database, limited to 100 most recent designs.
