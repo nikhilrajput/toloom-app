@@ -1,6 +1,6 @@
 import svgPaths from "../imports/svg-wpj1llmjl1";
-import { ColorPicker } from "./ColorPicker";
-import { useState } from "react";
+import { CustomColorPicker } from "./CustomColorPicker";
+import { useState, useRef } from "react";
 
 interface MobileToolsPanelProps {
   warpColor: string;
@@ -52,6 +52,9 @@ export function MobileToolsPanel({
   const patterns = [1, 2, 3, 4];
   const [warpPickerOpen, setWarpPickerOpen] = useState(false);
   const [weftPickerOpen, setWeftPickerOpen] = useState(false);
+  const warpButtonRef = useRef<HTMLButtonElement>(null);
+  const weftButtonRef = useRef<HTMLButtonElement>(null);
+  const [savedColors, setSavedColors] = useState<string[]>([warpColor, weftColor]);
 
   return (
     <>
@@ -244,6 +247,7 @@ export function MobileToolsPanel({
 
               {/* Warp Color - left aligned with heddle toolbar */}
               <button 
+                ref={warpButtonRef}
                 onClick={() => setWarpPickerOpen(true)}
                 className="fixed left-1/2 bottom-[6%] size-[34px] cursor-pointer z-50 group" 
                 style={{ transform: 'translateX(-146.5px)' }}
@@ -257,6 +261,7 @@ export function MobileToolsPanel({
 
               {/* Weft Color - next to warp */}
               <button 
+                ref={weftButtonRef}
                 onClick={() => setWeftPickerOpen(true)}
                 className="fixed left-1/2 bottom-[6%] size-[34px] cursor-pointer z-50 group" 
                 style={{ transform: 'translateX(-107.5px)' }}
@@ -320,22 +325,30 @@ export function MobileToolsPanel({
       )}
 
       {/* Color Pickers */}
-      {warpPickerOpen && (
-        <ColorPicker
+      {warpPickerOpen && warpButtonRef.current && (
+        <CustomColorPicker
           color={warpColor}
           onChange={onWarpColorChange}
           onClose={() => setWarpPickerOpen(false)}
-          title="Warp Color"
+          buttonRef={warpButtonRef}
+          position="top"
+          savedColors={savedColors}
+          onSaveColor={(color) => setSavedColors([...savedColors, color])}
+          onRemoveColor={(color) => setSavedColors(savedColors.filter(c => c !== color))}
           warpColor={warpColor}
           weftColor={weftColor}
         />
       )}
-      {weftPickerOpen && (
-        <ColorPicker
+      {weftPickerOpen && weftButtonRef.current && (
+        <CustomColorPicker
           color={weftColor}
           onChange={onWeftColorChange}
           onClose={() => setWeftPickerOpen(false)}
-          title="Weft Color"
+          buttonRef={weftButtonRef}
+          position="top"
+          savedColors={savedColors}
+          onSaveColor={(color) => setSavedColors([...savedColors, color])}
+          onRemoveColor={(color) => setSavedColors(savedColors.filter(c => c !== color))}
           warpColor={warpColor}
           weftColor={weftColor}
         />
