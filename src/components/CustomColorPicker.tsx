@@ -141,9 +141,10 @@ export function CustomColorPicker({
       setActualPosition(finalPosition);
     };
     
-    // Initial calculation after a brief delay to let DOM settle
-    const timer = setTimeout(calculatePosition, 0);
-    return () => clearTimeout(timer);
+    // Wait for layout to complete before measuring
+    requestAnimationFrame(() => {
+      requestAnimationFrame(calculatePosition);
+    });
   }, [buttonRef, position]);
 
   const handleColorspaceClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -209,9 +210,10 @@ export function CustomColorPicker({
       className="bg-white rounded-[8px] shadow-[0px_10px_15px_0px_rgba(31,41,55,0.1),0px_4px_6px_0px_rgba(31,41,55,0.05)] z-[100] w-[220px]"
       style={{
         position: 'fixed',
-        top: pickerCoords ? `${pickerCoords.top}px` : '-9999px',
-        left: pickerCoords ? `${pickerCoords.left}px` : '-9999px',
-        opacity: pickerCoords ? 1 : 0
+        top: pickerCoords ? `${pickerCoords.top}px` : '50%',
+        left: pickerCoords ? `${pickerCoords.left}px` : '50%',
+        transform: pickerCoords ? 'none' : 'translate(-50%, -50%)',
+        visibility: pickerCoords ? 'visible' : 'hidden'
       }}
       onClick={(e) => e.stopPropagation()}
     >
