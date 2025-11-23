@@ -88,8 +88,8 @@ export function ToolsPanel({
       const width = window.innerWidth;
       if (width < 768) {
         setDeviceType('mobile');
-      } else if (width >= 834 && width < 1024) {
-        // Only use tablet view for actual iPad sizes (834px-1023px)
+      } else if (width >= 768 && width < 1024) {
+        // Tablet view for 768px-1023px (iPad and similar)
         setDeviceType('tablet');
       } else {
         setDeviceType('desktop');
