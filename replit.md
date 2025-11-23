@@ -110,7 +110,9 @@ Configured for autoscale deployment on Replit:
     - All buttons styled as circles (borderRadius: 50%)
     - Number buttons: 1, 2, 3, 4
     - Reed/arrow button: Down arrow (not right arrow)
-    - Icon buttons: Thread, slider, cloud
+    - Icon buttons: Thread (🧵), slider, sun behind cloud (⛅)
+    - Updated instructions: "Tapping the numbers in a sequence and pressing the arrow button or use your keyboard keys followed by space bar or return key"
+    - Additional guidance: "Tap the thread button to auto-weave, slider for bigger threads and the cloud/sun emoji to only see your pattern and nothing else."
   - Right column: Pattern library with actual PNG pattern images
     - Plain, Twill, Basket, and Herringbone patterns
     - Pattern images stored in src/assets/ directory

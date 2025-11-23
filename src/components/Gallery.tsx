@@ -156,7 +156,7 @@ export function Gallery() {
                   Weave patterns similar to a handloom by:
                 </h2>
                 <p style={{ color: '#72686F', fontSize: '16px', lineHeight: '1.6', marginBottom: '24px' }}>
-                  Tap the numbers in a sequence and press the arrow key or use your keyboard and space bar or return key
+                  Tapping the numbers in a sequence and pressing the arrow button or use your keyboard keys followed by space bar or return key
                 </p>
                 
                 {/* Number Buttons */}
@@ -174,7 +174,7 @@ export function Gallery() {
                 </div>
                 
                 <p style={{ color: '#72686F', fontSize: '16px', lineHeight: '1.6', marginBottom: '24px' }}>
-                  Tap the thread button to auto-weave, slider for bigger threads and cloud to only see your pattern.
+                  Tap the thread button to auto-weave, slider for bigger threads and the cloud/sun emoji to only see your pattern and nothing else.
                 </p>
                 
                 {/* Icon Buttons */}
@@ -185,7 +185,7 @@ export function Gallery() {
                       <div style={{ width: '12px', height: '12px', backgroundColor: '#72686F', borderRadius: '50%', position: 'absolute', top: '-4px', left: '50%', transform: 'translateX(-50%)' }}></div>
                     </div>
                   </div>
-                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>☁️</div>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>⛅</div>
                 </div>
               </div>
 
