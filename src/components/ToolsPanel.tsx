@@ -80,7 +80,7 @@ export function ToolsPanel({
   useEffect(() => {
     const checkDevice = () => {
       const width = window.innerWidth;
-      if (width < 1024) {
+      if (width < 768) {
         setDeviceType('mobile');
       } else {
         setDeviceType('desktop');
@@ -155,7 +155,7 @@ export function ToolsPanel({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onToggleDraft, onAddWarpRow]);
 
-  // Mobile Layout (< 1024px)
+  // Mobile Layout (< 768px)
   if (deviceType === 'mobile') {
     return (
       <MobileToolsPanel
@@ -184,7 +184,7 @@ export function ToolsPanel({
     );
   }
 
-  // Desktop Layout (>= 1024px)
+  // Desktop Layout (>= 768px)
   if (deviceType === 'desktop') {
     return (
       <DesktopToolsPanel

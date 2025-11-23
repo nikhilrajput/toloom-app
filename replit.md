@@ -167,17 +167,16 @@ Configured for autoscale deployment on Replit:
 - **Removed Tablet Layout (768-1023px breakpoint)**:
   - Issue: Tablet layout (768-1023px) rotated entire interface 90 degrees, creating poor UX
   - Solution: Eliminated tablet breakpoint and TabletToolsPanel component entirely
-  - New logic: < 1024px = mobile layout, ≥1024px = desktop layout
-  - Mobile layout now extends up to 1024px before switching to desktop
+  - New logic: < 768px = mobile layout, ≥ 768px = desktop layout
+  - Desktop layout now starts at 768px (tablet size and above)
   - Reduced bundle size by removing unused TabletToolsPanel component (226KB → 214KB JS)
-- **Restored Gallery Masonry Layout with Varying Heights**:
-  - Updated image export logic to create varying heights based on amount woven
+- **Fixed Gallery Masonry Layout**:
+  - Added max-height of 312px to gallery tiles for consistent visual appearance
+  - Images maintain aspect ratio with object-fit: cover
+  - Masonry layout varies tile positions for visual interest
   - Export height calculation: `Math.max(400, warpRows.length * threadSize + 200)`
-  - Gallery component now displays images at natural aspect ratios
-  - Removed fixed height containers that were forcing uniform appearance
   - Both `handleSaveToCommunity()` and `handleDownloadJPG()` use consistent height logic
   - Examples: 5 rows → 400px, 20 rows → 600px, 50 rows → 1200px, 80 rows → 1800px
-  - Cleared existing square designs to enable fresh masonry layout
 
 ## API Endpoints
 ### GET /api/designs

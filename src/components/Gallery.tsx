@@ -75,7 +75,7 @@ export function Gallery() {
                       src={design.imageData}
                       alt="Woven design"
                       className="w-full"
-                      style={{ display: 'block' }}
+                      style={{ display: 'block', maxHeight: '312px', objectFit: 'cover' }}
                     />
                   </div>
                 ))}
