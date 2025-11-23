@@ -216,17 +216,19 @@ export function CustomColorPicker({
 
   const pureHueColor = hsvToHex(hue, 1, 1);
 
-  // Add click-outside handler
+  // Add click-outside handler with proper event handling to prevent premature closure
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (pickerRef.current && !pickerRef.current.contains(event.target as Node) &&
-          buttonRef?.current && !buttonRef.current.contains(event.target as Node)) {
+    const handleClickOutside = (event: PointerEvent) => {
+      const target = event.target as Node;
+      if (pickerRef.current && !pickerRef.current.contains(target) &&
+          buttonRef?.current && !buttonRef.current.contains(target)) {
         onClose();
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    // Use pointerdown instead of mousedown for better handling
+    document.addEventListener('pointerdown', handleClickOutside);
+    return () => document.removeEventListener('pointerdown', handleClickOutside);
   }, [onClose, buttonRef]);
 
   return (
@@ -240,6 +242,8 @@ export function CustomColorPicker({
         transform: pickerCoords ? 'none' : 'translate(-50%, -50%)'
       }}
       onClick={(e) => e.stopPropagation()}
+      onPointerDown={(e) => e.stopPropagation()}
+      onMouseDown={(e) => e.stopPropagation()}
     >
       <div className="box-border flex flex-col" style={{ gap: '12px', padding: '16px' }}>
         {/* Colorspace */}
@@ -355,132 +359,36 @@ export function CustomColorPicker({
           >
           </div>
           <div 
-            className="absolute top-0 w-[14px] h-[14px] pointer-events-none"
-            style={{ left: `${(hue / 360) * 100}%`, transform: 'translateX(-50%)' }}
+            className="absolute top-0 pointer-events-none"
+            style={{ 
+              left: `${(hue / 360) * 100}%`, 
+              transform: 'translateX(-50%)',
+              width: '16px',
+              height: '16px',
+              marginTop: '-1px'
+            }}
           >
-            <div className="absolute inset-[-50%_-50%_-50%_-50%]">
-              <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 28 28">
-                <g filter="url(#filter0_dd_hue)" id="Ellipse 1">
-                  <circle cx="14" cy="14" r="6" stroke="white" strokeWidth="2" />
-                </g>
-                <defs>
-                  <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="28" id="filter0_dd_hue" width="28" x="0" y="0">
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                    <feOffset dy="4" />
-                    <feGaussianBlur stdDeviation="3" />
-                    <feColorMatrix type="matrix" values="0 0 0 0 0.121569 0 0 0 0 0.160784 0 0 0 0 0.215686 0 0 0 0.1 0" />
-                    <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_hue" />
-                    <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                    <feOffset dy="2" />
-                    <feGaussianBlur stdDeviation="2" />
-                    <feColorMatrix type="matrix" values="0 0 0 0 0.121569 0 0 0 0 0.160784 0 0 0 0 0.215686 0 0 0 0.06 0" />
-                    <feBlend in2="effect1_dropShadow_hue" mode="normal" result="effect2_dropShadow_hue" />
-                    <feBlend in="SourceGraphic" in2="effect2_dropShadow_hue" mode="normal" result="shape" />
-                  </filter>
-                </defs>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        {/* Saturation slider */}
-        <div className="relative rounded-[100px] w-full" style={{ height: '14px', minHeight: '14px' }}>
-          <div 
-            ref={saturationRef}
-            className="absolute left-0 right-0 rounded-[100px] cursor-pointer"
-            style={{
-              height: '14px',
-              minHeight: '14px',
-              background: `linear-gradient(90deg, white 0%, ${pureHueColor} 100%)`
-            }}
-            onMouseDown={(e) => {
-              handleSaturationSlider(e);
-              const handleMove = (moveEvent: MouseEvent) => {
-                if (!saturationRef.current) return;
-                const rect = saturationRef.current.getBoundingClientRect();
-                const x = Math.max(0, Math.min(1, (moveEvent.clientX - rect.left) / rect.width));
-                setSaturation(x);
-              };
-              const handleUp = () => {
-                document.removeEventListener('mousemove', handleMove);
-                document.removeEventListener('mouseup', handleUp);
-              };
-              document.addEventListener('mousemove', handleMove);
-              document.addEventListener('mouseup', handleUp);
-            }}
-            onTouchStart={(e) => {
-              e.preventDefault();
-              if (!saturationRef.current) return;
-              const touch = e.touches[0];
-              const rect = saturationRef.current.getBoundingClientRect();
-              const x = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
-              setSaturation(x);
-
-              const handleTouchMove = (moveEvent: TouchEvent) => {
-                if (!saturationRef.current) return;
-                const touch = moveEvent.touches[0];
-                const rect = saturationRef.current.getBoundingClientRect();
-                const x = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
-                setSaturation(x);
-              };
-              const handleTouchEnd = () => {
-                document.removeEventListener('touchmove', handleTouchMove);
-                document.removeEventListener('touchend', handleTouchEnd);
-              };
-              document.addEventListener('touchmove', handleTouchMove, { passive: false });
-              document.addEventListener('touchend', handleTouchEnd);
-            }}
-          />
-          <div 
-            className="absolute top-0 w-[14px] h-[14px] pointer-events-none"
-            style={{ left: `${saturation * 100}%`, transform: 'translateX(-50%)' }}
-          >
-            <div className="absolute inset-[-50%_-50%_-50%_-50%]">
-              <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 28 28">
-                <g filter="url(#filter0_dd_sat)" id="Ellipse 1">
-                  <circle cx="14" cy="14" r="6" stroke="white" strokeWidth="2" />
-                </g>
-                <defs>
-                  <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="28" id="filter0_dd_sat" width="28" x="0" y="0">
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                    <feOffset dy="4" />
-                    <feGaussianBlur stdDeviation="3" />
-                    <feColorMatrix type="matrix" values="0 0 0 0 0.121569 0 0 0 0 0.160784 0 0 0 0 0.215686 0 0 0 0.1 0" />
-                    <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_sat" />
-                    <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                    <feOffset dy="2" />
-                    <feGaussianBlur stdDeviation="2" />
-                    <feColorMatrix type="matrix" values="0 0 0 0 0.121569 0 0 0 0 0.160784 0 0 0 0 0.215686 0 0 0 0.06 0" />
-                    <feBlend in2="effect1_dropShadow_sat" mode="normal" result="effect2_dropShadow_sat" />
-                    <feBlend in="SourceGraphic" in2="effect2_dropShadow_sat" mode="normal" result="shape" />
-                  </filter>
-                </defs>
-              </svg>
-            </div>
+            <div 
+              className="w-full h-full rounded-full border-2 border-gray-800 shadow-lg"
+              style={{ 
+                backgroundColor: 'white',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.1)'
+              }}
+            />
           </div>
         </div>
 
         {/* Hex input */}
-        <div className="flex items-center" style={{ gap: '8px' }}>
-          <div className="basis-0 bg-white grow min-h-px min-w-px relative rounded-[4px]">
-            <div aria-hidden="true" className="absolute border border-gray-200 border-solid inset-[-1px] pointer-events-none rounded-[5px] shadow-[0px_1px_2px_0px_rgba(31,41,55,0.08)]" />
-            <div className="flex flex-row items-center size-full">
-              <input
-                type="text"
-                value={hexInput}
-                onChange={handleHexInput}
-                className="box-border w-full px-[6px] py-[4px] font-['Inter',sans-serif] text-[14px] text-gray-700 bg-transparent border-none outline-none leading-[20px]"
-                placeholder="#000000"
-              />
-            </div>
-          </div>
-          <div className="w-[61.333px] bg-white relative rounded-[4px] shrink-0">
-            <div aria-hidden="true" className="absolute border border-gray-200 border-solid inset-[-1px] pointer-events-none rounded-[5px] shadow-[0px_1px_2px_0px_rgba(31,41,55,0.08)]" />
-            <div className="px-[6px] py-[4px] font-['Inter',sans-serif] text-[14px] text-gray-700 text-center leading-[20px]">
-              {Math.round(value * 100)}%
-            </div>
+        <div className="bg-white relative rounded-[4px]">
+          <div aria-hidden="true" className="absolute border border-gray-200 border-solid inset-[-1px] pointer-events-none rounded-[5px] shadow-[0px_1px_2px_0px_rgba(31,41,55,0.08)]" />
+          <div className="flex flex-row items-center size-full">
+            <input
+              type="text"
+              value={hexInput}
+              onChange={handleHexInput}
+              className="box-border w-full px-[6px] py-[4px] font-['Inter',sans-serif] text-[14px] text-gray-700 bg-transparent border-none outline-none leading-[20px]"
+              placeholder="#000000"
+            />
           </div>
         </div>
 
