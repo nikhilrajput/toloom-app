@@ -82,12 +82,31 @@ export function CustomColorPicker({
   const colorspaceRef = useRef<HTMLDivElement>(null);
   const hueRef = useRef<HTMLDivElement>(null);
   const saturationRef = useRef<HTMLDivElement>(null);
+  const pickerRef = useRef<HTMLDivElement>(null);
+  const [actualPosition, setActualPosition] = useState<'top' | 'bottom'>(position);
 
   useEffect(() => {
     const newColor = hsvToHex(hue, saturation, value);
     setHexInput(newColor.toUpperCase());
     onChange(newColor);
   }, [hue, saturation, value]);
+
+  // Collision detection - flip position if modal would extend past viewport
+  useEffect(() => {
+    if (!pickerRef.current) return;
+    
+    const rect = pickerRef.current.getBoundingClientRect();
+    const wouldOverflowBottom = rect.bottom > window.innerHeight - 20;
+    const wouldOverflowTop = rect.top < 20;
+    
+    if (position === 'bottom' && wouldOverflowBottom && !wouldOverflowTop) {
+      setActualPosition('top');
+    } else if (position === 'top' && wouldOverflowTop && !wouldOverflowBottom) {
+      setActualPosition('bottom');
+    } else {
+      setActualPosition(position);
+    }
+  }, [position]);
 
   const handleColorspaceClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!colorspaceRef.current) return;
@@ -135,14 +154,15 @@ export function CustomColorPicker({
 
   return (
     <div 
-      className={`absolute ${position === 'top' ? 'bottom-full mb-2' : 'top-full mt-2'} left-0 bg-white rounded-[8px] shadow-[0px_10px_15px_0px_rgba(31,41,55,0.1),0px_4px_6px_0px_rgba(31,41,55,0.05)] z-[100] w-[252px]`}
+      ref={pickerRef}
+      className={`absolute ${actualPosition === 'top' ? 'bottom-full mb-2' : 'top-full mt-2'} left-0 bg-white rounded-[8px] shadow-[0px_10px_15px_0px_rgba(31,41,55,0.1),0px_4px_6px_0px_rgba(31,41,55,0.05)] z-[100] w-[220px]`}
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="box-border flex flex-col gap-[16px] p-[16px]">
+      <div className="box-border flex flex-col gap-[12px] p-[12px]">
         {/* Colorspace */}
         <div 
           ref={colorspaceRef}
-          className="h-[140px] rounded-[4px] cursor-crosshair relative"
+          className="h-[188px] rounded-[4px] cursor-crosshair relative"
           style={{ 
             background: `linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%), linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%), ${pureHueColor}`
           }}
