@@ -100,15 +100,18 @@ export function CustomColorPicker({
 
   // Calculate picker position from buttonRef
   useEffect(() => {
-    if (!buttonRef?.current) return;
-    
     const calculatePosition = () => {
-      if (!buttonRef.current || !pickerRef.current) return;
+      if (!buttonRef?.current || !pickerRef.current) {
+        // Fallback: render at screen center if no button ref
+        setPickerCoords({ top: window.innerHeight / 2 - 250, left: window.innerWidth / 2 - 110 });
+        return;
+      }
       
       const buttonRect = buttonRef.current.getBoundingClientRect();
       const pickerRect = pickerRef.current.getBoundingClientRect();
       
       const PICKER_WIDTH = 220;
+      const PICKER_HEIGHT = pickerRect.height || 450; // Use actual or estimated height
       const GAP = 8;
       
       // Calculate horizontal position (center picker under button)
@@ -122,7 +125,7 @@ export function CustomColorPicker({
       let finalPosition: 'top' | 'bottom' = position;
       
       if (position === 'top') {
-        top = buttonRect.top - pickerRect.height - GAP;
+        top = buttonRect.top - PICKER_HEIGHT - GAP;
         // Check if would overflow top
         if (top < 20) {
           top = buttonRect.bottom + GAP;
@@ -131,8 +134,8 @@ export function CustomColorPicker({
       } else {
         top = buttonRect.bottom + GAP;
         // Check if would overflow bottom
-        if (top + pickerRect.height > window.innerHeight - 20) {
-          top = buttonRect.top - pickerRect.height - GAP;
+        if (top + PICKER_HEIGHT > window.innerHeight - 20) {
+          top = buttonRect.top - PICKER_HEIGHT - GAP;
           finalPosition = 'top';
         }
       }
@@ -141,10 +144,12 @@ export function CustomColorPicker({
       setActualPosition(finalPosition);
     };
     
-    // Wait for layout to complete before measuring
-    requestAnimationFrame(() => {
-      requestAnimationFrame(calculatePosition);
-    });
+    // Initial position immediately, then refine after layout
+    calculatePosition();
+    
+    // Recalculate after a short delay to get accurate measurements
+    const timer = setTimeout(calculatePosition, 50);
+    return () => clearTimeout(timer);
   }, [buttonRef, position]);
 
   const handleColorspaceClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -212,8 +217,7 @@ export function CustomColorPicker({
         position: 'fixed',
         top: pickerCoords ? `${pickerCoords.top}px` : '50%',
         left: pickerCoords ? `${pickerCoords.left}px` : '50%',
-        transform: pickerCoords ? 'none' : 'translate(-50%, -50%)',
-        visibility: pickerCoords ? 'visible' : 'hidden'
+        transform: pickerCoords ? 'none' : 'translate(-50%, -50%)'
       }}
       onClick={(e) => e.stopPropagation()}
     >
