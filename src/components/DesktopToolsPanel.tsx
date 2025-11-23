@@ -18,6 +18,7 @@ interface DesktopToolsPanelProps {
   toolbarsVisible: boolean;
   onToggleToolbars: () => void;
   onShare?: () => void;
+  onLearn?: () => void;
   onClose?: () => void;
   sliderExpanded: boolean;
   onSliderToggle: () => void;
@@ -49,6 +50,7 @@ export function DesktopToolsPanel({
   toolbarsVisible,
   onToggleToolbars,
   onShare,
+  onLearn,
   onClose,
   sliderExpanded,
   onSliderToggle,
@@ -82,6 +84,22 @@ export function DesktopToolsPanel({
           🌤️
         </p>
       </button>
+
+      {/* Eyes button - top left, next to cloud button - always visible */}
+      {onLearn && (
+        <button
+          onClick={onLearn}
+          className="fixed left-[101px] top-[56px] size-[34px] z-[70] group"
+          title="Learn how to weave"
+        >
+          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
+            <circle cx="17" cy="17" fill="white" r="17" className="opacity-[0.6] group-hover:opacity-100 transition-opacity" />
+          </svg>
+          <p className="absolute font-['Roboto:SemiBold',sans-serif] font-semibold h-[25px] leading-[17px] left-[17px] text-[18px] text-black text-center top-[9px] translate-x-[-50%] w-[26px] pointer-events-none" style={{ fontVariationSettings: "'wdth' 100" }}>
+            👀
+          </p>
+        </button>
+      )}
 
       {toolbarsVisible && (
         <>
