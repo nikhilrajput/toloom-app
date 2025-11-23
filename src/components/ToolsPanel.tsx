@@ -1,10 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
-import { Share2 } from 'lucide-react';
 import { MobileToolsPanel } from './MobileToolsPanel';
-import { TabletToolsPanel } from './TabletToolsPanel';
 import { DesktopToolsPanel } from './DesktopToolsPanel';
-import { CustomColorPicker } from './CustomColorPicker';
-import svgPaths from "../imports/svg-p5dm832wl4";
 
 interface ToolsPanelProps {
   warpColor: string;
@@ -47,10 +43,8 @@ export function ToolsPanel({
   weavingStyle,
   onWeavingStyleChange,
 }: ToolsPanelProps) {
-  const patterns = [1, 2, 3, 4];
-  const [deviceType, setDeviceType] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
+  const [deviceType, setDeviceType] = useState<'mobile' | 'desktop'>('desktop');
   const [sliderExpanded, setSliderExpanded] = useState(false);
-  const toolbarRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
   
   // State for custom color pickers (desktop/tablet only)
@@ -86,11 +80,8 @@ export function ToolsPanel({
   useEffect(() => {
     const checkDevice = () => {
       const width = window.innerWidth;
-      if (width < 768) {
+      if (width < 1024) {
         setDeviceType('mobile');
-      } else if (width >= 768 && width < 1024) {
-        // Tablet view for 768px-1023px (iPad and similar)
-        setDeviceType('tablet');
       } else {
         setDeviceType('desktop');
       }
@@ -164,7 +155,7 @@ export function ToolsPanel({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onToggleDraft, onAddWarpRow]);
 
-  // Mobile Layout
+  // Mobile Layout (< 1024px)
   if (deviceType === 'mobile') {
     return (
       <MobileToolsPanel
@@ -193,36 +184,7 @@ export function ToolsPanel({
     );
   }
 
-  // Tablet Layout (768-1024px)
-  if (deviceType === 'tablet') {
-    return (
-      <TabletToolsPanel
-        warpColor={warpColor}
-        weftColor={weftColor}
-        onWarpColorChange={onWarpColorChange}
-        onWeftColorChange={onWeftColorChange}
-        selectedDrafts={selectedDrafts}
-        onToggleDraft={onToggleDraft}
-        threadSize={threadSize}
-        onThreadSizeChange={onThreadSizeChange}
-        onAddWarpRow={onAddWarpRow}
-        onAutoWeave={onAutoWeave}
-        onUndo={onUndo}
-        onDeleteAll={onDeleteAll}
-        toolbarsVisible={toolbarsVisible}
-        onToggleToolbars={onToggleToolbars}
-        onShare={onShare}
-        onClose={onClose}
-        weavingStyle={weavingStyle}
-        onWeavingStyleChange={onWeavingStyleChange}
-        sliderExpanded={sliderExpanded}
-        onSliderToggle={() => setSliderExpanded(!sliderExpanded)}
-        sliderRef={sliderRef}
-      />
-    );
-  }
-
-  // Desktop Layout
+  // Desktop Layout (>= 1024px)
   if (deviceType === 'desktop') {
     return (
       <DesktopToolsPanel
