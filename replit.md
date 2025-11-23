@@ -140,13 +140,20 @@ Configured for autoscale deployment on Replit:
   - Ensures colors match between live canvas, downloaded images, and community gallery
   - Eliminates color variation caused by different lightening implementations
 
-### Button Opacity and Masonry Layout Fixes (November 23, 2025)
+### Button Opacity and Responsive Layout Fixes (November 23, 2025)
 - **Fixed Button Opacity Hierarchy**:
-  - Removed global `opacity: 1` CSS override that was blocking Tailwind opacity classes
-  - Default buttons: 60% opacity (semi-transparent)
-  - Selected buttons: 100% opacity (fully opaque gold)
-  - Hover state: 100% opacity for all buttons
+  - Root cause: Tailwind wasn't compiling `opacity-60` utility class during build
+  - Solution: Replaced with Tailwind arbitrary value `opacity-[0.6]` which compiles correctly
+  - Default buttons: 60% opacity (semi-transparent) via `opacity-[0.6]`
+  - Selected buttons: 100% opacity (fully opaque) via `opacity-100`
+  - Hover state: 100% opacity for all buttons via `group-hover:opacity-100`
+  - Applied to all buttons in DesktopToolsPanel and MobileToolsPanel components
   - Ensures proper visual hierarchy and accessibility
+- **Fixed 768px Breakpoint Logic Gap**:
+  - Fixed ToolsPanel.tsx breakpoint logic that left 768-833px range undefined
+  - Old logic: < 768 = mobile, 834-1023 = tablet, ≥1024 = desktop (768-833px fell through incorrectly)
+  - New logic: < 768 = mobile, 768-1023 = tablet, ≥1024 = desktop (no gaps)
+  - Ensures smooth transitions between mobile, tablet, and desktop layouts
 - **Restored Gallery Masonry Layout with Varying Heights**:
   - Updated image export logic to create varying heights based on amount woven
   - Export height calculation: `Math.max(400, warpRows.length * threadSize + 200)`
