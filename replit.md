@@ -171,10 +171,11 @@ Configured for autoscale deployment on Replit:
   - Desktop layout now starts at 768px (tablet size and above)
   - Reduced bundle size by removing unused TabletToolsPanel component (226KB → 214KB JS)
 - **Fixed Gallery Masonry Layout**:
-  - Set fixed height of 312px to all gallery tiles for uniform appearance
+  - Set max-height of 312px to all gallery tiles (not fixed height)
+  - Tiles maintain natural aspect ratios with varying heights for visual interest
   - All tiles maintain same width (100% of column) regardless of content
-  - Images use `object-fit: cover` to fill space and clip overflow
-  - Masonry layout varies tile positions for visual interest
+  - Images scale naturally with `height: auto` within 312px max constraint
+  - Masonry layout creates visual variety with different tile heights and positions
   - Export height calculation: `Math.max(400, warpRows.length * threadSize + 200)`
   - Both `handleSaveToCommunity()` and `handleDownloadJPG()` use consistent height logic
   - Examples: 5 rows → 400px, 20 rows → 600px, 50 rows → 1200px, 80 rows → 1800px
