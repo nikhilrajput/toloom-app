@@ -142,8 +142,6 @@ export function CustomColorPicker({
       // CRITICAL: Clamp top to viewport to ensure all content is visible
       top = Math.max(20, Math.min(top, window.innerHeight - PICKER_HEIGHT - 20));
       
-      console.log('[ColorPicker] Position calculated:', { top, left, PICKER_HEIGHT, viewportHeight: window.innerHeight, finalPosition });
-      
       setPickerCoords({ top, left });
       setActualPosition(finalPosition);
     };
