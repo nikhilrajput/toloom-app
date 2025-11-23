@@ -318,7 +318,7 @@ export function DesktopToolsPanel({
               >
                 <div className="flex h-full items-center justify-center rotate-[270deg]">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
-                    <circle cx="17" cy="17" fill="white" r="17" transform="rotate(90 17 17)" className="opacity-40 group-hover:opacity-70 transition-opacity" />
+                    <circle cx="17" cy="17" fill="white" r="17" transform="rotate(90 17 17)" className="opacity-60 group-hover:opacity-100 transition-opacity" />
                     <path d={svgPaths.p10d35800} fill="#72686F" />
                   </svg>
                 </div>
@@ -348,7 +348,7 @@ export function DesktopToolsPanel({
               >
                 <div className="flex h-full items-center justify-center rotate-[270deg]">
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
-                    <circle cx="17" cy="17" fill="white" r="17" transform="rotate(90 17 17)" className="opacity-40 group-hover:opacity-70 transition-opacity" />
+                    <circle cx="17" cy="17" fill="white" r="17" transform="rotate(90 17 17)" className="opacity-60 group-hover:opacity-100 transition-opacity" />
                     <path d={svgPaths.pe258200} fill="#9A8494" />
                     <path d={svgPaths.p180e2800} fill="#9A8494" />
                     <circle cx="17" cy="17" fill="#9A8494" r="4" transform="rotate(90 17 17)" />
