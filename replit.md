@@ -121,6 +121,25 @@ Configured for autoscale deployment on Replit:
   - Uses inline styles for guaranteed rendering (Tailwind v4 compatibility)
 - **Improved Error Handling** - Removed user-facing error messages for failed design loads (errors logged to console only)
 
+### Color System Improvements (November 23, 2025)
+- **Fixed Color Picker Viewport Overflow** - Improved responsive positioning:
+  - Changed to flex items-start with overflow-y-auto on container
+  - Added my-auto to center picker vertically when space allows
+  - Better max-height constraints for all screen sizes
+- **Improved Slider Accessibility**:
+  - Increased slider height from 8px to 14px for easier touch targets
+  - Enlarged selector circle from radius 4 to radius 6 for better visibility
+  - Improved cursor positioning and sizing
+- **Fixed Saved Colors Behavior**:
+  - Default warp/weft colors now stored on component mount
+  - Default colors remain constant even when user changes warp/weft selections
+  - Prevents default saved colors from being affected by new color selections
+- **Fixed Color Consistency** - Unified color rendering across all platforms:
+  - Created shared `lightenColor` utility in `src/utils/colorUtils.ts`
+  - Both WeavingCanvas and export functions now use same color algorithm
+  - Ensures colors match between live canvas, downloaded images, and community gallery
+  - Eliminates color variation caused by different lightening implementations
+
 ## API Endpoints
 ### GET /api/designs
 Returns all community designs from the database, limited to 100 most recent designs.

@@ -60,14 +60,15 @@ export function ColorPicker({ color, onChange, onClose, warpColor, weftColor }: 
   const [hsv, setHsv] = useState(hexToHSV(color));
   const [hexInput, setHexInput] = useState(color.replace('#', '').toUpperCase());
   
-  // Default colors that should always be present
-  const defaultColors = [warpColor.toUpperCase(), weftColor.toUpperCase()];
+  // Store original default colors on mount - these never change
+  const [defaultColors] = useState<string[]>(() => [
+    warpColor.toUpperCase(), 
+    weftColor.toUpperCase()
+  ]);
   
-  // Initialize with default colors, ensuring they're always included
+  // Initialize saved colors with defaults only once
   const [savedColors, setSavedColors] = useState<string[]>(() => {
-    const normalizedWarp = warpColor.toUpperCase();
-    const normalizedWeft = weftColor.toUpperCase();
-    return [normalizedWarp, normalizedWeft];
+    return [warpColor.toUpperCase(), weftColor.toUpperCase()];
   });
   
   const [isDraggingColorspace, setIsDraggingColorspace] = useState(false);
@@ -212,10 +213,11 @@ export function ColorPicker({ color, onChange, onClose, warpColor, weftColor }: 
   }, [isDraggingColorspace, isDraggingHue, hsv.h]);
 
   return (
-    <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-[100] p-2 sm:p-4">
+    <div className="fixed inset-0 bg-black/20 flex items-start justify-center z-[100] p-4 overflow-y-auto">
       <div 
         ref={pickerRef}
-        className="bg-white relative rounded-[8px] shadow-[0px_10px_15px_0px_rgba(31,41,55,0.1),0px_4px_6px_0px_rgba(31,41,55,0.05)] w-full sm:w-[280px] max-w-[280px] max-h-[90vh] sm:max-h-[calc(100vh-32px)] overflow-y-auto"
+        className="bg-white relative rounded-[8px] shadow-[0px_10px_15px_0px_rgba(31,41,55,0.1),0px_4px_6px_0px_rgba(31,41,55,0.05)] w-full max-w-[280px] my-auto"
+        style={{ maxHeight: 'calc(100vh - 32px)' }}
       >
         {/* Close button */}
         <button 
@@ -263,7 +265,7 @@ export function ColorPicker({ color, onChange, onClose, warpColor, weftColor }: 
           {/* Hue Slider */}
           <div 
             ref={hueRef}
-            className="h-[8px] relative rounded-[100px] w-full cursor-pointer"
+            className="h-[14px] relative rounded-[100px] w-full cursor-pointer"
             onClick={handleHueClick}
             onMouseDown={(e) => {
               setIsDraggingHue(true);
@@ -281,23 +283,23 @@ export function ColorPicker({ color, onChange, onClose, warpColor, weftColor }: 
             }}
           >
             <div 
-              className="absolute h-[8px] left-0 right-0 rounded-[100px] top-1/2 translate-y-[-50%]"
+              className="absolute h-[14px] left-0 right-0 rounded-[100px] top-1/2 translate-y-[-50%]"
               style={{
                 background: 'linear-gradient(to right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%)'
               }}
             />
-            {/* Hue cursor */}
+            {/* Hue cursor - larger for better accessibility */}
             <div 
-              className="absolute bottom-0 top-0 w-[8px]"
-              style={{ left: `calc(${(hsv.h / 360) * 100}% - 4px)` }}
+              className="absolute bottom-0 top-0 w-[14px]"
+              style={{ left: `calc(${(hsv.h / 360) * 100}% - 7px)` }}
             >
-              <div className="absolute inset-[-37.5%_-87.5%_-137.5%_-87.5%]">
-                <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 22 22">
+              <div className="absolute inset-[-50%_-50%_-50%_-50%]">
+                <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 28 28">
                   <g filter="url(#filter0_dd_90_1295)" id="Ellipse 1">
-                    <circle cx="11" cy="7" r="4" stroke="white" strokeWidth="2" />
+                    <circle cx="14" cy="14" r="6" stroke="white" strokeWidth="2" />
                   </g>
                   <defs>
-                    <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="22" id="filter0_dd_90_1295" width="22" x="0" y="0">
+                    <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="28" id="filter0_dd_90_1295" width="28" x="0" y="0">
                       <feFlood floodOpacity="0" result="BackgroundImageFix" />
                       <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
                       <feOffset dy="4" />
