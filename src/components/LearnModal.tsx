@@ -59,7 +59,7 @@ export function LearnModal({ onClose }: LearnModalProps) {
         </button>
 
         {/* Two Column Layout */}
-        <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr', gap: '48px' }}>
+        <div className="learn-modal-grid">
           {/* Left Column */}
           <div>
             <h2 style={{ color: '#72686F', fontSize: '18px', fontWeight: 400, marginBottom: '24px' }}>
@@ -100,9 +100,7 @@ export function LearnModal({ onClose }: LearnModalProps) {
           </div>
 
           {/* Dotted Divider - Only on desktop */}
-          {window.innerWidth >= 768 && (
-            <div style={{ position: 'absolute', left: '50%', top: '48px', bottom: '48px', width: '1px', borderLeft: '2px dotted rgba(114, 104, 111, 0.3)' }}></div>
-          )}
+          <div className="learn-modal-divider" style={{ position: 'absolute', left: '50%', top: '48px', bottom: '48px', width: '1px', borderLeft: '2px dotted rgba(114, 104, 111, 0.3)' }}></div>
 
           {/* Right Column */}
           <div>

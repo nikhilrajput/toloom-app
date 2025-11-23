@@ -238,3 +238,26 @@ button {
     clip-path: inset(0 0 0 0);
   }
 }
+
+/* Learn Modal Responsive Layout */
+.learn-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+
+@media (min-width: 768px) {
+  .learn-modal-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.learn-modal-divider {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .learn-modal-divider {
+    display: block;
+  }
+}
