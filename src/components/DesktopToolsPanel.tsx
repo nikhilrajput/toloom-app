@@ -283,7 +283,7 @@ export function DesktopToolsPanel({
                         cy="22" 
                         fill="white"
                         r="22"
-                        className={isSelected ? "opacity-70" : "opacity-60 group-hover:opacity-100 transition-opacity"}
+                        className={isSelected ? "opacity-100 transition-opacity" : "opacity-60 group-hover:opacity-100 transition-opacity"}
                       />
                     </svg>
                     <p 

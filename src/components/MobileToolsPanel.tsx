@@ -208,7 +208,7 @@ export function MobileToolsPanel({
                           cx="22" 
                           cy="22" 
                           fill={isSelected ? "rgba(255, 193, 6, 1)" : "white"}
-                          className={isSelected ? "opacity-70" : "opacity-60 group-hover:opacity-100 transition-opacity"}
+                          className={isSelected ? "opacity-100 transition-opacity" : "opacity-60 group-hover:opacity-100 transition-opacity"}
                           r="22" 
                         />
                       </svg>
