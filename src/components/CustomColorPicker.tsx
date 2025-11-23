@@ -227,8 +227,9 @@ export function CustomColorPicker({
         {/* Colorspace */}
         <div 
           ref={colorspaceRef}
-          className="h-[188px] rounded-[4px] cursor-crosshair relative"
+          className="rounded-[4px] cursor-crosshair relative"
           style={{ 
+            height: '188px',
             background: `linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%), linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%), ${pureHueColor}`
           }}
           onMouseDown={(e) => {
@@ -287,10 +288,11 @@ export function CustomColorPicker({
         </div>
 
         {/* Hue slider */}
-        <div className="h-[14px] relative rounded-[100px] w-full">
+        <div className="relative rounded-[100px] w-full" style={{ height: '14px' }}>
           <div 
             ref={hueRef}
-            className="absolute h-[14px] left-0 right-0 rounded-[100px] cursor-pointer"
+            className="absolute left-0 right-0 rounded-[100px] cursor-pointer"
+            style={{ height: '14px' }}
             onMouseDown={(e) => {
               handleHueSlider(e);
               const handleMove = (moveEvent: MouseEvent) => {
@@ -362,11 +364,12 @@ export function CustomColorPicker({
         </div>
 
         {/* Saturation slider */}
-        <div className="h-[14px] relative rounded-[100px] w-full">
+        <div className="relative rounded-[100px] w-full" style={{ height: '14px' }}>
           <div 
             ref={saturationRef}
-            className="absolute h-[14px] left-0 right-0 rounded-[100px] cursor-pointer"
+            className="absolute left-0 right-0 rounded-[100px] cursor-pointer"
             style={{
+              height: '14px',
               background: `linear-gradient(90deg, white 0%, ${pureHueColor} 100%)`
             }}
             onMouseDown={(e) => {
