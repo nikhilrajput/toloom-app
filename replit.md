@@ -140,6 +140,22 @@ Configured for autoscale deployment on Replit:
   - Ensures colors match between live canvas, downloaded images, and community gallery
   - Eliminates color variation caused by different lightening implementations
 
+### Button Opacity and Masonry Layout Fixes (November 23, 2025)
+- **Fixed Button Opacity Hierarchy**:
+  - Removed global `opacity: 1` CSS override that was blocking Tailwind opacity classes
+  - Default buttons: 60% opacity (semi-transparent)
+  - Selected buttons: 100% opacity (fully opaque gold)
+  - Hover state: 100% opacity for all buttons
+  - Ensures proper visual hierarchy and accessibility
+- **Restored Gallery Masonry Layout with Varying Heights**:
+  - Updated image export logic to create varying heights based on amount woven
+  - Export height calculation: `Math.max(400, warpRows.length * threadSize + 200)`
+  - Gallery component now displays images at natural aspect ratios
+  - Removed fixed height containers that were forcing uniform appearance
+  - Both `handleSaveToCommunity()` and `handleDownloadJPG()` use consistent height logic
+  - Examples: 5 rows → 400px, 20 rows → 600px, 50 rows → 1200px, 80 rows → 1800px
+  - Cleared existing square designs to enable fresh masonry layout
+
 ## API Endpoints
 ### GET /api/designs
 Returns all community designs from the database, limited to 100 most recent designs.
