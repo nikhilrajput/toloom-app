@@ -140,6 +140,9 @@ export function CustomColorPicker({
         }
       }
       
+      // CRITICAL: Clamp top to viewport to ensure all content is visible
+      top = Math.max(20, Math.min(top, window.innerHeight - PICKER_HEIGHT - 20));
+      
       setPickerCoords({ top, left });
       setActualPosition(finalPosition);
     };
