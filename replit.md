@@ -1,246 +1,28 @@
 # Weaving App (Toloom)
 
 ## Overview
-This is a weaving application built with React, TypeScript, and Vite. It provides an interactive interface for creating and exploring weaving patterns. The app includes a community gallery feature where users can share their designs with others in real-time. The original project is from a Figma design available at https://www.figma.com/design/ltAVihDs2ttPjaz7MhhcwW/Weaving-App.
+This React and TypeScript weaving application allows users to create and explore weaving patterns. It features an interactive canvas, a color picker, and tools for pattern manipulation. A key capability is the community gallery, enabling real-time sharing and viewing of user-designed patterns. The project's vision is to provide an accessible and engaging platform for textile art, inspired by a Figma design.
 
-## Project Structure
-- **Frontend Framework**: React 18.3.1 with TypeScript
-- **Backend**: Express.js REST API server
-- **Database**: PostgreSQL (Replit-provided Neon database)
-- **Build Tool**: Vite 6.3.5
-- **UI Components**: Radix UI components, Tailwind CSS utilities
-- **Routing**: Wouter
-- **State Management**: React hooks
+## User Preferences
+I prefer simple language. I want iterative development. Ask before making major changes. I prefer detailed explanations.
 
-## Key Components
-- `src/App.tsx` - Main application component with design save functionality
-- `src/components/` - Reusable UI components including:
-  - `WeavingCanvas.tsx` - Main weaving canvas
-  - `ColorPicker.tsx` - Color selection tool
-  - `ToolsPanel.tsx` - Main tools interface
-  - `Gallery.tsx` - Community gallery displaying all user-submitted designs
-  - UI components from Radix UI (buttons, dialogs, sliders, etc.)
-- `src/utils/` - Utility functions:
-  - `api.ts` - API client for fetching and saving community designs
-  - `export.ts` - Export functionality
-  - `musicEngine.ts` - Music engine
-- `server/` - Backend API server:
-  - `index.js` - Express server with REST API endpoints
-  - `storage.js` - Database connection and schema management
+## System Architecture
+The application follows a client-server architecture. The frontend is built with React 18.3.1, TypeScript, and Vite 6.3.5, utilizing Radix UI components and Tailwind CSS for styling. Routing is handled by Wouter, and state management employs React hooks. The UI/UX design strictly adheres to Figma specifications, including specific font styles, color schemes, and responsive layouts. The Learn Modal, for instance, features a two-column layout, detailed instructions, and visual examples, with a mobile-first approach.
 
-## Setup & Configuration
-- **Development Server**: Configured to run on `0.0.0.0:5000` for Replit environment
-- **Build Output**: `build/` directory
-- **TypeScript**: Configured with strict mode and React JSX transform
+The backend is an Express.js REST API server, serving both API endpoints and static frontend files in production. Core technical implementations include:
+- **Weaving Canvas**: Interactive component for pattern creation.
+- **Color System**: Unified color rendering across the application, using a shared `lightenColor` utility.
+- **Community Gallery**: Displays user-submitted designs, fetching them from the API.
+- **Tools Panel**: Provides various weaving and design tools, with responsive adjustments for mobile and desktop.
+- **Learn Modal**: Provides contextual help and weaving instructions, accessible from the main weaving screen and gallery.
+- **CSS Architecture**: Uses `@import "tailwindcss";` in `src/styles/globals.css` for proper Tailwind v4 compilation, ensuring consistent styling and maintainability. Responsive design is prioritized, with a breakpoint at 768px separating mobile and desktop layouts.
 
-## Running the Project
-- Frontend Development: `npm run dev` (runs on port 5000)
-- Backend API Server: `npm run server` (runs on port 3001)
-- Build: `npm run build`
-- Database Push: `npm run db:push` (syncs schema to database)
-
-## Deployment
-Configured for autoscale deployment on Replit:
-- Build command: `npm run build`
-- Run command: `node server/index.js`
-- Server runs on port 5000 in production
-- Backend serves both API endpoints and static frontend files
-
-## Replit Configuration
-- **Frontend Server Host**: 0.0.0.0 (required for Replit proxy)
-- **Frontend Port**: 5000 (required for webview)
-- **Backend Port**: 3001 (API server)
-- **Allowed Hosts**: Configured for .repl.co and .replit.dev domains
-- **HMR**: WebSocket configured for WSS on port 443
-- **Workflows**: 
-  - "Weaving App" - Frontend dev server (port 5000)
-  - "API Server" - Backend API server (port 3001)
-- **Database**: PostgreSQL database provided by Replit (Neon)
-
-## Recent Changes (November 22, 2025)
-### Initial Replit Setup
-- Added TypeScript configuration files (tsconfig.json, tsconfig.node.json)
-- Updated Vite config for Replit environment:
-  - Changed port from 3000 to 5000
-  - Set host to 0.0.0.0
-  - Added allowedHosts for Replit domains
-  - Configured HMR for WebSocket connections
-- Added missing dev dependencies (@types/react, @types/react-dom, typescript)
-- Created .gitignore for Node.js project
-- Configured workflow "Weaving App" for automatic development server
-- Set up deployment configuration for static hosting (build → build/)
-- All dependencies installed and verified working
-
-### Community Gallery Feature Implementation
-- Set up Express backend API server on port 3001
-- Created PostgreSQL database with designs table for persistent storage
-- Implemented REST API endpoints:
-  - `GET /api/designs` - Retrieve all community designs (max 100, ordered by timestamp)
-  - `POST /api/designs` - Save new design to community (5 MB image limit)
-- Updated Gallery component to fetch designs from API with loading/error states
-- Updated App.tsx to save designs via POST API instead of localStorage
-- Added API client utility (src/utils/api.ts) for frontend-backend communication
-- Configured dual workflows for frontend and backend servers
-- Verified end-to-end functionality: designs saved by any user appear in community gallery for all users
-
-### Production Deployment Fixes (November 22, 2025)
-- **Changed deployment from static to autoscale** - Backend now runs in production to serve API endpoints
-- **Backend serves frontend** - Server.js now serves built static files and handles SPA routing
-- **Fixed /weave 404 error** - Added SPA fallback middleware to serve index.html for all routes
-- **Fixed API connectivity** - Updated API base URL to use window.location.origin in production
-- **Fixed color picker viewport overflow** - Made ColorPicker responsive with mobile support:
-  - Reduced padding on mobile (8px vs 16px)
-  - Made width 100% on mobile with 280px max-width
-  - Reduced colorspace height on mobile (140px vs 176px)
-  - Limited max-height to 90vh on mobile to prevent overflow
-- **Server port configuration** - Server uses port 5000 in production (Replit's exposed port)
-
-### Figma Design Implementation (November 23, 2025)
-- **Updated Navigation Styling** - Implemented exact Figma Nav frame specifications:
-  - Font: SF Pro Text Regular (font-weight: 400)
-  - Font size: 18px
-  - Text transform: uppercase
-  - Letter spacing: 3px
-  - Color: #72686F
-- **Redesigned Learn Modal** - Complete redesign based on Figma Learn Modal reference:
-  - Modal container: No rounded corners, 2px border in #9A8494
-  - Two-column layout with instructions and pattern examples
-  - Light lavender background (#F5F3F5) for better visual hierarchy
-  - Left column: Step-by-step weaving instructions with visual examples
-    - All buttons styled as circles (borderRadius: 50%)
-    - Number buttons: 1, 2, 3, 4
-    - Reed/arrow button: Down arrow (not right arrow)
-    - Icon buttons: Thread (🧵), slider, sun behind cloud (⛅)
-    - Updated instructions: "Tapping the numbers in a sequence and pressing the arrow button or use your keyboard keys followed by space bar or return key"
-    - Additional guidance: "Tap the thread button to auto-weave, slider for bigger threads and the cloud/sun emoji to only see your pattern and nothing else."
-  - Right column: Pattern library with actual PNG pattern images
-    - Plain, Twill, Basket, and Herringbone patterns
-    - Pattern images stored in src/assets/ directory
-    - Each pattern shows name and sequence (e.g., "1↓ 2↓ 3↓ 4↓")
-  - X close button in top right corner
-  - Dotted vertical divider between columns (hidden on mobile)
-  - Fully responsive design with mobile-first approach
-  - Uses inline styles for guaranteed rendering (Tailwind v4 compatibility)
-- **Improved Error Handling** - Removed user-facing error messages for failed design loads (errors logged to console only)
-
-### Color System Improvements (November 23, 2025)
-- **Fixed Color Picker Viewport Overflow** - Improved responsive positioning:
-  - Changed to flex items-start with overflow-y-auto on container
-  - Added my-auto to center picker vertically when space allows
-  - Better max-height constraints for all screen sizes
-- **Improved Slider Accessibility**:
-  - Increased slider height from 8px to 14px for easier touch targets
-  - Enlarged selector circle from radius 4 to radius 6 for better visibility
-  - Improved cursor positioning and sizing
-- **Fixed Saved Colors Behavior**:
-  - Default warp/weft colors now stored on component mount
-  - Default colors remain constant even when user changes warp/weft selections
-  - Prevents default saved colors from being affected by new color selections
-- **Fixed Color Consistency** - Unified color rendering across all platforms:
-  - Created shared `lightenColor` utility in `src/utils/colorUtils.ts`
-  - Both WeavingCanvas and export functions now use same color algorithm
-  - Ensures colors match between live canvas, downloaded images, and community gallery
-  - Eliminates color variation caused by different lightening implementations
-
-### CSS Build System Architecture Fix (November 23, 2025)
-- **Fixed Tailwind CSS Compilation** - Resolved critical CSS build issues:
-  - Root cause: App was using pre-generated 35KB `src/index.css` file instead of compiling from source
-  - Solution: Added `@import "tailwindcss";` to `src/styles/globals.css` to enable Tailwind v4 compilation
-  - Changed `main.tsx` to import `src/styles/globals.css` (source file) instead of `index.css` (generated)
-  - Added `src/index.css` to `.gitignore` since it's now generated by Tailwind during build
-  - Production build now properly generates all Tailwind utilities (127.75 KB CSS output)
-  - Custom opacity classes moved to `globals.css` and compile correctly with Tailwind
-  - Enables future utility class generation and responsive fixes without manual CSS edits
-- **Architecture Benefits**:
-  - Source of truth is now `src/styles/globals.css` (version controlled)
-  - Tailwind automatically generates utilities on-demand during build
-  - Prevents drift between source and compiled CSS
-  - Supports arbitrary values like `opacity-[0.6]` through proper compilation
-
-### Button Opacity and Responsive Layout Fixes (November 23, 2025)
-- **Fixed Button Opacity Hierarchy**:
-  - Root cause: Tailwind wasn't compiling `opacity-60` utility class during build
-  - Solution: Replaced with Tailwind arbitrary value `opacity-[0.6]` which compiles correctly
-  - Default buttons: 60% opacity (semi-transparent) via `opacity-[0.6]`
-  - Selected buttons: 100% opacity (fully opaque) via `opacity-100`
-  - Hover state: 100% opacity for all buttons via `group-hover:opacity-100`
-  - Applied to all buttons in DesktopToolsPanel and MobileToolsPanel components
-  - Ensures proper visual hierarchy and accessibility
-- **Removed Tablet Layout (768-1023px breakpoint)**:
-  - Issue: Tablet layout (768-1023px) rotated entire interface 90 degrees, creating poor UX
-  - Solution: Eliminated tablet breakpoint and TabletToolsPanel component entirely
-  - New logic: < 768px = mobile layout, ≥ 768px = desktop layout
-  - Desktop layout now starts at 768px (tablet size and above)
-  - Reduced bundle size by removing unused TabletToolsPanel component (226KB → 214KB JS)
-- **Fixed Gallery Masonry Layout**:
-  - Removed padding from tile containers to ensure consistent widths across all tiles
-  - Masonry library creates equal-width columns; tiles fill 100% of each column
-  - Set max-height of 312px (not fixed height) to allow varying tile heights
-  - Images use `objectFit: 'cover'` to fill width and clip content when needed
-  - Heights vary naturally based on aspect ratios (up to 312px max)
-  - Tile div CSS: `width: '100%', display: 'block', boxSizing: 'border-box'`
-  - Image CSS: `width: '100%', maxHeight: '312px', height: 'auto', objectFit: 'cover'`
-  - Masonry gutter of 60px handles spacing between columns (not CSS margins)
-  - Export height calculation: `Math.max(400, warpRows.length * threadSize + 200)`
-  - Both `handleSaveToCommunity()` and `handleDownloadJPG()` use consistent height logic
-  - Examples: 5 rows → 400px, 20 rows → 600px, 50 rows → 1200px, 80 rows → 1800px
-
-## API Endpoints
-### GET /api/designs
-Returns all community designs from the database, limited to 100 most recent designs.
-
-**Response:**
-```json
-[
-  {
-    "id": 1,
-    "imageData": "data:image/png;base64,...",
-    "warpRows": [...],
-    "warpColor": "#F8E8F1",
-    "weftColor": "#D2E228",
-    "pattern": "plain",
-    "gridSize": 20,
-    "timestamp": 1732316400000,
-    "createdAt": "2025-11-22T22:51:35.353Z"
-  }
-]
-```
-
-### POST /api/designs
-Saves a new design to the community gallery.
-
-**Request Body:**
-```json
-{
-  "imageData": "data:image/png;base64,...",
-  "warpRows": "[...]",
-  "warpColor": "#F8E8F1",
-  "weftColor": "#D2E228",
-  "pattern": "plain",
-  "gridSize": 20,
-  "timestamp": 1732316400000
-}
-```
-
-**Validation:**
-- All fields required except `timestamp` (auto-generated if missing)
-- Image data limited to 5 MB
-- Returns 400 for validation errors, 500 for server errors
-
-## Database Schema
-The `designs` table stores community-submitted weaving patterns:
-- `id` (serial, primary key)
-- `image_data` (text) - Base64-encoded PNG preview
-- `warp_rows` (text) - JSON-serialized warp configuration
-- `warp_color` (varchar) - Hex color for warp threads
-- `weft_color` (varchar) - Hex color for weft threads
-- `pattern` (varchar) - Pattern type (e.g., "plain", "twill")
-- `grid_size` (integer) - Size of the weaving grid
-- `timestamp` (bigint) - Client-provided timestamp in milliseconds
-- `created_at` (timestamp) - Server-generated creation timestamp
-
-## Future Improvements
-Recommended by architect review:
-1. Add integration tests for POST → GET workflow
-2. Implement server-side schema validation (e.g., zod) for warpRows structure
-3. Add client-side confirmation toast after successful save
+## External Dependencies
+- **PostgreSQL**: Used for persistent storage of community designs, provided by Replit (Neon database).
+- **Express.js**: Backend framework for building the REST API.
+- **React**: Frontend JavaScript library for UI development.
+- **TypeScript**: Superset of JavaScript for type-safe development.
+- **Vite**: Frontend build tool.
+- **Radix UI**: UI component library.
+- **Tailwind CSS**: Utility-first CSS framework.
+- **Wouter**: Small routing library for React.
