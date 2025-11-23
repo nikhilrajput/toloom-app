@@ -1,5 +1,6 @@
 import svgPaths from "../imports/svg-99sv6ds4ul";
 import { CustomColorPicker } from './CustomColorPicker';
+import { useRef } from 'react';
 
 interface DesktopToolsPanelProps {
   warpColor: string;
@@ -63,6 +64,8 @@ export function DesktopToolsPanel({
   onWeavingStyleChange,
 }: DesktopToolsPanelProps) {
   const patterns = [1, 2, 3, 4];
+  const warpButtonRef = useRef<HTMLButtonElement>(null);
+  const weftButtonRef = useRef<HTMLButtonElement>(null);
 
   return (
     <>
@@ -196,6 +199,7 @@ export function DesktopToolsPanel({
 
               {/* Warp Color - fixed at bottom left of center */}
               <button
+                ref={warpButtonRef}
                 onClick={() => {
                   setWarpColorPickerOpen(!warpColorPickerOpen);
                   setWeftColorPickerOpen(false);
@@ -208,22 +212,24 @@ export function DesktopToolsPanel({
                   <circle cx="17" cy="17" fill={warpColor} r="14.0857" />
                 </svg>
               </button>
-              {warpColorPickerOpen && (
-                <div className="color-picker-container fixed left-1/2 z-[100]" style={{ transform: 'translateX(-249.5px)', bottom: '130px' }}>
-                  <CustomColorPicker
-                    color={warpColor}
-                    onChange={onWarpColorChange}
-                    onClose={() => setWarpColorPickerOpen(false)}
-                    savedColors={savedColors}
-                    onSaveColor={onSaveColor}
-                    onRemoveColor={onRemoveColor}
-                    title="Warp Color"
-                  />
-                </div>
+              {warpColorPickerOpen && warpButtonRef.current && (
+                <CustomColorPicker
+                  color={warpColor}
+                  onChange={onWarpColorChange}
+                  onClose={() => setWarpColorPickerOpen(false)}
+                  buttonRef={warpButtonRef}
+                  position="top"
+                  savedColors={savedColors}
+                  onSaveColor={onSaveColor}
+                  onRemoveColor={onRemoveColor}
+                  warpColor={warpColor}
+                  weftColor={weftColor}
+                />
               )}
 
               {/* Weft Color - fixed at bottom left of center */}
               <button
+                ref={weftButtonRef}
                 onClick={() => {
                   setWeftColorPickerOpen(!weftColorPickerOpen);
                   setWarpColorPickerOpen(false);
@@ -236,18 +242,19 @@ export function DesktopToolsPanel({
                   <circle cx="17.1219" cy="17.2462" fill={weftColor} r="14.0421" />
                 </svg>
               </button>
-              {weftColorPickerOpen && (
-                <div className="color-picker-container fixed left-1/2 z-[100]" style={{ transform: 'translateX(-210.5px)', bottom: '130px' }}>
-                  <CustomColorPicker
-                    color={weftColor}
-                    onChange={onWeftColorChange}
-                    onClose={() => setWeftColorPickerOpen(false)}
-                    savedColors={savedColors}
-                    onSaveColor={onSaveColor}
-                    onRemoveColor={onRemoveColor}
-                    title="Weft Color"
-                  />
-                </div>
+              {weftColorPickerOpen && weftButtonRef.current && (
+                <CustomColorPicker
+                  color={weftColor}
+                  onChange={onWeftColorChange}
+                  onClose={() => setWeftColorPickerOpen(false)}
+                  buttonRef={weftButtonRef}
+                  position="top"
+                  savedColors={savedColors}
+                  onSaveColor={onSaveColor}
+                  onRemoveColor={onRemoveColor}
+                  warpColor={warpColor}
+                  weftColor={weftColor}
+                />
               )}
 
               {/* Main toolbar background - centered in viewport - 327px wide */}

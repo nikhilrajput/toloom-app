@@ -9,6 +9,9 @@ interface CustomColorPickerProps {
   onSaveColor?: (color: string) => void;
   onRemoveColor?: (color: string) => void;
   position?: 'top' | 'bottom';
+  buttonRef?: React.RefObject<HTMLButtonElement>;
+  warpColor?: string;
+  weftColor?: string;
 }
 
 // Convert hex to HSV
@@ -71,7 +74,10 @@ export function CustomColorPicker({
   savedColors = [], 
   onSaveColor,
   onRemoveColor,
-  position = 'bottom'
+  position = 'bottom',
+  buttonRef,
+  warpColor,
+  weftColor
 }: CustomColorPickerProps) {
   const { h: initialH, s: initialS, v: initialV } = hexToHSV(color);
   const [hue, setHue] = useState(initialH);
