@@ -107,18 +107,42 @@ export function Gallery() {
       {/* Learn Modal */}
       {showLearnModal && (
         <div
-          className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            zIndex: 50,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '16px'
+          }}
           onClick={() => setShowLearnModal(false)}
         >
           <div
-            className="bg-[#F5F3F5] rounded-lg p-12 max-w-4xl w-full relative"
+            style={{
+              backgroundColor: '#F5F3F5',
+              borderRadius: '8px',
+              padding: '48px',
+              maxWidth: '56rem',
+              width: '100%',
+              position: 'relative',
+              fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif'
+            }}
             onClick={(e) => e.stopPropagation()}
-            style={{ fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif' }}
           >
             {/* Close Button */}
             <button
               onClick={() => setShowLearnModal(false)}
-              className="absolute top-6 right-6 text-[#72686F] hover:text-[#524952] transition-colors"
+              style={{
+                position: 'absolute',
+                top: '24px',
+                right: '24px',
+                color: '#72686F',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer'
+              }}
               aria-label="Close"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -128,126 +152,127 @@ export function Gallery() {
             </button>
 
             {/* Two Column Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr', gap: '48px' }}>
               {/* Left Column */}
-              <div className="space-y-8">
-                <div>
-                  <h2 className="text-[#72686F] text-lg font-normal mb-6">
-                    Weave patterns similar to a handloom by:
-                  </h2>
-                  <p className="text-[#72686F] text-base leading-relaxed">
-                    Tap the numbers in a sequence and press the arrow key or use your keyboard and space bar or return key
-                  </p>
-                  
-                  {/* Number Buttons */}
-                  <div className="flex gap-4 mt-6 mb-8">
-                    <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center text-[#72686F] text-lg">1</div>
-                    <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center text-[#72686F] text-lg">2</div>
-                    <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center text-[#72686F] text-lg">3</div>
-                    <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center text-[#72686F] text-lg">4</div>
-                    <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center text-[#72686F] text-lg">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polyline points="6 4 10 8 6 12"></polyline>
-                      </svg>
+              <div>
+                <h2 style={{ color: '#72686F', fontSize: '18px', fontWeight: 400, marginBottom: '24px' }}>
+                  Weave patterns similar to a handloom by:
+                </h2>
+                <p style={{ color: '#72686F', fontSize: '16px', lineHeight: '1.6', marginBottom: '24px' }}>
+                  Tap the numbers in a sequence and press the arrow key or use your keyboard and space bar or return key
+                </p>
+                
+                {/* Number Buttons */}
+                <div style={{ display: 'flex', gap: '16px', marginBottom: '32px' }}>
+                  {[1, 2, 3, 4].map(num => (
+                    <div key={num} style={{ width: '48px', height: '48px', borderRadius: '8px', backgroundColor: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#72686F', fontSize: '18px' }}>
+                      {num}
+                    </div>
+                  ))}
+                  <div style={{ width: '48px', height: '48px', borderRadius: '8px', backgroundColor: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#72686F' }}>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+                      <polyline points="6 4 10 8 6 12"></polyline>
+                    </svg>
+                  </div>
+                </div>
+                
+                <p style={{ color: '#72686F', fontSize: '16px', lineHeight: '1.6', marginBottom: '24px' }}>
+                  Tap the thread button to auto-weave, slider for bigger threads and cloud to only see your pattern.
+                </p>
+                
+                {/* Icon Buttons */}
+                <div style={{ display: 'flex', gap: '16px' }}>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '8px', backgroundColor: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>🧵</div>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '8px', backgroundColor: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '24px', height: '4px', backgroundColor: '#72686F', borderRadius: '9999px', position: 'relative' }}>
+                      <div style={{ width: '12px', height: '12px', backgroundColor: '#72686F', borderRadius: '50%', position: 'absolute', top: '-4px', left: '50%', transform: 'translateX(-50%)' }}></div>
                     </div>
                   </div>
-                  
-                  <p className="text-[#72686F] text-base leading-relaxed">
-                    Tap the thread button to auto-weave, slider for bigger threads and cloud to only see your pattern.
-                  </p>
-                  
-                  {/* Icon Buttons */}
-                  <div className="flex gap-4 mt-6">
-                    <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center text-2xl">🧵</div>
-                    <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center">
-                      <div className="w-6 h-1 bg-[#72686F] rounded-full relative">
-                        <div className="w-3 h-3 bg-[#72686F] rounded-full absolute -top-1 left-1/2 -translate-x-1/2"></div>
-                      </div>
-                    </div>
-                    <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center text-2xl">☁️</div>
-                  </div>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '8px', backgroundColor: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>☁️</div>
                 </div>
               </div>
 
-              {/* Dotted Divider */}
-              <div className="hidden md:block absolute left-1/2 top-12 bottom-12 w-px border-l-2 border-dotted border-[#72686F]/30"></div>
+              {/* Dotted Divider - Only on desktop */}
+              {window.innerWidth >= 768 && (
+                <div style={{ position: 'absolute', left: '50%', top: '48px', bottom: '48px', width: '1px', borderLeft: '2px dotted rgba(114, 104, 111, 0.3)' }}></div>
+              )}
 
               {/* Right Column */}
               <div>
-                <h2 className="text-[#72686F] text-lg font-normal mb-6">
+                <h2 style={{ color: '#72686F', fontSize: '18px', fontWeight: 400, marginBottom: '24px' }}>
                   Here are some patterns you can make:
                 </h2>
                 
-                <div className="space-y-6">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                   {/* Plain Pattern */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-24 h-16 rounded-lg bg-[#E8D5E8] flex items-center justify-center">
-                      <div className="grid grid-cols-2 gap-1">
-                        <div className="w-3 h-3 bg-[#A88FA8]"></div>
-                        <div className="w-3 h-3 bg-[#C8B5C8]"></div>
-                        <div className="w-3 h-3 bg-[#C8B5C8]"></div>
-                        <div className="w-3 h-3 bg-[#A88FA8]"></div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                    <div style={{ width: '96px', height: '64px', borderRadius: '8px', backgroundColor: '#E8D5E8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px' }}>
+                        <div style={{ width: '12px', height: '12px', backgroundColor: '#A88FA8' }}></div>
+                        <div style={{ width: '12px', height: '12px', backgroundColor: '#C8B5C8' }}></div>
+                        <div style={{ width: '12px', height: '12px', backgroundColor: '#C8B5C8' }}></div>
+                        <div style={{ width: '12px', height: '12px', backgroundColor: '#A88FA8' }}></div>
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-[#72686F] font-semibold text-base mb-1">Plain</h3>
-                      <p className="text-[#72686F] text-sm">1↓ 2↓ 3↓ 4↓</p>
+                      <h3 style={{ color: '#72686F', fontWeight: 600, fontSize: '16px', marginBottom: '4px' }}>Plain</h3>
+                      <p style={{ color: '#72686F', fontSize: '14px' }}>1↓ 2↓ 3↓ 4↓</p>
                     </div>
                   </div>
 
                   {/* Twill Pattern */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-24 h-16 rounded-lg bg-[#D5C8D5] flex items-center justify-center">
-                      <div className="grid grid-cols-3 gap-1">
-                        <div className="w-2 h-2 bg-[#8F7A8F]"></div>
-                        <div className="w-2 h-2 bg-[#A88FA8]"></div>
-                        <div className="w-2 h-2 bg-[#C8B5C8]"></div>
-                        <div className="w-2 h-2 bg-[#C8B5C8]"></div>
-                        <div className="w-2 h-2 bg-[#8F7A8F]"></div>
-                        <div className="w-2 h-2 bg-[#A88FA8]"></div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                    <div style={{ width: '96px', height: '64px', borderRadius: '8px', backgroundColor: '#D5C8D5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '4px' }}>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#8F7A8F' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#A88FA8' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#C8B5C8' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#C8B5C8' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#8F7A8F' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#A88FA8' }}></div>
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-[#72686F] font-semibold text-base mb-1">Twill</h3>
-                      <p className="text-[#72686F] text-sm">123↓ 234↓ 341↓ 412↓</p>
+                      <h3 style={{ color: '#72686F', fontWeight: 600, fontSize: '16px', marginBottom: '4px' }}>Twill</h3>
+                      <p style={{ color: '#72686F', fontSize: '14px' }}>123↓ 234↓ 341↓ 412↓</p>
                     </div>
                   </div>
 
                   {/* Basket Pattern */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-24 h-16 rounded-lg bg-[#E0D5E0] flex items-center justify-center">
-                      <div className="grid grid-cols-4 gap-1">
-                        <div className="w-2 h-2 bg-[#A88FA8]"></div>
-                        <div className="w-2 h-2 bg-[#A88FA8]"></div>
-                        <div className="w-2 h-2 bg-[#C8B5C8]"></div>
-                        <div className="w-2 h-2 bg-[#C8B5C8]"></div>
-                        <div className="w-2 h-2 bg-[#C8B5C8]"></div>
-                        <div className="w-2 h-2 bg-[#C8B5C8]"></div>
-                        <div className="w-2 h-2 bg-[#A88FA8]"></div>
-                        <div className="w-2 h-2 bg-[#A88FA8]"></div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                    <div style={{ width: '96px', height: '64px', borderRadius: '8px', backgroundColor: '#E0D5E0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '4px' }}>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#A88FA8' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#A88FA8' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#C8B5C8' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#C8B5C8' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#C8B5C8' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#C8B5C8' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#A88FA8' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#A88FA8' }}></div>
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-[#72686F] font-semibold text-base mb-1">Basket</h3>
-                      <p className="text-[#72686F] text-sm">12↓ 34↓</p>
+                      <h3 style={{ color: '#72686F', fontWeight: 600, fontSize: '16px', marginBottom: '4px' }}>Basket</h3>
+                      <p style={{ color: '#72686F', fontSize: '14px' }}>12↓ 34↓</p>
                     </div>
                   </div>
 
                   {/* Herringbone Pattern */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-24 h-16 rounded-lg bg-[#E8D5E8] flex items-center justify-center">
-                      <div className="grid grid-cols-3 gap-1">
-                        <div className="w-2 h-2 bg-[#A88FA8]"></div>
-                        <div className="w-2 h-2 bg-[#C8B5C8]"></div>
-                        <div className="w-2 h-2 bg-[#A88FA8]"></div>
-                        <div className="w-2 h-2 bg-[#C8B5C8]"></div>
-                        <div className="w-2 h-2 bg-[#A88FA8]"></div>
-                        <div className="w-2 h-2 bg-[#C8B5C8]"></div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                    <div style={{ width: '96px', height: '64px', borderRadius: '8px', backgroundColor: '#E8D5E8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '4px' }}>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#A88FA8' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#C8B5C8' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#A88FA8' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#C8B5C8' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#A88FA8' }}></div>
+                        <div style={{ width: '8px', height: '8px', backgroundColor: '#C8B5C8' }}></div>
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-[#72686F] font-semibold text-base mb-1">Herringbone</h3>
-                      <p className="text-[#72686F] text-sm">12↓ 23↓ 34↓ 41↓</p>
+                      <h3 style={{ color: '#72686F', fontWeight: 600, fontSize: '16px', marginBottom: '4px' }}>Herringbone</h3>
+                      <p style={{ color: '#72686F', fontSize: '14px' }}>12↓ 23↓ 34↓ 41↓</p>
                     </div>
                   </div>
                 </div>

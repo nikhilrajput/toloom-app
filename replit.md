@@ -104,12 +104,13 @@ Configured for autoscale deployment on Replit:
   - Color: #72686F
 - **Redesigned Learn Modal** - Complete redesign based on Figma Learn Modal reference:
   - Two-column layout with instructions and pattern examples
-  - Left column: Step-by-step weaving instructions with visual examples (number buttons, icons)
-  - Right column: Pattern library showing Plain, Twill, Basket, and Herringbone patterns with sequences
+  - Left column: Step-by-step weaving instructions with visual examples (number buttons 1-4, icons for thread/slider/cloud)
+  - Right column: Pattern library showing Plain, Twill, Basket, and Herringbone patterns with visual thumbnails and sequences
   - Light lavender background (#F5F3F5) for better visual hierarchy
   - X close button in top right corner
   - Dotted vertical divider between columns (hidden on mobile)
   - Fully responsive design with mobile-first approach
+  - Uses inline styles for guaranteed rendering (Tailwind v4 compatibility)
 - **Improved Error Handling** - Removed user-facing error messages for failed design loads (errors logged to console only)
 
 ## API Endpoints
