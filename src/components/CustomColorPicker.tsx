@@ -108,10 +108,9 @@ export function CustomColorPicker({
       }
       
       const buttonRect = buttonRef.current.getBoundingClientRect();
-      const pickerRect = pickerRef.current.getBoundingClientRect();
       
       const PICKER_WIDTH = 220;
-      const PICKER_HEIGHT = pickerRect.height || 450; // Use actual or estimated height
+      const PICKER_HEIGHT = 500; // Fixed estimated height (colorspace 188 + sliders 28 + hex 40 + saved colors 200 + padding/gaps)
       const GAP = 8;
       
       // Calculate horizontal position (center picker under button)
