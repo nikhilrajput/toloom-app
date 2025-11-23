@@ -90,6 +90,7 @@ export function CustomColorPicker({
   const saturationRef = useRef<HTMLDivElement>(null);
   const pickerRef = useRef<HTMLDivElement>(null);
   const [actualPosition, setActualPosition] = useState<'top' | 'bottom'>(position);
+  const [pickerCoords, setPickerCoords] = useState<{ top: number; left: number } | null>(null);
 
   useEffect(() => {
     const newColor = hsvToHex(hue, saturation, value);
@@ -97,22 +98,53 @@ export function CustomColorPicker({
     onChange(newColor);
   }, [hue, saturation, value]);
 
-  // Collision detection - flip position if modal would extend past viewport
+  // Calculate picker position from buttonRef
   useEffect(() => {
-    if (!pickerRef.current) return;
+    if (!buttonRef?.current) return;
     
-    const rect = pickerRef.current.getBoundingClientRect();
-    const wouldOverflowBottom = rect.bottom > window.innerHeight - 20;
-    const wouldOverflowTop = rect.top < 20;
+    const calculatePosition = () => {
+      if (!buttonRef.current || !pickerRef.current) return;
+      
+      const buttonRect = buttonRef.current.getBoundingClientRect();
+      const pickerRect = pickerRef.current.getBoundingClientRect();
+      
+      const PICKER_WIDTH = 220;
+      const GAP = 8;
+      
+      // Calculate horizontal position (center picker under button)
+      let left = buttonRect.left + (buttonRect.width / 2) - (PICKER_WIDTH / 2);
+      
+      // Clamp to viewport
+      left = Math.max(20, Math.min(left, window.innerWidth - PICKER_WIDTH - 20));
+      
+      // Calculate vertical position
+      let top: number;
+      let finalPosition: 'top' | 'bottom' = position;
+      
+      if (position === 'top') {
+        top = buttonRect.top - pickerRect.height - GAP;
+        // Check if would overflow top
+        if (top < 20) {
+          top = buttonRect.bottom + GAP;
+          finalPosition = 'bottom';
+        }
+      } else {
+        top = buttonRect.bottom + GAP;
+        // Check if would overflow bottom
+        if (top + pickerRect.height > window.innerHeight - 20) {
+          top = buttonRect.top - pickerRect.height - GAP;
+          finalPosition = 'top';
+        }
+      }
+      
+      setPickerCoords({ top, left });
+      setActualPosition(finalPosition);
+    };
     
-    if (position === 'bottom' && wouldOverflowBottom && !wouldOverflowTop) {
-      setActualPosition('top');
-    } else if (position === 'top' && wouldOverflowTop && !wouldOverflowBottom) {
-      setActualPosition('bottom');
-    } else {
-      setActualPosition(position);
-    }
-  }, [position]);
+    // Initial calculation after a brief delay to let DOM settle
+    const timer = setTimeout(calculatePosition, 0);
+    return () => clearTimeout(timer);
+  }, [buttonRef, position]);
 
   const handleColorspaceClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!colorspaceRef.current) return;
@@ -158,10 +190,29 @@ export function CustomColorPicker({
 
   const pureHueColor = hsvToHex(hue, 1, 1);
 
+  // Add click-outside handler
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (pickerRef.current && !pickerRef.current.contains(event.target as Node) &&
+          buttonRef?.current && !buttonRef.current.contains(event.target as Node)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [onClose, buttonRef]);
+
   return (
     <div 
       ref={pickerRef}
-      className={`absolute ${actualPosition === 'top' ? 'bottom-full mb-2' : 'top-full mt-2'} left-0 bg-white rounded-[8px] shadow-[0px_10px_15px_0px_rgba(31,41,55,0.1),0px_4px_6px_0px_rgba(31,41,55,0.05)] z-[100] w-[220px]`}
+      className="bg-white rounded-[8px] shadow-[0px_10px_15px_0px_rgba(31,41,55,0.1),0px_4px_6px_0px_rgba(31,41,55,0.05)] z-[100] w-[220px]"
+      style={{
+        position: 'fixed',
+        top: pickerCoords ? `${pickerCoords.top}px` : '-9999px',
+        left: pickerCoords ? `${pickerCoords.left}px` : '-9999px',
+        opacity: pickerCoords ? 1 : 0
+      }}
       onClick={(e) => e.stopPropagation()}
     >
       <div className="box-border flex flex-col gap-[12px] p-[12px]">
