@@ -202,10 +202,10 @@ export function CustomColorPicker({
         </div>
 
         {/* Hue slider */}
-        <div className="h-[8px] relative rounded-[100px] w-full">
+        <div className="h-[14px] relative rounded-[100px] w-full">
           <div 
             ref={hueRef}
-            className="absolute h-[8px] left-0 right-0 rounded-[100px] cursor-pointer"
+            className="absolute h-[14px] left-0 right-0 rounded-[100px] cursor-pointer"
             onMouseDown={(e) => {
               handleHueSlider(e);
               const handleMove = (moveEvent: MouseEvent) => {
@@ -247,16 +247,16 @@ export function CustomColorPicker({
             <img alt="" className="absolute inset-0 object-cover pointer-events-none rounded-[100px] w-full h-full" src={imgHue} />
           </div>
           <div 
-            className="absolute top-0 w-[8px] h-[8px] pointer-events-none"
+            className="absolute top-0 w-[14px] h-[14px] pointer-events-none"
             style={{ left: `${(hue / 360) * 100}%`, transform: 'translateX(-50%)' }}
           >
-            <div className="absolute inset-[-37.5%_-87.5%_-137.5%_-87.5%]">
-              <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 22 22">
+            <div className="absolute inset-[-50%_-50%_-50%_-50%]">
+              <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 28 28">
                 <g filter="url(#filter0_dd_hue)" id="Ellipse 1">
-                  <circle cx="11" cy="7" r="4" stroke="white" strokeWidth="2" />
+                  <circle cx="14" cy="14" r="6" stroke="white" strokeWidth="2" />
                 </g>
                 <defs>
-                  <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="22" id="filter0_dd_hue" width="22" x="0" y="0">
+                  <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="28" id="filter0_dd_hue" width="28" x="0" y="0">
                     <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
                     <feOffset dy="4" />
@@ -277,10 +277,10 @@ export function CustomColorPicker({
         </div>
 
         {/* Saturation slider */}
-        <div className="h-[8px] relative rounded-[100px] w-full">
+        <div className="h-[14px] relative rounded-[100px] w-full">
           <div 
             ref={saturationRef}
-            className="absolute h-[8px] left-0 right-0 rounded-[100px] cursor-pointer"
+            className="absolute h-[14px] left-0 right-0 rounded-[100px] cursor-pointer"
             style={{
               background: `linear-gradient(90deg, white 0%, ${pureHueColor} 100%)`
             }}
@@ -323,16 +323,16 @@ export function CustomColorPicker({
             }}
           />
           <div 
-            className="absolute top-0 w-[8px] h-[8px] pointer-events-none"
+            className="absolute top-0 w-[14px] h-[14px] pointer-events-none"
             style={{ left: `${saturation * 100}%`, transform: 'translateX(-50%)' }}
           >
-            <div className="absolute inset-[-37.5%_-87.5%_-137.5%_-87.5%]">
-              <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 22 22">
+            <div className="absolute inset-[-50%_-50%_-50%_-50%]">
+              <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 28 28">
                 <g filter="url(#filter0_dd_sat)" id="Ellipse 1">
-                  <circle cx="11" cy="7" r="4" stroke="white" strokeWidth="2" />
+                  <circle cx="14" cy="14" r="6" stroke="white" strokeWidth="2" />
                 </g>
                 <defs>
-                  <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="22" id="filter0_dd_sat" width="22" x="0" y="0">
+                  <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="28" id="filter0_dd_sat" width="28" x="0" y="0">
                     <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
                     <feOffset dy="4" />
