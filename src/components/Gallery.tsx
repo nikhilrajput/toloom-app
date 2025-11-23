@@ -64,17 +64,22 @@ export function Gallery() {
                 {communityDesigns.map((design) => (
                   <div
                     key={design.id}
-                    className="relative"
                     style={{
-                      marginBottom: '30px',
-                      paddingLeft: '15px',
-                      paddingRight: '15px'
+                      width: '100%',
+                      display: 'block',
+                      boxSizing: 'border-box'
                     }}
                   >
                     <img
                       src={design.imageData}
                       alt="Woven design"
-                      style={{ display: 'block', width: '100%', maxHeight: '312px', height: 'auto', objectFit: 'cover' }}
+                      style={{ 
+                        display: 'block', 
+                        width: '100%',
+                        maxHeight: '312px', 
+                        height: 'auto', 
+                        objectFit: 'cover' 
+                      }}
                     />
                   </div>
                 ))}
