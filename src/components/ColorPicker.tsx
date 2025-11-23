@@ -73,10 +73,12 @@ export function ColorPicker({ color, onChange, onClose, warpColor, weftColor }: 
   
   const [isDraggingColorspace, setIsDraggingColorspace] = useState(false);
   const [isDraggingHue, setIsDraggingHue] = useState(false);
+  const [isDraggingSaturation, setIsDraggingSaturation] = useState(false);
   
   const pickerRef = useRef<HTMLDivElement>(null);
   const colorspaceRef = useRef<HTMLDivElement>(null);
   const hueRef = useRef<HTMLDivElement>(null);
+  const saturationRef = useRef<HTMLDivElement>(null);
 
   // Get pure hue color for colorspace background
   const pureHueColor = hsvToHex(hsv.h, 1, 1);
@@ -108,6 +110,13 @@ export function ColorPicker({ color, onChange, onClose, warpColor, weftColor }: 
     const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
     const h = Math.round(x * 360);
     updateColor({ h, s: hsv.s, v: hsv.v });
+  };
+
+  const handleSaturationClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!saturationRef.current) return;
+    const rect = saturationRef.current.getBoundingClientRect();
+    const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    updateColor({ h: hsv.h, s: x, v: hsv.v });
   };
 
   const handleHexInputChange = (value: string) => {
@@ -169,6 +178,10 @@ export function ColorPicker({ color, onChange, onClose, warpColor, weftColor }: 
         const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
         const h = Math.round(x * 360);
         updateColor({ h, s: hsv.s, v: hsv.v });
+      } else if (isDraggingSaturation && saturationRef.current) {
+        const rect = saturationRef.current.getBoundingClientRect();
+        const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        updateColor({ h: hsv.h, s: x, v: hsv.v });
       }
     };
 
@@ -185,20 +198,27 @@ export function ColorPicker({ color, onChange, onClose, warpColor, weftColor }: 
         const x = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
         const h = Math.round(x * 360);
         updateColor({ h, s: hsv.s, v: hsv.v });
+      } else if (isDraggingSaturation && saturationRef.current) {
+        const touch = e.touches[0];
+        const rect = saturationRef.current.getBoundingClientRect();
+        const x = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
+        updateColor({ h: hsv.h, s: x, v: hsv.v });
       }
     };
 
     const handleMouseUp = () => {
       setIsDraggingColorspace(false);
       setIsDraggingHue(false);
+      setIsDraggingSaturation(false);
     };
 
     const handleTouchEnd = () => {
       setIsDraggingColorspace(false);
       setIsDraggingHue(false);
+      setIsDraggingSaturation(false);
     };
 
-    if (isDraggingColorspace || isDraggingHue) {
+    if (isDraggingColorspace || isDraggingHue || isDraggingSaturation) {
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
       document.addEventListener('touchmove', handleTouchMove, { passive: false });
@@ -210,7 +230,7 @@ export function ColorPicker({ color, onChange, onClose, warpColor, weftColor }: 
         document.removeEventListener('touchend', handleTouchEnd);
       };
     }
-  }, [isDraggingColorspace, isDraggingHue, hsv.h]);
+  }, [isDraggingColorspace, isDraggingHue, isDraggingSaturation, hsv.h]);
 
   return (
     <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-[100] p-4 overflow-y-auto">
@@ -312,6 +332,62 @@ export function ColorPicker({ color, onChange, onClose, warpColor, weftColor }: 
                       <feColorMatrix type="matrix" values="0 0 0 0 0.121569 0 0 0 0 0.160784 0 0 0 0 0.215686 0 0 0 0.06 0" />
                       <feBlend in2="effect1_dropShadow_90_1295" mode="normal" result="effect2_dropShadow_90_1295" />
                       <feBlend in="SourceGraphic" in2="effect2_dropShadow_90_1295" mode="normal" result="shape" />
+                    </filter>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          {/* Saturation Slider */}
+          <div 
+            ref={saturationRef}
+            className="h-[14px] relative rounded-[100px] w-full cursor-pointer"
+            onClick={handleSaturationClick}
+            onMouseDown={(e) => {
+              setIsDraggingSaturation(true);
+              handleSaturationClick(e);
+            }}
+            onTouchStart={(e) => {
+              e.preventDefault();
+              setIsDraggingSaturation(true);
+              if (!saturationRef.current) return;
+              const touch = e.touches[0];
+              const rect = saturationRef.current.getBoundingClientRect();
+              const x = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
+              updateColor({ h: hsv.h, s: x, v: hsv.v });
+            }}
+          >
+            <div 
+              className="absolute h-[14px] left-0 right-0 rounded-[100px] top-1/2 translate-y-[-50%]"
+              style={{
+                background: `linear-gradient(to right, white 0%, ${pureHueColor} 100%)`
+              }}
+            />
+            {/* Saturation cursor */}
+            <div 
+              className="absolute bottom-0 top-0 w-[14px]"
+              style={{ left: `calc(${hsv.s * 100}% - 7px)` }}
+            >
+              <div className="absolute inset-[-50%_-50%_-50%_-50%]">
+                <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 28 28">
+                  <g filter="url(#filter0_dd_90_1296)" id="Ellipse 2">
+                    <circle cx="14" cy="14" r="6" stroke="white" strokeWidth="2" />
+                  </g>
+                  <defs>
+                    <filter colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse" height="28" id="filter0_dd_90_1296" width="28" x="0" y="0">
+                      <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                      <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                      <feOffset dy="4" />
+                      <feGaussianBlur stdDeviation="3" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.121569 0 0 0 0 0.160784 0 0 0 0 0.215686 0 0 0 0.1 0" />
+                      <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow_90_1296" />
+                      <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                      <feOffset dy="2" />
+                      <feGaussianBlur stdDeviation="2" />
+                      <feColorMatrix type="matrix" values="0 0 0 0 0.121569 0 0 0 0 0.160784 0 0 0 0 0.215686 0 0 0 0.06 0" />
+                      <feBlend in2="effect1_dropShadow_90_1296" mode="normal" result="effect2_dropShadow_90_1296" />
+                      <feBlend in="SourceGraphic" in2="effect2_dropShadow_90_1296" mode="normal" result="shape" />
                     </filter>
                   </defs>
                 </svg>
