@@ -107,9 +107,10 @@ export function CustomColorPicker({
       }
       
       const buttonRect = buttonRef.current.getBoundingClientRect();
+      const pickerRect = pickerRef.current.getBoundingClientRect();
       
       const PICKER_WIDTH = 220;
-      const PICKER_HEIGHT = 500; // Fixed estimated height (colorspace 188 + sliders 28 + hex 40 + saved colors 200 + padding/gaps)
+      const PICKER_HEIGHT = pickerRect.height || 450; // Use actual rendered height, fallback to estimate
       const GAP = 4; // Reduced for tighter spacing
       
       // Calculate horizontal position (center picker under button)
@@ -287,12 +288,13 @@ export function CustomColorPicker({
         </div>
 
         {/* Hue slider */}
-        <div className="relative rounded-[100px] w-full" style={{ height: '14px' }}>
+        <div className="relative rounded-[100px] w-full" style={{ height: '14px', minHeight: '14px' }}>
           <div 
             ref={hueRef}
             className="absolute left-0 right-0 rounded-[100px] cursor-pointer"
             style={{ 
               height: '14px',
+              minHeight: '14px',
               background: 'linear-gradient(90deg, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%)'
             }}
             onMouseDown={(e) => {
@@ -365,12 +367,13 @@ export function CustomColorPicker({
         </div>
 
         {/* Saturation slider */}
-        <div className="relative rounded-[100px] w-full" style={{ height: '14px' }}>
+        <div className="relative rounded-[100px] w-full" style={{ height: '14px', minHeight: '14px' }}>
           <div 
             ref={saturationRef}
             className="absolute left-0 right-0 rounded-[100px] cursor-pointer"
             style={{
               height: '14px',
+              minHeight: '14px',
               background: `linear-gradient(90deg, white 0%, ${pureHueColor} 100%)`
             }}
             onMouseDown={(e) => {
