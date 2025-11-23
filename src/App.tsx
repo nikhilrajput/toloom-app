@@ -87,16 +87,19 @@ function WeaveApp() {
 
   const handleSaveToCommunity = async () => {
     try {
-      // Render the weaving to a canvas at the CURRENT thread size
-      // Use a fixed preview size that will clip the design on the right if needed
-      const previewSize = 1200;
+      // Render the weaving to a canvas with varying height based on how much was woven
+      // This creates the masonry layout effect in the gallery
+      // Use actual woven height with modest padding (200px) for visual breathing room
+      const wovenHeight = warpRows.length * threadSize;
+      const exportHeight = Math.max(400, wovenHeight + 200); // Minimum 400px, or woven height + 200px padding
+      
       const canvas = renderWeavingToCanvas({
         warpColor,
         weftColor,
         threadSize, // Use the current thread size to preserve the "pixel" look
         warpRows,
-        width: previewSize,
-        height: previewSize
+        width: 1200,
+        height: exportHeight
       });
       const imageData = getCanvasDataURL(canvas);
       
@@ -120,14 +123,18 @@ function WeaveApp() {
   };
 
   const handleDownloadJPG = () => {
-    // Render the weaving to a canvas
+    // Render the weaving to a canvas with the same height logic as community saves
+    // This ensures downloaded and shared images have consistent proportions
+    const wovenHeight = warpRows.length * threadSize;
+    const exportHeight = Math.max(400, wovenHeight + 200); // Minimum 400px, or woven height + 200px padding
+    
     const canvas = renderWeavingToCanvas({
       warpColor,
       weftColor,
       threadSize,
       warpRows,
       width: 1200,
-      height: Math.max(1200, warpRows.length * threadSize)
+      height: exportHeight
     });
     downloadCanvasAsJPG(canvas, `toloom-weaving-${Date.now()}.jpg`);
   };

@@ -29,18 +29,6 @@ export function Gallery() {
     }
   };
 
-  // Calculate dynamic height based on number of warp rows
-  const getTileHeight = (design: SavedDesign) => {
-    const baseHeight = 200;
-    const maxHeight = typeof window !== 'undefined' && window.innerWidth < 768 ? 300 : 375;
-    const minHeight = 150;
-    
-    // Height corresponds to how much was woven
-    const rowCount = design.warpRows?.length || 0;
-    const height = baseHeight + (rowCount * 2);
-    
-    return Math.max(minHeight, Math.min(maxHeight, height));
-  };
 
   return (
     <div className="relative min-h-screen bg-white overflow-hidden">
@@ -76,9 +64,8 @@ export function Gallery() {
                 {communityDesigns.map((design) => (
                   <div
                     key={design.id}
-                    className="relative overflow-hidden"
+                    className="relative"
                     style={{
-                      height: `${getTileHeight(design)}px`,
                       marginBottom: '30px',
                       paddingLeft: '15px',
                       paddingRight: '15px'
@@ -87,7 +74,8 @@ export function Gallery() {
                     <img
                       src={design.imageData}
                       alt="Woven design"
-                      className="w-full h-full object-cover"
+                      className="w-full"
+                      style={{ display: 'block' }}
                     />
                   </div>
                 ))}
