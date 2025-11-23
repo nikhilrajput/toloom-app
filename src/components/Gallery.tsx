@@ -48,14 +48,14 @@ export function Gallery() {
         {/* Navigation Links - Fixed and Floating, Left-aligned within container */}
         <div className="fixed top-[30px] left-[5%] z-20 flex gap-[46px]" style={{ fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif', fontWeight: 500 }}>
           <Link href="/weave">
-            <span className="cursor-pointer text-[20px] md:text-[16px]" style={{ color: '#72686F', backgroundColor: 'rgba(255, 255, 255, 0.4)', padding: '8px 16px', display: 'inline-block' }}>
+            <span className="cursor-pointer text-[18px]" style={{ color: '#72686F', backgroundColor: 'rgba(255, 255, 255, 0.4)', padding: '8px 16px', display: 'inline-block', textTransform: 'uppercase', letterSpacing: '3px' }}>
               Weave
             </span>
           </Link>
           <button
             onClick={() => setShowLearnModal(true)}
-            className="cursor-pointer text-[20px] md:text-[16px]"
-            style={{ color: '#72686F', backgroundColor: 'rgba(255, 255, 255, 0.4)', padding: '8px 16px' }}
+            className="cursor-pointer text-[18px]"
+            style={{ color: '#72686F', backgroundColor: 'rgba(255, 255, 255, 0.4)', padding: '8px 16px', textTransform: 'uppercase', letterSpacing: '3px' }}
           >
             Learn
           </button>
