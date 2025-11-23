@@ -202,6 +202,22 @@ button {
   opacity: inherit !important;
 }
 
+/* Opacity utility classes */
+.opacity-\[0\.6\] {
+  opacity: 0.6;
+}
+.opacity-100 {
+  opacity: 1;
+}
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 /* Weaving animations */
 @keyframes weaveLTR {
   from {
