@@ -18,6 +18,7 @@ interface ToolsPanelProps {
   toolbarsVisible: boolean;
   onToggleToolbars: () => void;
   onShare?: () => void;
+  onLearn?: () => void;
   onClose?: () => void;
   weavingStyle?: string;
   onWeavingStyleChange?: (style: any) => void;
@@ -39,6 +40,7 @@ export function ToolsPanel({
   toolbarsVisible,
   onToggleToolbars,
   onShare,
+  onLearn,
   onClose,
   weavingStyle,
   onWeavingStyleChange,
@@ -174,6 +176,7 @@ export function ToolsPanel({
         toolbarsVisible={toolbarsVisible}
         onToggleToolbars={onToggleToolbars}
         onShare={onShare}
+        onLearn={onLearn}
         onClose={onClose}
         weavingStyle={weavingStyle}
         onWeavingStyleChange={onWeavingStyleChange}
@@ -203,6 +206,7 @@ export function ToolsPanel({
         toolbarsVisible={toolbarsVisible}
         onToggleToolbars={onToggleToolbars}
         onShare={onShare}
+        onLearn={onLearn}
         onClose={onClose}
         weavingStyle={weavingStyle}
         onWeavingStyleChange={onWeavingStyleChange}

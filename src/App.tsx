@@ -4,6 +4,7 @@ import { WeavingCanvas } from './components/WeavingCanvas';
 import { ToolsPanel } from './components/ToolsPanel';
 import { Gallery } from './components/Gallery';
 import { ShareModal } from './components/ShareModal';
+import { LearnModal } from './components/LearnModal';
 import { musicEngine } from './utils/musicEngine';
 import { renderWeavingToCanvas, downloadCanvasAsJPG, getCanvasDataURL } from './utils/exportWeaving';
 import { saveDesign } from './utils/api';
@@ -26,6 +27,7 @@ function WeaveApp() {
   const [warpRows, setWarpRows] = useState<WarpRow[]>([]); // Track added warp rows
   const [toolbarsVisible, setToolbarsVisible] = useState(true); // Track toolbar visibility
   const [showShareModal, setShowShareModal] = useState(false);
+  const [showLearnModal, setShowLearnModal] = useState(false);
   const weavingContainerRef = useRef<HTMLDivElement>(null);
 
   const handleAddWarpRow = () => {
@@ -168,6 +170,7 @@ function WeaveApp() {
         toolbarsVisible={toolbarsVisible}
         onToggleToolbars={() => setToolbarsVisible(!toolbarsVisible)}
         onShare={() => setShowShareModal(true)}
+        onLearn={() => setShowLearnModal(true)}
         onClose={() => setLocation('/')}
       />
 
@@ -176,6 +179,12 @@ function WeaveApp() {
           onClose={() => setShowShareModal(false)}
           onSaveToCommunity={handleSaveToCommunity}
           onDownloadJPG={handleDownloadJPG}
+        />
+      )}
+
+      {showLearnModal && (
+        <LearnModal
+          onClose={() => setShowLearnModal(false)}
         />
       )}
     </div>
