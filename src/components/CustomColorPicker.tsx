@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import imgHue from "figma:asset/6ea72ef8462da9867a998ac36b79c812e922b4a7.png";
 
 interface CustomColorPickerProps {
   color: string;
@@ -111,7 +110,7 @@ export function CustomColorPicker({
       
       const PICKER_WIDTH = 220;
       const PICKER_HEIGHT = 500; // Fixed estimated height (colorspace 188 + sliders 28 + hex 40 + saved colors 200 + padding/gaps)
-      const GAP = 8;
+      const GAP = 4; // Reduced for tighter spacing
       
       // Calculate horizontal position (center picker under button)
       let left = buttonRect.left + (buttonRect.width / 2) - (PICKER_WIDTH / 2);
@@ -223,7 +222,7 @@ export function CustomColorPicker({
       }}
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="box-border flex flex-col gap-[12px] p-[12px]">
+      <div className="box-border flex flex-col" style={{ gap: '12px', padding: '16px' }}>
         {/* Colorspace */}
         <div 
           ref={colorspaceRef}
@@ -292,7 +291,10 @@ export function CustomColorPicker({
           <div 
             ref={hueRef}
             className="absolute left-0 right-0 rounded-[100px] cursor-pointer"
-            style={{ height: '14px' }}
+            style={{ 
+              height: '14px',
+              background: 'linear-gradient(90deg, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%)'
+            }}
             onMouseDown={(e) => {
               handleHueSlider(e);
               const handleMove = (moveEvent: MouseEvent) => {
@@ -331,7 +333,6 @@ export function CustomColorPicker({
               document.addEventListener('touchend', handleTouchEnd);
             }}
           >
-            <img alt="" className="absolute inset-0 object-cover pointer-events-none rounded-[100px] w-full h-full" src={imgHue} />
           </div>
           <div 
             className="absolute top-0 w-[14px] h-[14px] pointer-events-none"
@@ -441,7 +442,7 @@ export function CustomColorPicker({
         </div>
 
         {/* Hex input */}
-        <div className="flex gap-[8px] items-center">
+        <div className="flex items-center" style={{ gap: '8px' }}>
           <div className="basis-0 bg-white grow min-h-px min-w-px relative rounded-[4px]">
             <div aria-hidden="true" className="absolute border border-gray-200 border-solid inset-[-1px] pointer-events-none rounded-[5px] shadow-[0px_1px_2px_0px_rgba(31,41,55,0.08)]" />
             <div className="flex flex-row items-center size-full">
