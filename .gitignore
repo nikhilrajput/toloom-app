@@ -33,3 +33,6 @@ yarn-error.log*
 # Temporary
 .tmp/
 *.tmp
+
+# Generated CSS
+src/index.css

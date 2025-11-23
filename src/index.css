@@ -2030,3 +2030,24 @@ body {
   inherits: false;
   initial-value: 1;
 }
+
+/* Custom opacity classes for button states */
+.opacity-\[0\.6\] {
+  opacity: 0.6;
+}
+.opacity-100 {
+  opacity: 1;
+}
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Fix button opacity override */
+button {
+  opacity: inherit !important;
+}
