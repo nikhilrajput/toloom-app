@@ -103,7 +103,7 @@ export function Gallery() {
       )}
 
       {/* Footer Credit */}
-      <div className="fixed bottom-[30px] left-1/2 -translate-x-1/2 z-20" style={{ fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif' }}>
+      <div className="fixed bottom-[30px] right-[5%] z-20" style={{ fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif' }}>
         <p style={{ color: '#72686F', fontSize: '18px', fontWeight: 400 }}>
           Made with 💛 by{' '}
           <a 
