@@ -14,9 +14,9 @@ export function LearnModal({ onClose }: LearnModalProps) {
         position: 'fixed',
         inset: 0,
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        zIndex: 50,
+        zIndex: 100,
         display: 'flex',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'center',
         padding: '16px',
         overflowY: 'auto'

@@ -26,3 +26,12 @@ The backend is an Express.js REST API server, serving both API endpoints and sta
 - **Radix UI**: UI component library.
 - **Tailwind CSS**: Utility-first CSS framework.
 - **Wouter**: Small routing library for React.
+
+## Recent Changes (November 24, 2025)
+### Learn Modal Component
+- Extracted reusable LearnModal component from Gallery.tsx
+- Updated border: 4px (was 2px)
+- Fixed z-index: 100 (ensures modal floats above all toolbar buttons at z-50/z-70)
+- Mobile centering: `alignItems: 'center'` for proper vertical centering
+- CSS-based responsive layout (removed window.innerWidth)
+- Added eyes emoji button (👀) to weaving screen on all devices for quick access to Learn Modal
