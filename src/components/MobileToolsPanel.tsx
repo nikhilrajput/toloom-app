@@ -70,24 +70,24 @@ export function MobileToolsPanel({
         </p>
       </button>
 
-      {/* Eyes button - top LEFT, next to cloud button - always visible */}
-      {onLearn && (
-        <button
-          onClick={onLearn}
-          className="fixed left-[68px] top-[50px] size-[34px] z-50 group"
-          title="Learn how to weave"
-        >
-          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
-            <circle cx="17" cy="17" fill="white" className="opacity-[0.6] group-hover:opacity-100 transition-opacity" r="17" />
-          </svg>
-          <p className="absolute font-['Roboto:SemiBold',sans-serif] font-semibold h-[25px] leading-[17px] left-[17px] text-[18px] text-black text-center top-[9px] translate-x-[-50%] w-[26px] pointer-events-none" style={{ fontVariationSettings: "'wdth' 100" }}>
-            👀
-          </p>
-        </button>
-      )}
-
       {toolbarsVisible && (
         <>
+          {/* Eyes button - top LEFT, next to cloud button */}
+          {onLearn && (
+            <button
+              onClick={onLearn}
+              className="fixed left-[68px] top-[50px] size-[34px] z-50 group"
+              title="Learn how to weave"
+            >
+              <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
+                <circle cx="17" cy="17" fill="white" className="opacity-[0.6] group-hover:opacity-100 transition-opacity" r="17" />
+              </svg>
+              <p className="absolute font-['Roboto:SemiBold',sans-serif] font-semibold h-[25px] leading-[17px] left-[17px] text-[18px] text-black text-center top-[9px] translate-x-[-50%] w-[26px] pointer-events-none" style={{ fontVariationSettings: "'wdth' 100" }}>
+                👀
+              </p>
+            </button>
+          )}
+
           {sliderExpanded ? (
             /* SLIDER EXPANDED STATE - Only show slider - centered */
             <div 

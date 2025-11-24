@@ -112,7 +112,7 @@ export function Gallery() {
           padding: '8px 16px'
         }}
       >
-        <p style={{ color: '#72686F', fontSize: '18px', fontWeight: 400, margin: 0 }}>
+        <p style={{ color: '#72686F', fontSize: '16px', fontWeight: 400, margin: 0 }}>
           Made with 💛 by{' '}
           <a 
             href="https://iamnidhi.com" 
