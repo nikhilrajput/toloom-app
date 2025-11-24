@@ -44,8 +44,8 @@ export function ShareModal({ onClose, onSaveToCommunity, onDownloadJPG }: ShareM
           backgroundColor: '#F5F3F5',
           borderRadius: '0',
           border: '4px solid #9A8494',
-          padding: '48px',
-          maxWidth: '56rem',
+          padding: '32px',
+          maxWidth: '380px',
           width: '100%',
           position: 'relative',
           fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
@@ -75,23 +75,23 @@ export function ShareModal({ onClose, onSaveToCommunity, onDownloadJPG }: ShareM
         </button>
 
         {/* Add to Community Section */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '48px', marginBottom: '64px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px' }}>
           <button
             onClick={handleSaveToCommunity}
             style={{
               backgroundColor: savedToCommunity ? '#7A6B75' : '#8B7990',
               color: 'white',
               border: 'none',
-              padding: '32px 48px',
+              padding: '12px 20px',
               cursor: 'pointer',
-              fontSize: '18px',
+              fontSize: '14px',
               fontWeight: 400,
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
               display: 'flex',
               alignItems: 'center',
-              gap: '16px',
+              gap: '8px',
               transition: 'background-color 0.2s',
-              minWidth: '214px'
+              minWidth: '110px'
             }}
             onMouseEnter={(e) => {
               if (!savedToCommunity) {
@@ -105,7 +105,7 @@ export function ShareModal({ onClose, onSaveToCommunity, onDownloadJPG }: ShareM
             }}
           >
             {/* Plus Icon */}
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
@@ -114,9 +114,9 @@ export function ShareModal({ onClose, onSaveToCommunity, onDownloadJPG }: ShareM
           <div>
             <p style={{ 
               color: '#72686F', 
-              fontSize: '18px', 
+              fontSize: '12px', 
               fontWeight: 400, 
-              lineHeight: '1.6',
+              lineHeight: '1.4',
               margin: 0
             }}>
               Add to Community.<br />
@@ -127,23 +127,23 @@ export function ShareModal({ onClose, onSaveToCommunity, onDownloadJPG }: ShareM
         </div>
 
         {/* Download Section */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '48px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <button
             onClick={handleDownload}
             style={{
               backgroundColor: downloaded ? '#7A6B75' : '#8B7990',
               color: 'white',
               border: 'none',
-              padding: '32px 48px',
+              padding: '12px 20px',
               cursor: 'pointer',
-              fontSize: '18px',
+              fontSize: '14px',
               fontWeight: 400,
               fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
               display: 'flex',
               alignItems: 'center',
-              gap: '16px',
+              gap: '8px',
               transition: 'background-color 0.2s',
-              minWidth: '290px'
+              minWidth: '140px'
             }}
             onMouseEnter={(e) => {
               if (!downloaded) {
@@ -157,7 +157,7 @@ export function ShareModal({ onClose, onSaveToCommunity, onDownloadJPG }: ShareM
             }}
           >
             {/* Download Arrow Icon */}
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <polyline points="19 12 12 19 5 12"></polyline>
             </svg>
@@ -166,9 +166,9 @@ export function ShareModal({ onClose, onSaveToCommunity, onDownloadJPG }: ShareM
           <div>
             <p style={{ 
               color: '#72686F', 
-              fontSize: '18px', 
+              fontSize: '12px', 
               fontWeight: 400, 
-              lineHeight: '1.6',
+              lineHeight: '1.4',
               margin: 0
             }}>
               Download a JPG of what<br />
