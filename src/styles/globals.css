@@ -261,3 +261,91 @@ button {
     display: block;
   }
 }
+
+/* Learn Modal Button Styles - Responsive */
+.learn-modal-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .learn-modal-buttons {
+    gap: 16px;
+  }
+}
+
+.learn-modal-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #72686F;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .learn-modal-button {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+}
+
+.learn-modal-emoji {
+  font-size: 20px;
+}
+
+@media (min-width: 768px) {
+  .learn-modal-emoji {
+    font-size: 24px;
+  }
+}
+
+.learn-modal-icon {
+  width: 14px;
+  height: 14px;
+}
+
+@media (min-width: 768px) {
+  .learn-modal-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.learn-modal-slider {
+  width: 20px;
+  height: 3px;
+  background-color: #72686F;
+  border-radius: 9999px;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .learn-modal-slider {
+    width: 24px;
+    height: 4px;
+  }
+}
+
+.learn-modal-slider-thumb {
+  width: 10px;
+  height: 10px;
+  background-color: #72686F;
+  border-radius: 50%;
+  position: absolute;
+  top: -3.5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (min-width: 768px) {
+  .learn-modal-slider-thumb {
+    width: 12px;
+    height: 12px;
+    top: -4px;
+  }
+}

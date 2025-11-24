@@ -67,6 +67,7 @@ export function LearnModal({ onClose }: LearnModalProps) {
           padding: '48px',
           paddingLeft: '48px',
           paddingRight: '48px',
+          paddingBottom: '64px',
           flex: 1,
           display: 'flex',
           justifyContent: 'center'
@@ -83,14 +84,14 @@ export function LearnModal({ onClose }: LearnModalProps) {
             </p>
             
             {/* Number Buttons */}
-            <div style={{ display: 'flex', gap: '16px', marginBottom: '32px' }}>
+            <div className="learn-modal-buttons" style={{ display: 'flex', marginBottom: '32px' }}>
               {[1, 2, 3, 4].map(num => (
-                <div key={num} style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#72686F', fontSize: '18px' }}>
+                <div key={num} className="learn-modal-button">
                   {num}
                 </div>
               ))}
-              <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#72686F' }}>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="learn-modal-button">
+                <svg className="learn-modal-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
                   <polyline points="4 6 8 10 12 6"></polyline>
                 </svg>
               </div>
@@ -101,14 +102,14 @@ export function LearnModal({ onClose }: LearnModalProps) {
             </p>
             
             {/* Icon Buttons */}
-            <div style={{ display: 'flex', gap: '16px' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>🧵</div>
-              <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <div style={{ width: '24px', height: '4px', backgroundColor: '#72686F', borderRadius: '9999px', position: 'relative' }}>
-                  <div style={{ width: '12px', height: '12px', backgroundColor: '#72686F', borderRadius: '50%', position: 'absolute', top: '-4px', left: '50%', transform: 'translateX(-50%)' }}></div>
+            <div className="learn-modal-buttons">
+              <div className="learn-modal-button learn-modal-emoji">🧵</div>
+              <div className="learn-modal-button">
+                <div className="learn-modal-slider">
+                  <div className="learn-modal-slider-thumb"></div>
                 </div>
               </div>
-              <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>⛅</div>
+              <div className="learn-modal-button learn-modal-emoji">⛅</div>
             </div>
           </div>
 
