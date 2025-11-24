@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { trackEvent } from '../lib/analytics';
 
 interface ShareModalProps {
   onClose: () => void;
@@ -11,12 +12,14 @@ export function ShareModal({ onClose, onSaveToCommunity, onDownloadJPG }: ShareM
   const [downloaded, setDownloaded] = useState(false);
 
   const handleSaveToCommunity = () => {
+    trackEvent('community_save_clicked', 'share_flow', 'save_to_community');
     onSaveToCommunity();
     setSavedToCommunity(true);
     setTimeout(() => setSavedToCommunity(false), 2000);
   };
 
   const handleDownload = () => {
+    trackEvent('download_jpg', 'share_flow', 'download');
     onDownloadJPG();
     setDownloaded(true);
     setTimeout(() => setDownloaded(false), 2000);

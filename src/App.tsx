@@ -8,7 +8,7 @@ import { LearnModal } from './components/LearnModal';
 import { musicEngine } from './utils/musicEngine';
 import { renderWeavingToCanvas, downloadCanvasAsJPG, getCanvasDataURL } from './utils/exportWeaving';
 import { saveDesign } from './utils/api';
-import { initGA } from './lib/analytics';
+import { initGA, trackEvent } from './lib/analytics';
 import { useAnalytics } from './hooks/use-analytics';
 
 export type WeavingStyle = 'plain' | 'twill' | 'herringbone';
@@ -56,6 +56,8 @@ function WeaveApp() {
   };
 
   const handleAutoWeave = () => {
+    trackEvent('auto_weave_clicked', 'creation_tools', 'auto_weave');
+    
     const patterns = [
       { name: 'diamond', sequence: [[1], [2], [3], [4], [3], [2], [1]] },
       { name: 'triple', sequence: [[1,2,3], [2,3,4], [3,4,1], [4,1,2], [3,4,1], [2,3,4], [1,2,3]] },
@@ -81,6 +83,7 @@ function WeaveApp() {
   };
 
   const handleUndo = () => {
+    trackEvent('undo_clicked', 'creation_tools', 'undo');
     setWarpRows(prev => prev.slice(0, -1));
   };
 
@@ -119,8 +122,10 @@ function WeaveApp() {
       
       // Save to backend API
       await saveDesign(newDesign);
+      trackEvent('community_save_success', 'share_flow', 'save_to_community', warpRows.length);
       console.log('Design saved to community successfully!');
     } catch (error) {
+      trackEvent('community_save_error', 'share_flow', 'save_to_community');
       console.error('Failed to save design to community:', error);
       alert('Failed to save design. Please try again.');
     }
@@ -171,8 +176,14 @@ function WeaveApp() {
         onDeleteAll={handleDeleteAll}
         toolbarsVisible={toolbarsVisible}
         onToggleToolbars={() => setToolbarsVisible(!toolbarsVisible)}
-        onShare={() => setShowShareModal(true)}
-        onLearn={() => setShowLearnModal(true)}
+        onShare={() => {
+          trackEvent('share_modal_open', 'share_flow', 'open_share_modal');
+          setShowShareModal(true);
+        }}
+        onLearn={() => {
+          trackEvent('learn_modal_open', 'help', 'open_learn_modal');
+          setShowLearnModal(true);
+        }}
         onClose={() => setLocation('/')}
       />
 
