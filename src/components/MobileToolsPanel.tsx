@@ -177,7 +177,7 @@ export function MobileToolsPanel({
               {/* Share button - top right with responsive spacing */}
               <button
                 onClick={onShare}
-                className="fixed right-[63px] top-[50px] size-[34px] z-50 group"
+                className="fixed right-[63px] top-[50px] size-[34px] z-50 group cursor-pointer"
                 title="Share to gallery"
               >
                 <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
@@ -189,7 +189,7 @@ export function MobileToolsPanel({
               {/* Close button - top right with responsive spacing */}
               <button
                 onClick={onClose}
-                className="fixed right-[24px] top-[50px] size-[34px] z-50 group"
+                className="fixed right-[24px] top-[50px] size-[34px] z-50 group cursor-pointer"
                 title="Save and go to gallery"
               >
                 <div className="absolute bottom-[-0.24%] left-[-0.24%] right-0 top-0">
@@ -213,7 +213,7 @@ export function MobileToolsPanel({
                     <button
                       key={num}
                       onClick={() => onToggleDraft(num)}
-                      className="absolute group"
+                      className="absolute group cursor-pointer"
                       style={{ 
                         left: `${leftPositions[num - 1]}px`,
                         top: '11px',
@@ -243,7 +243,7 @@ export function MobileToolsPanel({
                 {/* Reed button (down arrow) - absolute positioning within container */}
                 <button 
                   onClick={onAddWarpRow}
-                  className="absolute group"
+                  className="absolute group cursor-pointer"
                   style={{ 
                     left: '268px',
                     top: '10px',
@@ -300,7 +300,7 @@ export function MobileToolsPanel({
               {/* Slider button - rotated 270deg - in middle area */}
               <button
                 onClick={onSliderToggle}
-                className="fixed left-1/2 bottom-[6%] size-[34px] z-50 group"
+                className="fixed left-1/2 bottom-[6%] size-[34px] z-50 group cursor-pointer"
                 style={{ transform: 'translateX(-68.5px)' }}
                 title="Adjust thread size"
               >
@@ -317,7 +317,7 @@ export function MobileToolsPanel({
               {/* Undo button - rotated 270deg - right aligned with heddle toolbar */}
               <button
                 onClick={onUndo}
-                className="fixed left-1/2 bottom-[6%] size-[34px] z-50 group"
+                className="fixed left-1/2 bottom-[6%] size-[34px] z-50 group cursor-pointer"
                 style={{ transform: 'translateX(80.5px)' }}
                 title="Undo last weft row"
               >
@@ -332,7 +332,7 @@ export function MobileToolsPanel({
               {/* Auto-weave button (🧵️ emoji) - right aligned with heddle toolbar */}
               <button
                 onClick={onAutoWeave}
-                className="fixed left-1/2 bottom-[6%] size-[34px] z-50 group"
+                className="fixed left-1/2 bottom-[6%] size-[34px] z-50 group cursor-pointer"
                 style={{ transform: 'translateX(119.5px)' }}
                 title="Auto weave"
               >

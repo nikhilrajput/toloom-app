@@ -192,7 +192,7 @@ export function DesktopToolsPanel({
               {/* Share button - top right */}
               <button
                 onClick={onShare}
-                className="fixed right-[78px] top-[56px] size-[34px] z-50 group"
+                className="fixed right-[78px] top-[56px] size-[34px] z-50 group cursor-pointer"
                 title="Share to gallery"
               >
                 <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
@@ -204,7 +204,7 @@ export function DesktopToolsPanel({
               {/* Close button - top right */}
               <button
                 onClick={onClose}
-                className="fixed right-[34px] top-[56px] size-[34px] z-50 group"
+                className="fixed right-[34px] top-[56px] size-[34px] z-50 group cursor-pointer"
                 title="Save and go to gallery"
               >
                 <div className="absolute bottom-[-0.24%] left-[-0.24%] right-0 top-0">
@@ -287,7 +287,7 @@ export function DesktopToolsPanel({
                   <button
                     key={num}
                     onClick={() => onToggleDraft(num)}
-                    className="fixed left-1/2 z-50 group"
+                    className="fixed left-1/2 z-50 group cursor-pointer"
                     style={{ 
                       transform: `translateX(${translateX[num - 1]}px)`,
                       bottom: '71px', 
@@ -317,7 +317,7 @@ export function DesktopToolsPanel({
               {/* Reed button - using exact Figma positioning */}
               <button 
                 onClick={onAddWarpRow}
-                className="fixed left-1/2 bottom-[70.5px] size-[45px] z-50 group"
+                className="fixed left-1/2 bottom-[70.5px] size-[45px] z-50 group cursor-pointer"
                 style={{ transform: 'translateX(107px)' }}
                 title="Weave row (or press Enter/Space)"
               >
@@ -330,7 +330,7 @@ export function DesktopToolsPanel({
               {/* Undo button - 15px from the right edge of the reed button */}
               <button
                 onClick={onUndo}
-                className="fixed left-1/2 bottom-[76px] size-[34px] z-50 group"
+                className="fixed left-1/2 bottom-[76px] size-[34px] z-50 group cursor-pointer"
                 style={{ transform: 'translateX(176.5px)' }}
                 title="Undo last weft row"
               >
@@ -345,7 +345,7 @@ export function DesktopToolsPanel({
               {/* Auto-weave button (🧵️ emoji) - positioned after undo */}
               <button
                 onClick={onAutoWeave}
-                className="fixed left-1/2 bottom-[76px] size-[34px] z-50 group"
+                className="fixed left-1/2 bottom-[76px] size-[34px] z-50 group cursor-pointer"
                 style={{ transform: 'translateX(215.5px)' }}
                 title="Auto weave"
               >
@@ -360,7 +360,7 @@ export function DesktopToolsPanel({
               {/* Slider button - positioned after auto-weave, rotated 270deg */}
               <button
                 onClick={onSliderToggle}
-                className="fixed left-1/2 bottom-[76px] size-[34px] z-50 group"
+                className="fixed left-1/2 bottom-[76px] size-[34px] z-50 group cursor-pointer"
                 style={{ transform: 'translateX(254.5px)' }}
                 title="Adjust thread size"
               >
