@@ -91,7 +91,7 @@ export function Gallery() {
       </div>
 
       {/* Floating TOLOOM Logo - Centered */}
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10 opacity-60">
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10 opacity-50">
         <div style={{ width: '381.71px', height: '95.79px' }}>
           <ToloomLogo />
         </div>
