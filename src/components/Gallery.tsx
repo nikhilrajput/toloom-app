@@ -70,6 +70,8 @@ export function Gallery() {
                     <img
                       src={design.imageData}
                       alt="Woven design"
+                      loading="lazy"
+                      decoding="async"
                       style={{ 
                         display: 'block', 
                         width: '100%',
