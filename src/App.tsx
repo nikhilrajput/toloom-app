@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Route, Switch, useLocation } from 'wouter';
 import { WeavingCanvas } from './components/WeavingCanvas';
 import { ToolsPanel } from './components/ToolsPanel';
@@ -8,6 +8,8 @@ import { LearnModal } from './components/LearnModal';
 import { musicEngine } from './utils/musicEngine';
 import { renderWeavingToCanvas, downloadCanvasAsJPG, getCanvasDataURL } from './utils/exportWeaving';
 import { saveDesign } from './utils/api';
+import { initGA } from './lib/analytics';
+import { useAnalytics } from './hooks/use-analytics';
 
 export type WeavingStyle = 'plain' | 'twill' | 'herringbone';
 
@@ -191,11 +193,28 @@ function WeaveApp() {
   );
 }
 
-export default function App() {
+function Router() {
+  // Track page views when routes change - from blueprint:javascript_google_analytics
+  useAnalytics();
+  
   return (
     <Switch>
       <Route path="/" component={Gallery} />
       <Route path="/weave" component={WeaveApp} />
     </Switch>
   );
+}
+
+export default function App() {
+  // Initialize Google Analytics when app loads - from blueprint:javascript_google_analytics
+  useEffect(() => {
+    // Verify required environment variable is present
+    if (!import.meta.env.VITE_GA_MEASUREMENT_ID) {
+      console.warn('Missing required Google Analytics key: VITE_GA_MEASUREMENT_ID');
+    } else {
+      initGA();
+    }
+  }, []);
+
+  return <Router />;
 }
