@@ -32,7 +32,7 @@ The backend is an Express.js REST API server, serving both API endpoints and sta
 - Extracted reusable LearnModal component from Gallery.tsx
 - Updated border: 4px (was 2px)
 - Fixed z-index: 100 (ensures modal floats above all toolbar buttons at z-50/z-70)
-- Fixed scrolling: `alignItems: 'flex-start'` with 32px vertical padding prevents content cutoff on small screens
+- Centered in viewport: `alignItems: 'center'` for proper centering on all screen sizes
 - CSS-based responsive layout (removed window.innerWidth)
 - Added eyes emoji button (👀) to weaving screen on all devices for quick access to Learn Modal
 
