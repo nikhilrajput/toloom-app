@@ -225,7 +225,7 @@ export function MobileToolsPanel({
                         <circle 
                           cx="22" 
                           cy="22" 
-                          fill={isSelected ? "rgba(255, 193, 6, 1)" : "white"}
+                          fill={isSelected ? "#FFE0F2" : "white"}
                           className={isSelected ? "opacity-100 transition-opacity" : "opacity-[0.6] group-hover:opacity-100 transition-opacity"}
                           r="22" 
                         />
@@ -253,7 +253,7 @@ export function MobileToolsPanel({
                   title="Weave row (or press Enter/Space)"
                 >
                   <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 45 45">
-                    <circle cx="22.5" cy="22.5" fill="white" className="opacity-[0.6] group-hover:opacity-100 transition-opacity" r="22.5" />
+                    <circle cx="22.5" cy="22.5" fill="#FFE0F2" className="opacity-[0.6] group-hover:opacity-100 transition-opacity" r="22.5" />
                     <path d={svgPaths.p13269a00} fill="#72686F" />
                   </svg>
                 </button>
