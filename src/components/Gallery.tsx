@@ -29,10 +29,10 @@ export function Gallery() {
 
   return (
     <div className="relative min-h-screen bg-white overflow-hidden">
-      {/* Centered Container */}
-      <div className="max-w-[1440px] mx-auto relative">
+      {/* Full-width Container */}
+      <div className="relative">
         {/* Navigation Links - Fixed and Floating, Left-aligned within container */}
-        <div className="fixed top-[30px] left-[5%] z-20 flex gap-[46px]" style={{ fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif', fontWeight: 400 }}>
+        <div className="fixed top-[30px] left-[5%] z-20 flex gap-[30px]" style={{ fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif', fontWeight: 400 }}>
           <Link href="/weave">
             <span className="cursor-pointer text-[18px]" style={{ color: '#72686F', backgroundColor: 'rgba(255, 255, 255, 0.4)', padding: '8px 16px', display: 'inline-block', textTransform: 'uppercase', letterSpacing: '3px' }}>
               Weave
