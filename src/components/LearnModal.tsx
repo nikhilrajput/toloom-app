@@ -29,15 +29,14 @@ export function LearnModal({ onClose }: LearnModalProps) {
           backgroundColor: '#F5F3F5',
           borderRadius: '0',
           border: '4px solid #9A8494',
-          padding: '48px',
-          paddingTop: '64px',
           maxWidth: '56rem',
           width: '100%',
           maxHeight: 'calc(100vh - 64px)',
           position: 'relative',
           fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-          overflowY: 'auto',
-          margin: 'auto'
+          margin: 'auto',
+          display: 'flex',
+          flexDirection: 'column'
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -45,22 +44,14 @@ export function LearnModal({ onClose }: LearnModalProps) {
         <button
           onClick={onClose}
           style={{
-            position: 'sticky',
-            top: '16px',
-            left: '100%',
-            marginLeft: '-48px',
-            marginTop: '-48px',
-            marginBottom: '16px',
+            position: 'absolute',
+            top: '24px',
+            right: '24px',
             color: '#72686F',
-            background: '#F5F3F5',
+            background: 'none',
             border: 'none',
             cursor: 'pointer',
-            zIndex: 10,
-            width: '32px',
-            height: '32px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
+            zIndex: 10
           }}
           aria-label="Close"
         >
@@ -70,8 +61,14 @@ export function LearnModal({ onClose }: LearnModalProps) {
           </svg>
         </button>
 
-        {/* Two Column Layout */}
-        <div className="learn-modal-grid">
+        {/* Scrollable Content Container */}
+        <div style={{ 
+          overflowY: 'auto', 
+          padding: '48px',
+          flex: 1
+        }}>
+          {/* Two Column Layout */}
+          <div className="learn-modal-grid">
           {/* Left Column */}
           <div>
             <h2 style={{ color: '#72686F', fontSize: '18px', fontWeight: 400, marginBottom: '24px' }}>
@@ -158,6 +155,7 @@ export function LearnModal({ onClose }: LearnModalProps) {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
