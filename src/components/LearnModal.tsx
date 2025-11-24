@@ -65,10 +65,14 @@ export function LearnModal({ onClose }: LearnModalProps) {
         <div style={{ 
           overflowY: 'auto', 
           padding: '48px',
-          flex: 1
+          paddingLeft: '48px',
+          paddingRight: '48px',
+          flex: 1,
+          display: 'flex',
+          justifyContent: 'center'
         }}>
           {/* Two Column Layout */}
-          <div className="learn-modal-grid">
+          <div className="learn-modal-grid" style={{ position: 'relative', width: '100%', maxWidth: '100%' }}>
           {/* Left Column */}
           <div>
             <h2 style={{ color: '#72686F', fontSize: '18px', fontWeight: 400, marginBottom: '24px' }}>
