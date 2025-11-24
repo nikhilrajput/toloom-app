@@ -84,12 +84,14 @@ export function Gallery() {
         </div>
       </div>
 
-      {/* Floating TOLOOM Logo - Centered */}
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10 opacity-50">
-        <div style={{ width: '381.71px', height: '95.79px' }}>
-          <ToloomLogo />
+      {/* Floating TOLOOM Logo - Centered and Clickable */}
+      <Link href="/weave">
+        <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 opacity-50 hover:opacity-70 transition-opacity cursor-pointer">
+          <div style={{ width: '381.71px', height: '95.79px' }}>
+            <ToloomLogo />
+          </div>
         </div>
-      </div>
+      </Link>
 
       {/* Learn Modal */}
       {showLearnModal && (
