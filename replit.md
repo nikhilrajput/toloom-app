@@ -35,6 +35,8 @@ The backend is an Express.js REST API server, serving both API endpoints and sta
 - Centered in viewport: `alignItems: 'center'` for proper centering on all screen sizes
 - CSS-based responsive layout (removed window.innerWidth)
 - Added eyes emoji button (👀) to weaving screen on all devices for quick access to Learn Modal
+- Responsive button sizing: 36px (mobile) / 48px (desktop) for 1,2,3,4 and reed control buttons
+- Added proper bottom padding (64px) for mobile scrolling
 
 ### Share Modal Redesign
 - Redesigned ShareModal to match Figma specifications
@@ -46,4 +48,18 @@ The backend is an Express.js REST API server, serving both API endpoints and sta
 - Button color: #8B7990 with hover state (#7A6B75)
 - Inline SVG icons for plus and download arrows
 - Success states: "Added!" and "Downloaded!" feedback messages
-- Bundle size reduced from 216KB to 215.53KB
+
+### Gallery Optimizations
+- Removed max-width constraint: Gallery now full-width on all screen sizes (including >1440px)
+- Removed horizontal padding: Tiles extend to full viewport width
+- Adjusted navigation spacing: Weave/Learn buttons gap reduced to 30px
+- Added footer credit: "Made with 💛 by Nidhi" with link to iamnidhi.com, styled with semi-transparent background
+- **Performance Improvements**:
+  - Lazy loading: Images load only when visible (`loading="lazy"`, `decoding="async"`)
+  - Database indexing: Added index on timestamp column for faster queries
+  - Skeleton loader: Animated grey rectangles in masonry grid replace loading text
+  - Bundle size: ~215KB gzipped
+
+### Legal & Copyright
+- Added MIT License (Copyright 2025 Nidhi Malhotra)
+- Updated package.json with author and license metadata
