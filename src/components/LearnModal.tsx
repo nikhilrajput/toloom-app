@@ -16,9 +16,10 @@ export function LearnModal({ onClose }: LearnModalProps) {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         zIndex: 100,
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         justifyContent: 'center',
         padding: '16px',
+        paddingTop: '32px',
         overflowY: 'auto'
       }}
       onClick={onClose}
@@ -29,12 +30,14 @@ export function LearnModal({ onClose }: LearnModalProps) {
           borderRadius: '0',
           border: '4px solid #9A8494',
           padding: '48px',
+          paddingTop: '64px',
           maxWidth: '56rem',
           width: '100%',
+          maxHeight: 'calc(100vh - 64px)',
           position: 'relative',
           fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
-          marginTop: '16px',
-          marginBottom: '16px'
+          overflowY: 'auto',
+          margin: 'auto'
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -42,13 +45,22 @@ export function LearnModal({ onClose }: LearnModalProps) {
         <button
           onClick={onClose}
           style={{
-            position: 'absolute',
-            top: '24px',
-            right: '24px',
+            position: 'sticky',
+            top: '16px',
+            left: '100%',
+            marginLeft: '-48px',
+            marginTop: '-48px',
+            marginBottom: '16px',
             color: '#72686F',
-            background: 'none',
+            background: '#F5F3F5',
             border: 'none',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            zIndex: 10,
+            width: '32px',
+            height: '32px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
           aria-label="Close"
         >
