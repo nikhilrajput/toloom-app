@@ -79,3 +79,15 @@ The backend is an Express.js REST API server, serving both API endpoints and sta
 - Cloud button (🌤️) now hides ALL toolbars including the eyes emoji button (👀)
 - Eyes button reappears when cloud button is pressed again (toggle functionality)
 - Clean canvas mode: Press cloud to see only the weaving grid without any UI elements
+
+### Analytics & Tracking (November 24, 2025)
+- **Google Analytics 4 Integration**: Implemented comprehensive GA4 tracking using blueprint:javascript_google_analytics
+- **Analytics Files**: Created `src/lib/analytics.ts`, `src/hooks/use-analytics.tsx`, `src/env.d.ts`
+- **Page View Tracking**: Automatic tracking for both Gallery (/) and Weaving Screen (/weave) routes
+- **Custom Event Tracking**: Organized events by category for easy filtering in GA4:
+  - **share_flow**: share_modal_open, community_save_clicked, community_save_success (includes warpRows.length), community_save_error, download_jpg
+  - **creation_tools**: auto_weave_clicked, undo_clicked
+  - **help**: learn_modal_open
+- **Configuration**: Uses VITE_GA_MEASUREMENT_ID secret for secure measurement ID storage
+- **Performance**: Async script loading with minimal impact on app performance
+- **Future Enhancements**: Consider adding privacy notice/consent UI for EU/UK compliance, enriching save events with pattern metadata (weavingStyle, threadSize, colors)
