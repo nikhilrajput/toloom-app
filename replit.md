@@ -1,4 +1,4 @@
-# Weaving App (Toloom)
+# Toloom
 
 ## Overview
 This React and TypeScript weaving application allows users to create and explore weaving patterns. It features an interactive canvas, a color picker, and tools for pattern manipulation. A key capability is the community gallery, enabling real-time sharing and viewing of user-designed patterns. The project's vision is to provide an accessible and engaging platform for textile art, inspired by a Figma design.

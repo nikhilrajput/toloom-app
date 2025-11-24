@@ -1,7 +1,7 @@
 
-  # Weaving App
+  # Toloom
 
-  This is a code bundle for Weaving App. The original project is available at https://www.figma.com/design/ltAVihDs2ttPjaz7MhhcwW/Weaving-App.
+  This is a code bundle for Toloom, a weaving app. The original project is available at https://www.figma.com/design/ltAVihDs2ttPjaz7MhhcwW/Weaving-App.
 
   ## Running the code
 
