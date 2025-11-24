@@ -30,11 +30,9 @@ export function ShareModal({ onClose, onSaveToCommunity, onDownloadJPG }: ShareM
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         zIndex: 100,
         display: 'flex',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'center',
         padding: '16px',
-        paddingTop: '32px',
-        paddingBottom: '32px',
         overflowY: 'auto'
       }}
       onClick={onClose}
