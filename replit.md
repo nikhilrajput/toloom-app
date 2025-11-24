@@ -52,8 +52,9 @@ The backend is an Express.js REST API server, serving both API endpoints and sta
 ### Gallery Optimizations
 - Removed max-width constraint: Gallery now full-width on all screen sizes (including >1440px)
 - Removed horizontal padding: Tiles extend to full viewport width
-- Adjusted navigation spacing: Weave/Learn buttons gap reduced to 30px
-- Added footer credit: "Made with 💛 by Nidhi" with link to iamnidhi.com, styled with semi-transparent background
+- Centered layout: "Weave" button centered at top, "Made with 💛 by Nidhi" footer centered at bottom
+- Removed Learn button from gallery screen (Learn Modal accessible from weaving screen only)
+- Maintained 30px top padding for navigation
 - **Performance Improvements**:
   - Lazy loading: Images load only when visible (`loading="lazy"`, `decoding="async"`)
   - Database indexing: Added index on timestamp column for faster queries
@@ -66,9 +67,15 @@ The backend is an Express.js REST API server, serving both API endpoints and sta
 
 ### Branding & Social Media
 - Rebranded from "Weaving App" to "Toloom" across all files
-- Created Open Graph image (1200x630px) for social media sharing
+- Created custom Open Graph image (1200x630px) with colorful weaving pattern collage and "TOLOOM" text
 - Added comprehensive meta tags for SEO and social sharing:
   - Open Graph tags for Facebook, LinkedIn, etc.
   - Twitter Card tags for X/Twitter
   - SEO description meta tag
 - Image location: `public/og-image.png`
+- Custom favicon: Pink and yellow checkered pattern (`public/favicon.png`)
+
+### UI/UX Improvements
+- Cloud button (🌤️) now hides ALL toolbars including the eyes emoji button (👀)
+- Eyes button reappears when cloud button is pressed again (toggle functionality)
+- Clean canvas mode: Press cloud to see only the weaving grid without any UI elements

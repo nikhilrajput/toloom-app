@@ -32,20 +32,13 @@ export function Gallery() {
     <div className="relative min-h-screen bg-white overflow-hidden">
       {/* Full-width Container */}
       <div className="relative">
-        {/* Navigation Links - Fixed and Floating, Left-aligned within container */}
-        <div className="fixed top-[30px] left-[5%] z-20 flex gap-[30px]" style={{ fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif', fontWeight: 400 }}>
+        {/* Navigation Link - Fixed and Floating, Centered */}
+        <div className="fixed top-[30px] left-1/2 -translate-x-1/2 z-20" style={{ fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif', fontWeight: 400 }}>
           <Link href="/weave">
             <span className="cursor-pointer text-[18px]" style={{ color: '#72686F', backgroundColor: 'rgba(255, 255, 255, 0.4)', padding: '8px 16px', display: 'inline-block', textTransform: 'uppercase', letterSpacing: '3px' }}>
               Weave
             </span>
           </Link>
-          <button
-            onClick={() => setShowLearnModal(true)}
-            className="cursor-pointer text-[18px]"
-            style={{ color: '#72686F', backgroundColor: 'rgba(255, 255, 255, 0.4)', padding: '8px 16px', textTransform: 'uppercase', letterSpacing: '3px' }}
-          >
-            Learn
-          </button>
         </div>
 
         {/* Gallery Grid - Centered with padding */}
@@ -103,9 +96,9 @@ export function Gallery() {
         <LearnModal onClose={() => setShowLearnModal(false)} />
       )}
 
-      {/* Footer Credit */}
+      {/* Footer Credit - Centered */}
       <div 
-        className="fixed bottom-[30px] right-[5%] z-20" 
+        className="fixed bottom-[30px] left-1/2 -translate-x-1/2 z-20" 
         style={{ 
           fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
           backgroundColor: 'rgba(255, 255, 255, 0.4)',
