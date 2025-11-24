@@ -1,6 +1,8 @@
 {
       "name": "Weaving App",
       "version": "0.1.0",
+      "author": "Nidhi Malhotra",
+      "license": "MIT",
       "private": true,
       "dependencies": {
             "@radix-ui/react-accordion": "^1.2.3",
