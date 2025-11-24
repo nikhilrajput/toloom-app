@@ -63,3 +63,12 @@ The backend is an Express.js REST API server, serving both API endpoints and sta
 ### Legal & Copyright
 - Added MIT License (Copyright 2025 Nidhi Malhotra)
 - Updated package.json with author and license metadata
+
+### Branding & Social Media
+- Rebranded from "Weaving App" to "Toloom" across all files
+- Created Open Graph image (1200x630px) for social media sharing
+- Added comprehensive meta tags for SEO and social sharing:
+  - Open Graph tags for Facebook, LinkedIn, etc.
+  - Twitter Card tags for X/Twitter
+  - SEO description meta tag
+- Image location: `public/og-image.png`
