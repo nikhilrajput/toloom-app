@@ -35,3 +35,15 @@ The backend is an Express.js REST API server, serving both API endpoints and sta
 - Fixed scrolling: `alignItems: 'flex-start'` with 32px vertical padding prevents content cutoff on small screens
 - CSS-based responsive layout (removed window.innerWidth)
 - Added eyes emoji button (👀) to weaving screen on all devices for quick access to Learn Modal
+
+### Share Modal Redesign
+- Redesigned ShareModal to match Figma specifications
+- Consistent styling with Learn Modal: 4px border (#9A8494), #F5F3F5 background, z-index 100
+- Two-section vertical layout with button + description pairs
+- "Add" button with plus icon → Save to Community functionality
+- "Download" button with down arrow icon → Download JPG functionality
+- Typography: SF Pro Text, 18px, #72686F color
+- Button color: #8B7990 with hover state (#7A6B75)
+- Inline SVG icons for plus and download arrows
+- Success states: "Added!" and "Downloaded!" feedback messages
+- Bundle size reduced from 216KB to 215.53KB
