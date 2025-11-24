@@ -103,8 +103,15 @@ export function Gallery() {
       )}
 
       {/* Footer Credit */}
-      <div className="fixed bottom-[30px] right-[5%] z-20" style={{ fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif' }}>
-        <p style={{ color: '#72686F', fontSize: '18px', fontWeight: 400 }}>
+      <div 
+        className="fixed bottom-[30px] right-[5%] z-20" 
+        style={{ 
+          fontFamily: 'SF Pro Text, -apple-system, BlinkMacSystemFont, sans-serif',
+          backgroundColor: 'rgba(255, 255, 255, 0.4)',
+          padding: '8px 16px'
+        }}
+      >
+        <p style={{ color: '#72686F', fontSize: '18px', fontWeight: 400, margin: 0 }}>
           Made with 💛 by{' '}
           <a 
             href="https://iamnidhi.com" 
