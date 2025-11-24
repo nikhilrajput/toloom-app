@@ -74,7 +74,7 @@ export function DesktopToolsPanel({
       {/* Cloud button - top left - always visible */}
       <button
         onClick={onToggleToolbars}
-        className="fixed left-[57px] top-[56px] size-[34px] z-[70] group"
+        className="fixed left-[57px] top-[56px] size-[34px] z-[70] group cursor-pointer"
         title={toolbarsVisible ? "Hide toolbars" : "Show toolbars"}
       >
         <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
@@ -91,7 +91,7 @@ export function DesktopToolsPanel({
           {onLearn && (
             <button
               onClick={onLearn}
-              className="fixed left-[101px] top-[56px] size-[34px] z-[70] group"
+              className="fixed left-[101px] top-[56px] size-[34px] z-[70] group cursor-pointer"
               title="Learn how to weave"
             >
               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">

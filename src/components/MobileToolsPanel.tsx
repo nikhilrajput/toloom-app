@@ -59,7 +59,7 @@ export function MobileToolsPanel({
       {/* Cloud button - top LEFT - always visible with responsive spacing */}
       <button
         onClick={onToggleToolbars}
-        className="fixed left-[24px] top-[50px] size-[34px] z-50 group"
+        className="fixed left-[24px] top-[50px] size-[34px] z-50 group cursor-pointer"
         title={toolbarsVisible ? "Hide toolbars" : "Show toolbars"}
       >
         <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
@@ -76,7 +76,7 @@ export function MobileToolsPanel({
           {onLearn && (
             <button
               onClick={onLearn}
-              className="fixed left-[68px] top-[50px] size-[34px] z-50 group"
+              className="fixed left-[68px] top-[50px] size-[34px] z-50 group cursor-pointer"
               title="Learn how to weave"
             >
               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
