@@ -48,7 +48,7 @@ export function Gallery() {
         </div>
 
         {/* Gallery Grid - Centered with padding */}
-        <div className="px-[5%] pb-[10px]">
+        <div className="px-0 pb-[10px]">
           {loading ? (
             <div className="flex items-center justify-center min-h-[400px]">
               <p className="text-[#8B7355] text-lg">Loading community designs...</p>
