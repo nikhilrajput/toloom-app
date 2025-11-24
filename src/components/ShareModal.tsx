@@ -57,8 +57,8 @@ export function ShareModal({ onClose, onSaveToCommunity, onDownloadJPG }: ShareM
           onClick={onClose}
           style={{
             position: 'absolute',
-            top: '24px',
-            right: '24px',
+            top: '18px',
+            right: '18px',
             color: '#72686F',
             background: 'none',
             border: 'none',
@@ -73,7 +73,7 @@ export function ShareModal({ onClose, onSaveToCommunity, onDownloadJPG }: ShareM
         </button>
 
         {/* Add to Community Section */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '24px', marginBottom: '24px' }}>
           <button
             onClick={handleSaveToCommunity}
             style={{
@@ -112,14 +112,14 @@ export function ShareModal({ onClose, onSaveToCommunity, onDownloadJPG }: ShareM
           <div>
             <p style={{ 
               color: '#72686F', 
-              fontSize: '12px', 
+              fontSize: '14px', 
               fontWeight: 400, 
               lineHeight: '1.4',
               margin: 0
             }}>
-              Add to Community.<br />
+              Add to the Community.<br />
               Your woven design will be<br />
-              visible to everyone.
+              added to the home gallery.
             </p>
           </div>
         </div>
@@ -164,13 +164,13 @@ export function ShareModal({ onClose, onSaveToCommunity, onDownloadJPG }: ShareM
           <div>
             <p style={{ 
               color: '#72686F', 
-              fontSize: '12px', 
+              fontSize: '14px', 
               fontWeight: 400, 
               lineHeight: '1.4',
               margin: 0
             }}>
-              Download a JPG of what<br />
-              you made
+              Download a JPG of what
+              you made.
             </p>
           </div>
         </div>
