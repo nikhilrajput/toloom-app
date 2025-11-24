@@ -4,6 +4,7 @@ import { Link } from 'wouter';
 import ToloomLogo from "../imports/Group60";
 import { getDesigns, SavedDesign } from "../utils/api";
 import { LearnModal } from './LearnModal';
+import { GallerySkeleton } from './GallerySkeleton';
 
 export function Gallery() {
   const [communityDesigns, setCommunityDesigns] = useState<SavedDesign[]>([]);
@@ -50,9 +51,7 @@ export function Gallery() {
         {/* Gallery Grid - Centered with padding */}
         <div className="px-0 pb-[10px]">
           {loading ? (
-            <div className="flex items-center justify-center min-h-[400px]">
-              <p className="text-[#8B7355] text-lg">Loading community designs...</p>
-            </div>
+            <GallerySkeleton />
           ) : communityDesigns.length > 0 ? (
             <ResponsiveMasonry
               columnsCountBreakPoints={{ 350: 2, 750: 3, 900: 4, 1200: 6 }}

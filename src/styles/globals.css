@@ -349,3 +349,13 @@ button {
     top: -4px;
   }
 }
+
+/* Skeleton loader pulse animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
