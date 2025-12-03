@@ -323,14 +323,6 @@ export function MobileColorPicker({ color, onChange, onClose, warpColor, weftCol
             );
           })}
         </div>
-
-        {/* Done Button */}
-        <button
-          onClick={onClose}
-          className="w-full mt-4 py-3 bg-[#8B7990] hover:bg-[#7A6B75] text-white rounded-full font-medium transition-colors cursor-pointer"
-        >
-          Done
-        </button>
       </div>
     </div>
   );
