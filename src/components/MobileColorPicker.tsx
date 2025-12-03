@@ -298,17 +298,19 @@ export function MobileColorPicker({ color, onChange, onClose, warpColor, weftCol
             const isDefaultColor = defaultColors.includes(savedColor.toUpperCase());
             const isSelected = savedColor.toUpperCase() === currentColor.toUpperCase();
             return (
-              <div key={index} className="relative">
+              <div key={index} className="relative size-[32px]">
                 <button
                   onClick={() => handleSwatchClick(savedColor)}
-                  className="rounded-full size-[32px] transition-transform active:scale-95 cursor-pointer"
+                  className="rounded-full w-[32px] h-[32px] transition-transform active:scale-95 cursor-pointer"
                   style={{ backgroundColor: savedColor }}
                   title={savedColor}
-                >
-                  {isSelected && (
-                    <div className="absolute inset-[-3px] border-[2px] border-white rounded-full shadow-[0px_0px_0px_2px_rgba(0,0,0,0.2)] pointer-events-none" />
-                  )}
-                </button>
+                />
+                {isSelected && (
+                  <div 
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[38px] h-[38px] border-[2px] border-white rounded-full pointer-events-none"
+                    style={{ boxShadow: '0px 0px 0px 2px rgba(0,0,0,0.2)' }}
+                  />
+                )}
                 {/* Remove button for non-default colors */}
                 {!isDefaultColor && (
                   <button
