@@ -60,7 +60,7 @@ export function WeavingCanvas({ weavingStyle, warpColor, weftColor, threadSize, 
 
   // Generate lighter variation of warp color for alternating threads
   // Using 15% for subtle contrast that works well on both light and dark colors
-  const lightWarpColor = lightenColor(warpColor, 15);
+  const lightWarpColor = lightenColor(warpColor, 5);
 
   // Generate pattern for a weft row based on multiple start columns and weaving style
   // Returns array where true = weft is on top (blue shows), false = warp is on top (pink/white shows)
