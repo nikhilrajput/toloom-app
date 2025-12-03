@@ -1,5 +1,6 @@
 import svgPaths from "../imports/svg-wpj1llmjl1";
-import { useRef } from "react";
+import { useState } from "react";
+import { MobileColorPicker } from "./MobileColorPicker";
 
 interface MobileToolsPanelProps {
   warpColor: string;
@@ -51,8 +52,7 @@ export function MobileToolsPanel({
   onWeavingStyleChange,
 }: MobileToolsPanelProps) {
   const patterns = [1, 2, 3, 4];
-  const warpInputRef = useRef<HTMLInputElement>(null);
-  const weftInputRef = useRef<HTMLInputElement>(null);
+  const [colorPickerOpen, setColorPickerOpen] = useState<'warp' | 'weft' | null>(null);
 
   return (
     <>
@@ -260,42 +260,30 @@ export function MobileToolsPanel({
               </div>
 
               {/* Warp Color - left aligned with heddle toolbar */}
-              <div className="fixed left-1/2 bottom-[6%] size-[34px] cursor-pointer z-50 group" style={{ transform: 'translateX(-146.5px)' }}>
-                <label htmlFor="warp-color-mobile" className="cursor-pointer block size-full" title="Change warp color">
-                  <svg className="block size-full pointer-events-none" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
-                    <circle cx="17" cy="17" fill="white" className="opacity-70 group-hover:opacity-80 transition-opacity" r="17" />
-                    <circle cx="17" cy="17" fill={warpColor} r="14.0857" />
-                  </svg>
-                </label>
-                <input
-                  ref={warpInputRef}
-                  id="warp-color-mobile"
-                  type="color"
-                  value={warpColor}
-                  onChange={(e) => onWarpColorChange(e.target.value)}
-                  className="absolute inset-0 opacity-0 cursor-pointer"
-                  style={{ width: '34px', height: '34px' }}
-                />
-              </div>
+              <button 
+                onClick={() => setColorPickerOpen('warp')}
+                className="fixed left-1/2 bottom-[6%] size-[34px] cursor-pointer z-50 group" 
+                style={{ transform: 'translateX(-146.5px)' }}
+                title="Change warp color"
+              >
+                <svg className="block size-full pointer-events-none" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
+                  <circle cx="17" cy="17" fill="white" className="opacity-70 group-hover:opacity-80 transition-opacity" r="17" />
+                  <circle cx="17" cy="17" fill={warpColor} r="14.0857" />
+                </svg>
+              </button>
 
               {/* Weft Color - next to warp */}
-              <div className="fixed left-1/2 bottom-[6%] size-[34px] cursor-pointer z-50 group" style={{ transform: 'translateX(-107.5px)' }}>
-                <label htmlFor="weft-color-mobile" className="cursor-pointer block size-full" title="Change weft color">
-                  <svg className="block size-full pointer-events-none" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
-                    <circle cx="17" cy="17" fill="white" className="opacity-70 group-hover:opacity-80 transition-opacity" r="17" />
-                    <circle cx="17.1219" cy="17.2462" fill={weftColor} r="14.0421" />
-                  </svg>
-                </label>
-                <input
-                  ref={weftInputRef}
-                  id="weft-color-mobile"
-                  type="color"
-                  value={weftColor}
-                  onChange={(e) => onWeftColorChange(e.target.value)}
-                  className="absolute inset-0 opacity-0 cursor-pointer"
-                  style={{ width: '34px', height: '34px' }}
-                />
-              </div>
+              <button 
+                onClick={() => setColorPickerOpen('weft')}
+                className="fixed left-1/2 bottom-[6%] size-[34px] cursor-pointer z-50 group" 
+                style={{ transform: 'translateX(-107.5px)' }}
+                title="Change weft color"
+              >
+                <svg className="block size-full pointer-events-none" fill="none" preserveAspectRatio="none" viewBox="0 0 34 34">
+                  <circle cx="17" cy="17" fill="white" className="opacity-70 group-hover:opacity-80 transition-opacity" r="17" />
+                  <circle cx="17.1219" cy="17.2462" fill={weftColor} r="14.0421" />
+                </svg>
+              </button>
 
               {/* Slider button - rotated 270deg - in middle area */}
               <button
@@ -346,6 +334,17 @@ export function MobileToolsPanel({
             </>
           )}
         </>
+      )}
+
+      {/* Mobile Color Picker */}
+      {colorPickerOpen && (
+        <MobileColorPicker
+          color={colorPickerOpen === 'warp' ? warpColor : weftColor}
+          onChange={colorPickerOpen === 'warp' ? onWarpColorChange : onWeftColorChange}
+          onClose={() => setColorPickerOpen(null)}
+          warpColor={warpColor}
+          weftColor={weftColor}
+        />
       )}
     </>
   );
