@@ -36,7 +36,8 @@ export function renderWeavingToCanvas(options: ExportOptions): HTMLCanvasElement
   ctx.fillRect(0, 0, width, height);
 
   const threadGap = threadSize * 2;
-  const lightWarpColor = lightenColor(warpColor, 40);
+  // Using 15% for subtle contrast that works well on both light and dark colors
+  const lightWarpColor = lightenColor(warpColor, 15);
   
   // Calculate how many weft threads (vertical) can fit
   const weftThreads = Math.floor(width / threadGap) + 1;
