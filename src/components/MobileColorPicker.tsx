@@ -64,9 +64,21 @@ export function MobileColorPicker({ color, onChange, onClose, warpColor, weftCol
     weftColor.toUpperCase()
   ]);
   
-  // Initialize saved colors with defaults only once
+  // Initialize saved colors from localStorage, with defaults
   const [savedColors, setSavedColors] = useState<string[]>(() => {
-    return [warpColor.toUpperCase(), weftColor.toUpperCase()];
+    const saved = localStorage.getItem('weavingSavedColors');
+    const defaults = [warpColor.toUpperCase(), weftColor.toUpperCase()];
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        // Merge defaults with saved, avoiding duplicates
+        const merged = [...new Set([...defaults, ...parsed.map((c: string) => c.toUpperCase())])];
+        return merged;
+      } catch {
+        return defaults;
+      }
+    }
+    return defaults;
   });
   
   const [isDraggingColorspace, setIsDraggingColorspace] = useState(false);
@@ -109,7 +121,10 @@ export function MobileColorPicker({ color, onChange, onClose, warpColor, weftCol
   const handleSaveColor = () => {
     const currentColor = hsvToHex(hsv.h, hsv.s, hsv.v);
     if (!savedColors.includes(currentColor)) {
-      setSavedColors([...savedColors, currentColor]);
+      const newColors = [...savedColors, currentColor];
+      setSavedColors(newColors);
+      // Persist to localStorage
+      localStorage.setItem('weavingSavedColors', JSON.stringify(newColors));
     }
   };
 
@@ -127,7 +142,10 @@ export function MobileColorPicker({ color, onChange, onClose, warpColor, weftCol
       return;
     }
     
-    setSavedColors(savedColors.filter((_, i) => i !== index));
+    const newColors = savedColors.filter((_, i) => i !== index);
+    setSavedColors(newColors);
+    // Persist to localStorage
+    localStorage.setItem('weavingSavedColors', JSON.stringify(newColors));
   };
 
   // Eyedropper functionality

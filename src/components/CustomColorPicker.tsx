@@ -370,17 +370,47 @@ export function CustomColorPicker({
           </div>
         </div>
 
-        {/* Hex input */}
-        <div className="bg-white relative rounded-[4px]">
-          <div aria-hidden="true" className="absolute border border-gray-200 border-solid inset-[-1px] pointer-events-none rounded-[5px] shadow-[0px_1px_2px_0px_rgba(31,41,55,0.08)]" />
-          <div className="flex flex-row items-center size-full">
-            <input
-              type="text"
-              value={hexInput}
-              onChange={handleHexInput}
-              className="box-border w-full px-[6px] py-[4px] font-['Inter',sans-serif] text-[14px] text-gray-700 bg-transparent border-none outline-none leading-[20px]"
-              placeholder="#000000"
-            />
+        {/* Hex input and Eyedropper row */}
+        <div className="flex items-center gap-2">
+          {/* Eyedropper Button */}
+          {'EyeDropper' in window && (
+            <button
+              onClick={async () => {
+                try {
+                  // @ts-ignore - EyeDropper API
+                  const eyeDropper = new window.EyeDropper();
+                  const result = await eyeDropper.open();
+                  const { h, s, v } = hexToHSV(result.sRGBHex);
+                  setHue(h);
+                  setSaturation(s);
+                  setValue(v);
+                } catch (e) {
+                  // User cancelled or error
+                }
+              }}
+              className="size-[32px] flex items-center justify-center rounded-[4px] bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer shrink-0"
+              title="Pick color from screen"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#72686F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m2 22 1-1h3l9-9"/>
+                <path d="M3 21v-3l9-9"/>
+                <path d="m15 6 3.4-3.4a2.1 2.1 0 1 1 3 3L18 9l.4.4a2.1 2.1 0 1 1-3 3l-3.8-3.8a2.1 2.1 0 1 1 3-3l.4.4Z"/>
+              </svg>
+            </button>
+          )}
+          
+          {/* Hex input */}
+          <div className="bg-white relative rounded-[4px] flex-1">
+            <div aria-hidden="true" className="absolute border border-gray-200 border-solid inset-[-1px] pointer-events-none rounded-[5px] shadow-[0px_1px_2px_0px_rgba(31,41,55,0.08)]" />
+            <div className="flex flex-row items-center size-full">
+              <input
+                type="text"
+                value={hexInput}
+                onChange={handleHexInput}
+                className="box-border w-full px-[6px] py-[4px] font-['Inter',sans-serif] text-[14px] text-gray-700 bg-transparent border-none outline-none leading-[20px]"
+                placeholder="#000000"
+              />
+            </div>
           </div>
         </div>
 
