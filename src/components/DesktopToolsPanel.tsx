@@ -275,13 +275,13 @@ export function DesktopToolsPanel({
                 />
               )}
 
-              {/* Main toolbar background - centered in viewport - 380px wide */}
-              <div className="fixed left-1/2 bottom-[60.5px] bg-[rgba(255,255,255,0.3)] h-[65px] rounded-[30px] w-[380px] z-40" style={{ transform: 'translateX(-190px)' }} />
+              {/* Main toolbar background - centered in viewport - 400px wide */}
+              <div className="fixed left-1/2 bottom-[60.5px] bg-[rgba(255,255,255,0.3)] h-[65px] rounded-[30px] w-[400px] z-40" style={{ transform: 'translateX(-200px)' }} />
 
-              {/* Heddle buttons 1-6 - using exact Figma positioning */}
+              {/* Heddle buttons 1-6 - evenly spaced */}
               {patterns.map((num) => {
-                // Exact center-based positions for 6 heddles
-                const translateX = [-170, -110, -50, 10, 70, 130];
+                // Center-based positions for 6 heddles with 50px spacing
+                const translateX = [-175, -125, -75, -25, 25, 75];
                 const isSelected = selectedDrafts.includes(num);
                 return (
                   <button
@@ -314,11 +314,11 @@ export function DesktopToolsPanel({
                 );
               })}
 
-              {/* Reed button - using exact Figma positioning */}
+              {/* Reed button - positioned after heddles with proper spacing */}
               <button 
                 onClick={onAddWarpRow}
                 className="fixed left-1/2 bottom-[70.5px] size-[45px] z-50 group cursor-pointer"
-                style={{ transform: 'translateX(107px)' }}
+                style={{ transform: 'translateX(130px)' }}
                 title="Weave row (or press Enter/Space)"
               >
                 <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 45 45">
