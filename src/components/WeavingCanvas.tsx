@@ -79,17 +79,17 @@ export function WeavingCanvas({ weavingStyle, warpColor, weftColor, threadSize, 
     let shift = 0;
     if (style === 'Twill') {
       // Twill: pattern shifts by 1 position each row, creating diagonal lines
-      shift = rowIndex % 4; // Repeat every 4 rows for a 2/2 twill
+      shift = rowIndex % 6; // Repeat every 6 rows for a 6-shaft twill
     } else if (style === 'Herringbone') {
       // Herringbone: pattern shifts then reverses, creating zigzag
-      const zigzagPeriod = 8; // Change direction every 8 rows
+      const zigzagPeriod = 12; // Change direction every 12 rows
       const posInCycle = rowIndex % (zigzagPeriod * 2);
       if (posInCycle < zigzagPeriod) {
         // Ascending phase
-        shift = posInCycle % 4;
+        shift = posInCycle % 6;
       } else {
         // Descending phase (reverse direction)
-        shift = (zigzagPeriod - (posInCycle - zigzagPeriod) - 1) % 4;
+        shift = (zigzagPeriod - (posInCycle - zigzagPeriod) - 1) % 6;
       }
     }
     // Plain weave: shift = 0 (no shift)
@@ -98,11 +98,13 @@ export function WeavingCanvas({ weavingStyle, warpColor, weftColor, threadSize, 
     // Warp threads alternate: dark, light, dark, light...
     // Position 0 = Column 1 (dark), Position 1 = Column 2 (light), etc.
     // 
-    // Heddle threading (4-shaft loom):
-    // Heddle 1: columns 1, 5, 9, 13... → positions 0, 4, 8, 12... → i % 4 === 0
-    // Heddle 2: columns 2, 6, 10, 14... → positions 1, 5, 9, 13... → i % 4 === 1
-    // Heddle 3: columns 3, 7, 11, 15... → positions 2, 6, 10, 14... → i % 4 === 2
-    // Heddle 4: columns 4, 8, 12, 16... → positions 3, 7, 11, 15... → i % 4 === 3
+    // Heddle threading (6-shaft loom):
+    // Heddle 1: columns 1, 7, 13, 19... → positions 0, 6, 12, 18... → i % 6 === 0
+    // Heddle 2: columns 2, 8, 14, 20... → positions 1, 7, 13, 19... → i % 6 === 1
+    // Heddle 3: columns 3, 9, 15, 21... → positions 2, 8, 14, 20... → i % 6 === 2
+    // Heddle 4: columns 4, 10, 16, 22... → positions 3, 9, 15, 21... → i % 6 === 3
+    // Heddle 5: columns 5, 11, 17, 23... → positions 4, 10, 16, 22... → i % 6 === 4
+    // Heddle 6: columns 6, 12, 18, 24... → positions 5, 11, 17, 23... → i % 6 === 5
     
     for (let i = 0; i < totalPositions; i++) {
       let isWeftOver = false;
@@ -112,8 +114,8 @@ export function WeavingCanvas({ weavingStyle, warpColor, weftColor, threadSize, 
       
       // Check if this shifted position is controlled by any of the selected heddles
       for (const heddle of startColumns) {
-        // Each heddle controls every 4th warp thread
-        if (shiftedPosition % 4 === (heddle - 1)) {
+        // Each heddle controls every 6th warp thread
+        if (shiftedPosition % 6 === (heddle - 1)) {
           isWeftOver = true;
           break;
         }

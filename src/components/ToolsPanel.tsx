@@ -135,7 +135,7 @@ export function ToolsPanel({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.repeat) return;
       
-      if (['1', '2', '3', '4'].includes(e.key)) {
+      if (['1', '2', '3', '4', '5', '6'].includes(e.key)) {
         e.preventDefault();
         onToggleDraft(Number(e.key));
         return;

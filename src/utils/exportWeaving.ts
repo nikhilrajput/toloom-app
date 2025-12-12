@@ -77,8 +77,8 @@ export function renderWeavingToCanvas(options: ExportOptions): HTMLCanvasElement
       
       // Check if this position is controlled by any of the selected heddles
       for (const heddle of startColumns) {
-        // Each heddle controls every 4th warp thread
-        if (i % 4 === (heddle - 1)) {
+        // Each heddle controls every 6th warp thread
+        if (i % 6 === (heddle - 1)) {
           isWeftOver = true;
           break;
         }

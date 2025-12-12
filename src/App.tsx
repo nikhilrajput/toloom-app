@@ -14,7 +14,7 @@ import { useAnalytics } from './hooks/use-analytics';
 export type WeavingStyle = 'plain' | 'twill' | 'herringbone';
 
 export interface WarpRow {
-  startColumns: number[]; // Which column numbers (1-4) are selected for this warp
+  startColumns: number[]; // Which column numbers (1-6) are selected for this warp
   pattern: number[]; // Array indicating which weft threads this warp goes over
   weftColor: string; // The weft color at the time this row was created
 }
@@ -59,10 +59,11 @@ function WeaveApp() {
     trackEvent('auto_weave_clicked', 'creation_tools', 'auto_weave');
     
     const patterns = [
-      { name: 'diamond', sequence: [[1], [2], [3], [4], [3], [2], [1]] },
-      { name: 'triple', sequence: [[1,2,3], [2,3,4], [3,4,1], [4,1,2], [3,4,1], [2,3,4], [1,2,3]] },
-      { name: 'simple', sequence: [[1,2], [3,4]] },
-      { name: 'rotating', sequence: [[1,2], [2,3], [3,4], [4,1]] }
+      { name: 'diamond', sequence: [[1], [2], [3], [4], [5], [6], [5], [4], [3], [2], [1]] },
+      { name: 'triple', sequence: [[1,2,3], [2,3,4], [3,4,5], [4,5,6], [5,6,1], [6,1,2], [5,6,1], [4,5,6], [3,4,5], [2,3,4], [1,2,3]] },
+      { name: 'simple', sequence: [[1,2,3], [4,5,6]] },
+      { name: 'rotating', sequence: [[1,2], [2,3], [3,4], [4,5], [5,6], [6,1]] },
+      { name: 'wave', sequence: [[1,2], [2,3,4], [3,4,5,6], [4,5,6], [5,6], [6]] }
     ];
     
     const randomPattern = patterns[Math.floor(Math.random() * patterns.length)];

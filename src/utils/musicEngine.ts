@@ -13,12 +13,14 @@ class MusicEngine {
     targetVolume: number // Track what volume this should be at
   }> = new Map();
   
-  // Base frequencies for pentatonic scale
+  // Base frequencies for pentatonic scale (extended to 6 notes)
   private readonly heddleNotes: { [key: number]: number } = {
     1: 261.63, // C4
     2: 293.66, // D4
     3: 329.63, // E4
     4: 392.00, // G4
+    5: 440.00, // A4
+    6: 523.25, // C5
   };
 
   private currentRowDepth: number = 0;
@@ -42,7 +44,7 @@ class MusicEngine {
       this.masterGain.gain.value = 0.2; // Master volume
       
       // Initialize continuous oscillators for each heddle
-      [1, 2, 3, 4].forEach(heddleNumber => {
+      [1, 2, 3, 4, 5, 6].forEach(heddleNumber => {
         this.initializeHeddleOscillator(heddleNumber);
       });
     } catch (e) {
@@ -261,7 +263,7 @@ class MusicEngine {
     const now = this.audioContext.currentTime;
     
     // Create descending swell through all heddles
-    [4, 3, 2, 1].forEach((heddleNumber, index) => {
+    [6, 5, 4, 3, 2, 1].forEach((heddleNumber, index) => {
       const heddle = this.heddleOscillators.get(heddleNumber);
       if (!heddle) return;
       

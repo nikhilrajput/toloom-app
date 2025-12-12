@@ -85,7 +85,7 @@ export function LearnModal({ onClose }: LearnModalProps) {
             
             {/* Number Buttons */}
             <div className="learn-modal-buttons" style={{ display: 'flex', marginBottom: '32px' }}>
-              {[1, 2, 3, 4].map(num => (
+              {[1, 2, 3, 4, 5, 6].map(num => (
                 <div key={num} className="learn-modal-button">
                   {num}
                 </div>

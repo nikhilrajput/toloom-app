@@ -1,7 +1,7 @@
 # Toloom Core Logic Explanation
 
 ## Overview
-Toloom is a digital weaving application that simulates a 4-shaft loom. Users create weaving patterns by selecting heddles (1-4) and adding weft rows, which creates visual patterns based on how threads interlace.
+Toloom is a digital weaving application that simulates a 6-shaft loom. Users create weaving patterns by selecting heddles (1-6) and adding weft rows, which creates visual patterns based on how threads interlace.
 
 ---
 
@@ -23,14 +23,16 @@ Toloom is a digital weaving application that simulates a 4-shaft loom. Users cre
 - **Warp threads**: Vertical threads (run top to bottom)
 - **Weft threads**: Horizontal threads (run left to right, added row by row)
 
-### 2. **4-Shaft Loom System**
-The app simulates a 4-shaft loom where:
-- **Heddles 1-4** control different sets of warp threads
-- Each heddle controls every 4th warp thread:
-  - Heddle 1: positions 0, 4, 8, 12... (i % 4 === 0)
-  - Heddle 2: positions 1, 5, 9, 13... (i % 4 === 1)
-  - Heddle 3: positions 2, 6, 10, 14... (i % 4 === 2)
-  - Heddle 4: positions 3, 7, 11, 15... (i % 4 === 3)
+### 2. **6-Shaft Loom System**
+The app simulates a 6-shaft loom where:
+- **Heddles 1-6** control different sets of warp threads
+- Each heddle controls every 6th warp thread:
+  - Heddle 1: positions 0, 6, 12, 18... (i % 6 === 0)
+  - Heddle 2: positions 1, 7, 13, 19... (i % 6 === 1)
+  - Heddle 3: positions 2, 8, 14, 20... (i % 6 === 2)
+  - Heddle 4: positions 3, 9, 15, 21... (i % 6 === 3)
+  - Heddle 5: positions 4, 10, 16, 22... (i % 6 === 4)
+  - Heddle 6: positions 5, 11, 17, 23... (i % 6 === 5)
 
 ### 3. **Over/Under Pattern**
 At each intersection:
@@ -44,7 +46,7 @@ At each intersection:
 ### WarpRow Interface
 ```typescript
 interface WarpRow {
-  startColumns: number[];  // Selected heddles (1-4) for this row
+  startColumns: number[];  // Selected heddles (1-6) for this row
   pattern: number[];       // (Currently unused, reserved for future)
   weftColor: string;       // Weft color when this row was created
 }
@@ -53,7 +55,7 @@ interface WarpRow {
 ### State Management (App.tsx)
 ```typescript
 - warpRows: WarpRow[]        // Array of all woven rows
-- selectedDrafts: number[]   // Currently selected heddles (1-4)
+- selectedDrafts: number[]   // Currently selected heddles (1-6)
 - warpColor: string          // Color of warp threads
 - weftColor: string          // Color of weft threads
 - weavingStyle: 'plain' | 'twill' | 'herringbone'
@@ -87,7 +89,7 @@ Located in `WeavingCanvas.tsx`, this function determines which warp threads the 
    ```typescript
    for each position i:
      shiftedPosition = (i - shift) % totalPositions
-     if shiftedPosition % 4 === (heddle - 1):
+     if shiftedPosition % 6 === (heddle - 1):
        isWeftOver = true  // Weft goes over this warp thread
    ```
 
@@ -95,10 +97,11 @@ Located in `WeavingCanvas.tsx`, this function determines which warp threads the 
 
 ### Example Pattern Generation
 
-**Selected Heddles: [1, 3]**
-- Heddle 1 controls: positions 0, 4, 8, 12...
-- Heddle 3 controls: positions 2, 6, 10, 14...
-- Result: Weft goes over at positions 0, 2, 4, 6, 8, 10, 12, 14...
+**Selected Heddles: [1, 3, 5]**
+- Heddle 1 controls: positions 0, 6, 12, 18...
+- Heddle 3 controls: positions 2, 8, 14, 20...
+- Heddle 5 controls: positions 4, 10, 16, 22...
+- Result: Weft goes over at positions 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22...
 
 ---
 
@@ -186,23 +189,23 @@ handleSaveToCommunity()
 
 ### Twill
 ```typescript
-shift = rowIndex % 4
+shift = rowIndex % 6
 ```
 - Pattern shifts by 1 position each row
 - Creates diagonal lines
-- Repeats every 4 rows
+- Repeats every 6 rows
 
 ### Herringbone
 ```typescript
-zigzagPeriod = 8
+zigzagPeriod = 12
 if (posInCycle < zigzagPeriod):
-  shift = posInCycle % 4  // Ascending
+  shift = posInCycle % 6  // Ascending
 else:
-  shift = (zigzagPeriod - (posInCycle - zigzagPeriod) - 1) % 4  // Descending
+  shift = (zigzagPeriod - (posInCycle - zigzagPeriod) - 1) % 6  // Descending
 ```
 - Shifts then reverses direction
 - Creates zigzag/chevron pattern
-- Changes direction every 8 rows
+- Changes direction every 12 rows
 
 ---
 

@@ -65,7 +65,7 @@ export function DesktopToolsPanel({
   weavingStyle,
   onWeavingStyleChange,
 }: DesktopToolsPanelProps) {
-  const patterns = [1, 2, 3, 4];
+  const patterns = [1, 2, 3, 4, 5, 6];
   const warpButtonRef = useRef<HTMLButtonElement>(null);
   const weftButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -275,13 +275,13 @@ export function DesktopToolsPanel({
                 />
               )}
 
-              {/* Main toolbar background - centered in viewport - 327px wide */}
-              <div className="fixed left-1/2 bottom-[60.5px] bg-[rgba(255,255,255,0.3)] h-[65px] rounded-[30px] w-[327px] z-40" style={{ transform: 'translateX(-163.5px)' }} />
+              {/* Main toolbar background - centered in viewport - 380px wide */}
+              <div className="fixed left-1/2 bottom-[60.5px] bg-[rgba(255,255,255,0.3)] h-[65px] rounded-[30px] w-[380px] z-40" style={{ transform: 'translateX(-190px)' }} />
 
-              {/* Heddle buttons 1-4 - using exact Figma positioning */}
+              {/* Heddle buttons 1-6 - using exact Figma positioning */}
               {patterns.map((num) => {
-                // Exact center-based positions from Figma
-                const translateX = [-146.5, -87.5, -28.5, 30.5];
+                // Exact center-based positions for 6 heddles
+                const translateX = [-170, -110, -50, 10, 70, 130];
                 const isSelected = selectedDrafts.includes(num);
                 return (
                   <button

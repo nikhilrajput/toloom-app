@@ -51,7 +51,7 @@ export function MobileToolsPanel({
   weavingStyle,
   onWeavingStyleChange,
 }: MobileToolsPanelProps) {
-  const patterns = [1, 2, 3, 4];
+  const patterns = [1, 2, 3, 4, 5, 6];
   const [colorPickerOpen, setColorPickerOpen] = useState<'warp' | 'weft' | null>(null);
 
   return (
@@ -201,13 +201,13 @@ export function MobileToolsPanel({
               </button>
 
               {/* Bottom toolbar background - centered */}
-              <div className="fixed left-1/2 -translate-x-1/2 bottom-[12%] bg-[rgba(255,255,255,0.3)] h-[65px] rounded-[30px] w-[327px] z-40" />
+              <div className="fixed left-1/2 -translate-x-1/2 bottom-[12%] bg-[rgba(255,255,255,0.3)] h-[65px] rounded-[30px] w-[380px] z-40" />
 
               {/* Heddle toolbar - centered container with absolute positioning inside */}
-              <div className="fixed left-1/2 -translate-x-1/2 bottom-[12%] w-[327px] h-[65px] z-50">
-                {/* Heddle buttons 1-4 - absolute positioning within container */}
+              <div className="fixed left-1/2 -translate-x-1/2 bottom-[12%] w-[380px] h-[65px] z-50">
+                {/* Heddle buttons 1-6 - absolute positioning within container */}
                 {patterns.map((num) => {
-                  const leftPositions = [15, 74, 133, 192];
+                  const leftPositions = [10, 60, 110, 160, 210, 260];
                   const isSelected = selectedDrafts.includes(num);
                   return (
                     <button
@@ -245,7 +245,7 @@ export function MobileToolsPanel({
                   onClick={onAddWarpRow}
                   className="absolute group cursor-pointer"
                   style={{ 
-                    left: '268px',
+                    left: '320px',
                     top: '10px',
                     width: '45px',
                     height: '45px'
